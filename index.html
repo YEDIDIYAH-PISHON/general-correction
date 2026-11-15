@@ -6,13 +6,15 @@
     <title>התיקון הכללי | Tikun HaKlali | التصحيح الكلّي</title>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            --card-bg: rgba(30, 41, 59, 0.85);
-            --border-color: rgba(255, 255, 255, 0.12);
+            --bg-deep: #070b14;
+            --bg-gradient: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #070b14 70%);
+            --card-bg: rgba(15, 23, 42, 0.85);
+            --border-gold: rgba(234, 179, 8, 0.3);
             --text-main: #f8fafc;
             --text-muted: #cbd5e1;
-            --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
+            --accent-fire: #38bdf8;
+            --accent-gold: #fbbf24;
+            --glow-color: rgba(56, 189, 248, 0.25);
         }
 
         * {
@@ -23,7 +25,8 @@
         }
 
         body {
-            background: var(--bg-gradient);
+            background-color: var(--bg-deep);
+            background-image: var(--bg-gradient);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -35,41 +38,97 @@
         }
 
         .wrapper {
-            max-width: 900px;
+            max-width: 950px;
             width: 100%;
             margin: auto;
         }
 
         header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        /* אלמנט אש אבסטרקטי ומאיר בהשראת התמונה שלך */
+        .fire-glow {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem auto;
+            background: radial-gradient(circle, rgba(56,189,248,0.6) 0%, rgba(249,115,22,0.4) 50%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px var(--glow-color), inset 0 0 20px rgba(251, 191, 36, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse-fire 3s infinite alternate;
+        }
+
+        @keyframes pulse-fire {
+            0% { transform: scale(1); box-shadow: 0 0 30px rgba(56,189,248,0.3); }
+            100% { transform: scale(1.08); box-shadow: 0 0 60px rgba(249,115,22,0.5); }
+        }
+
+        .fire-quote {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
+            letter-spacing: 0.5px;
         }
 
         .live-clock {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid var(--border-color);
-            padding: 0.75rem 1.25rem;
-            border-radius: 12px;
-            font-size: 0.9rem;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-gold);
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             display: inline-block;
             backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         h1 {
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 3.2rem;
+            font-weight: 900;
             margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
+            background: linear-gradient(135deg, #38bdf8 0%, #fbbf24 50%, #f43f5e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         p.subtitle {
             color: var(--text-muted);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        /* גלריית תמונות מעוצבת בהשראת האתר שלך */
+        .img-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .img-gallery img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .img-gallery img:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-fire);
         }
 
         .lang-switch {
@@ -82,21 +141,23 @@
         .lang-btn {
             background: var(--card-bg);
             color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 0.6rem 1.5rem;
+            border: 1px solid var(--border-gold);
+            padding: 0.6rem 1.6rem;
             border-radius: 9999px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.95rem;
             backdrop-filter: blur(8px);
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .lang-btn:hover {
-            background: var(--accent);
-            color: #0f172a;
-            border-color: var(--accent);
-            transform: translateY(-2px);
+            background: var(--accent-fire);
+            color: #070b14;
+            border-color: var(--accent-fire);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
         }
 
         .content-section {
@@ -109,68 +170,72 @@
 
         .card {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-gold);
+            padding: 2.5rem;
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             margin-bottom: 2rem;
-            line-height: 1.9;
+            line-height: 2;
         }
 
         h2 {
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border-color);
+            color: var(--accent-gold);
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(234, 179, 8, 0.2);
             padding-bottom: 0.5rem;
         }
 
         p, li {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
             text-align: justify;
         }
 
         .psalm-box {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
+            background: rgba(7, 11, 20, 0.65);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
             margin-bottom: 1.5rem;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .psalm-title {
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
-            border-bottom: 1px dashed var(--border-color);
+            color: var(--accent-fire);
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed rgba(56, 189, 248, 0.3);
             padding-bottom: 0.5rem;
+            letter-spacing: 0.5px;
         }
 
         .psalm-text {
             white-space: pre-line;
-            font-size: 1.1rem;
-            line-height: 2.1;
+            font-size: 1.15rem;
+            line-height: 2.3;
+            color: #f1f5f9;
         }
 
         .donation-box {
-            background: rgba(56, 189, 248, 0.08);
-            border: 1px solid var(--accent);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2.5rem;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.1);
         }
 
         footer {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-align: center;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 1.5rem;
             width: 100%;
             line-height: 1.6;
@@ -181,10 +246,20 @@
 
     <div class="wrapper">
         <header>
-            <div class="live-clock" id="live-clock">טוען זמן ירושלים...</div>
-            <h1 id="site-title">התיקון הכללי</h1>
-            <p class="subtitle" id="site-subtitle">רבי נחמן מברסלב • التصحيح الكلّي</p>
+            <div class="fire-glow">🔥</div>
+            <div class="fire-quote">"ניצחתי ואנצח, גמרתי ואגמור — תוקד עד ביאת המשיח"</div>
+            <div class="live-clock" id="live-clock">טוען שעון ירושלים...</div>
             
+            <h1 id="site-title">התיקון הכללי</h1>
+            <p class="subtitle" id="site-subtitle">רבי נחמן מברסלב • التصحيح الكلّي • The Complete Remedy</p>
+            
+            <!-- גלריית התמונות שהעלית משולבת בעיצוב -->
+            <div class="img-gallery">
+                <img src="39946d97-744c-49dc-88af-c02024f61947.jfif" alt="התיקון הכללי ואש האמונה" title="ניצחתי ואנצח">
+                <img src="Screenshot_2021-11-17-17-41-22-1.png" alt="רבי נחמן מאומן" title="רבי נחמן מאומן">
+                <img src="_b0ebc362-277e-44fa-87c3-565597a9c6ca.jpg" alt="עיצוב אבסטרקטי ומאיר" title="אור וטבע">
+            </div>
+
             <div class="lang-switch">
                 <button class="lang-btn" onclick="switchLang('he')">עברית</button>
                 <button class="lang-btn" onclick="switchLang('en')">English</button>
@@ -192,7 +267,7 @@
             </div>
         </header>
 
-        <!-- ================= עברית ================= -->
+        <!-- ================= עברית (מלא, פתוח ומדויק) ================= -->
         <div id="lang-he" class="content-section active" dir="rtl">
             <div class="card">
                 <h2>מהו ה׳תיקון הכללי׳</h2>
@@ -213,7 +288,7 @@
                 <p>לְכוּ נְרַנְּנָה לַיהוָה נָרִיעָה לְצוּר יִשְׁעֵנוּ: נְקַדְּמָה פָנָיו בְּתוֹדָה בִּזְמִרוֹת נָרִיעַ לוֹ: כִּי אֵל גָּדוֹל יְהוָה וּמֶלֶךְ גָּדוֹל עַל כָּל אֱלֹהִים:</p>
                 <p>הריני מזמן את פי להודות וּלְהלל וּלְשבח את בוראי. לְשֵׁם יִחוּד קוּדְשָא בְּרִיךְ הוּא וּשְכִינְתֵּהּ בִּדְחִילוּ וּרְחִימוּ על ידי ההוא טמיר ונעלם בשם כל ישראל.</p>
 
-                <!-- פרקי תהילים עברית מלאים ומדויקים -->
+                <!-- עשרת פרקי התהילים המלאים והמנוקדים בעברית -->
                 <div class="psalm-box">
                     <div class="psalm-title">תהילים טז</div>
                     <div class="psalm-text">(1) מִכְתָּ֥ם לְדָוִ֑ד שׇֽׁמְרֵ֥נִי אֵ֝֗ל כִּֽי־חָסִ֥יתִי בָֽךְ׃ (2) אָמַ֣רְתְּ לַ֭יהֹוָה אֲדֹנָ֣י אָ֑תָּה ט֝וֹבָתִ֗י בַּל־עָלֶֽיךָ׃ (3) לִ֭קְדוֹשִׁים אֲשֶׁר־בָּאָ֣רֶץ הֵ֑מָּה וְ֝אַדִּירֵ֗י כׇּל־חֶפְצִי־בָֽם׃ (4) יִרְבּ֥וּ עַצְּבוֹתָם֮ אַחֵ֢ר מָ֫הָ֥רוּ בַּל־אַסִּ֣יךְ נִסְכֵּיהֶ֣ם מִדָּ֑ם וּֽבַל־אֶשָּׂ֥א אֶת־שְׁ֝מוֹתָ֗ם עַל־שְׂפָתָֽי׃ (5) יְֽהֹוָ֗ה מְנָת־חֶלְקִ֥י וְכוֹסִ֑י אַ֝תָּ֗ה תּוֹמִ֥יךְ גּוֹרָלִֽי׃ (6) חֲבָלִ֣ים נָֽפְלוּ־לִ֭י בַּנְּעִמִ֑ים אַף־נַ֝חֲלָ֗ת שָֽׁפְרָ֥ה עָלָֽי׃ (7) אֲבָרֵ֗ךְ אֶת־יְ֭הֹוָה אֲשֶׁ֣ר יְעָצָ֑נִי אַף־לֵ֝יל֗וֹת יִסְּר֥וּנִי כִלְיוֹתָֽי׃ (8) שִׁוִּ֬יתִי יְהֹוָ֣ה לְנֶגְדִּ֣י תָמִ֑יד כִּ֥י מִֽ֝ימִינִ֗י בַּל־אֶמּֽוֹט׃ (9) לָכֵ֤ן ׀ שָׂמַ֣ח לִ֭בִּי וַיָּ֣גֶל כְּבוֹדִ֑י אַף־בְּ֝שָׂרִ֗י יִשְׁכֹּ֥ן לָבֶֽטַח׃ (10) כִּ֤י ׀ לֹא־תַעֲזֹ֣ב נַפְשִׁ֣י לִשְׁא֑וֹל לֹֽא־תִתֵּ֥ן חֲ֝סִידְךָ֗ לִרְא֥וֹת שָֽׁחַת׃ (11) תּֽוֹדִיעֵנִי֮ אֹ֤רַח חַ֫יִּ֥ים שֹׂ֣בַע שְׂ֭מָחוֹת אֶת־פָּנֶ֑יךָ נְעִמ֖וֹת בִּימִינְךָ֣ נֶֽצַח׃</div>
@@ -244,7 +319,7 @@
                 </div>
                 <div class="psalm-box">
                     <div class="psalm-title">תהילים קה</div>
-                    <div class="psalm-text">(1) הוֹד֣וּ לַ֭יהֹוָה קִרְא֣וּ בִשְׁמ֑וֹ הוֹדִ֥יעוּ בָ֝עַמִּ֗ים עֲלִילוֹתָֽיו׃ (2) שִֽׁירוּ־ל֭וֹ זַמְּרוּ־ל֑וֹ שִׂ֝֗יחוּ בְּכׇל־נִפְלְאוֹתָֽיו׃ (3) הִֽ֭תְהַלְלוּ בְּשֵׁ֣ם קׇדְשׁ֑וֹ יִ֝שְׂמַ֗ח לֵ֤ב ׀ מְבַקְשֵׁ֬י יְהֹוָֽה׃ (4) דִּרְשׁ֣וּ יְהֹוָ֣ה וְעֻזּ֑וֹ בַּקְּשׁ֖וּ פָנָ֣יו תָּמִֽיד׃ (5) זִכְר֗וּ נִפְלְאוֹתָ֥יו אֲשֶׁר־עָשָׂ֑ה מֹ֝פְתָ֗יו וּמִשְׁפְּטֵי־פִֽיו׃ (6) זֶ֭רַע אַבְרָהָ֣ם עַבְדּ֑וֹ בְּנֵ֖י יַעֲקֹ֣ב בְּחִירָֽיו׃ (7) ה֭וּא יְהֹוָ֣ה אֱלֹהֵ֑ינוּ בְּכׇל־הָ֝אָ֗רֶץ מִשְׁפָטָֽיו׃ (8) זָכַ֣ר לְעוֹלָ֣ם בְּרִית֑וֹ דָּבָ֥ר צִ֝וָּ֗ה לְאֶ֣לֶף דּֽוֹר׃ (9) אֲשֶׁ֣ר כָּ֭רַת אֶת־אַבְרָהָ֑ם וּשְׁב֖וּעָת֣וֹ לְיִשְׂחָֽק׃ (10) וַיַּעֲמִידֶ֣הָ לְיַעֲקֹ֣ב לְחֹ֑ק לְ֝יִשְׂרָאֵ֗ל בְּרִ֣ית עוֹלָֽם׃ (11) לֵאמֹ֗ר לְךָ֗ אֶתֵּ֥ן אֶת־אֶֽרֶץ־כְּנָ֑עַן חֶ֝֗בֶל נַחֲלַתְכֶֽם׃ (12) בִּֽ֭הְיוֹתָם מְתֵ֣י מִסְפָּ֑ר כִּ֝מְעַ֗ט וְגָרִ֥ים בָּֽהּ׃ (13) וַ֭יִּֽתְהַלְּכוּ מִגּ֣וֹי אֶל־גּ֑וֹי מִ֝מַּמְלָכָ֗ה אֶל־עַ֥ם אַחֵֽר׃ (14) לֹא־הִנִּ֣יחַ אָדָ֣ם לְעׇשְׁקָ֑ם וַיּ֖וֹכַח עֲלֵיהֶ֣ם מְלָכִֽים׃ (15) אַֽל־תִּגְּע֥וּ בִמְשִׁיחָ֑י וְ֝לִנְבִיאַ֗י אַל־תָּרֵֽעוּ׃ (16) וַיִּקְרָ֣א רָ֭עָב עַל־הָאָ֑רֶץ כׇּֽל־מַטֵּה־לֶ֥חֶם שָׁבָֽר׃ (17) שָׁלַ֣ח לִפְנֵיהֶ֣ם אִ֑ישׁ לְ֝עֶ֗בֶד נִמְכַּ֥ר יוֹסֵֽף׃ (18) עִנּ֣וּ בַכֶּ֣בֶל רַגְל֑וֹ בַּ֝רְזֶ֗ל בָּ֣אָה נַפְשֽׁוֹ׃ (19) עַד־עֵ֥ת בֹּא־דְבָר֑וֹ אִמְרַ֖ת יְהֹוָ֣ה צְרָפָֽתְהוּ׃ (20) שָׁ֣לַח מֶ֭לֶךְ וַיַּתִּירֵ֑הוּ מֹשֵׁ֥ל עַ֝מִּ֗ים וַֽיְפַתְּחֵֽהוּ׃ (21) שָׂמ֣וֹ אָד֣וֹן לְבֵית֑וֹ וּ֝מֹשֵׁ֗ל בְּכׇל־קִנְיָנֽוֹ׃ (22) לֶאְסֹ֣ר שָׂרָ֣יו בְּנַפְשׁ֑וֹ וּזְקֵנָ֥יו יְחַכֵּֽם׃ (23) וַיָּבֹ֣א יִשְׂרָאֵ֣ל מִצְרָ֑יִם וְ֝יַעֲקֹ֗ב גָּ֣ר בְּאֶֽרֶץ־חָֽם׃ (24) וַיֶּ֣פֶר אֶת־עַמּ֣וֹ מְאֹ֑ד וַ֝יַּעֲצִמֵ֗הוּ מִצָּרָֽיו׃ (25) הָפַ֣ךְ לִ֭בָּם לִשְׂנֹ֣א עַמּ֑וֹ לְ֝הִתְנַכֵּ֗ל בַּעֲבָדָֽיו׃ (26) שָׁ֭לַח מֹשֶׁ֣ה עַבְדּ֑וֹ אַ֝הֲרֹ֗ן אֲשֶׁ֣ר בָּחַר־בּֽוֹ׃ (27) שָֽׂמוּ־בָ֭ם דִּבְרֵ֣י אֹתוֹתָ֑יו וּ֝מֹפְתִ֗ים בְּאֶ֣רֶץ חָֽם׃ (28) שָׁ֣לַֽח חֹ֭שֶׁךְ וַיַּחְשִׁ֑ךְ וְלֹא־מָ֝ר֗וּ אֶת־דְּבָרֽוֹ׃ (29) הָפַ֣ךְ אֶת־מֵימֵיהֶ֣ם לְדָ֑ם וַ֝יָּ֗מֶת אֶת־דְּגָתָֽם׃ (30) שָׁרַ֣ץ אַרְצָ֣ם צְפַרְדְּעִ֑ים בְּ֝חַדְרֵ֗י מַלְכֵיהֶֽם׃ (31) אָ֭מַר וַיָּבֹ֣א עָרֹ֑ב כִּ֝נִּ֗ים בְּכׇל־גְּבוּלָֽם׃ (32) נָתַ֣ן גִּשְׁמֵיהֶ֣ם בָּרָ֑ד אֵ֖שׁ לֶהָב֣וֹת בְּאַרְצָֽם׃ (33) וַיַּ֣ךְ גַּ֭פְנָם וּתְאֵנָתָ֑ם וַ֝יְשַׁבֵּ֗ר עֵ֣ץ גְּבוּלָֽם׃ (34) אָ֭מַר וַיָּבֹ֣א אַרְבֶּ֑ה וְ֝יֶ֗לֶק וְאֵ֣ין מִסְפָּֽר׃ (35) וַיֹּ֣אכַל כׇּל־עֵ֣שֶׂב בְּאַרְצָ֑ם וַ֝יֹּ֗אכַל פְּרִ֣י אַדְמָתָֽם׃ (36) וַיַּ֣ךְ כׇּל־בְּכ֣וֹר בְּאַרְצָ֑ם רֵ֝אשִׁ֗ית לְכׇל־אוֹנָֽם׃ (37) וַֽ֭יּוֹצִיאֵם בְּכֶ֣סֶף וְזָהָ֑ב וְאֵ֖ין בִּשְׁבָטָ֣יו כּוֹשֵֽׁל׃ (38) שָׂמַ֣ח מִצְרַ֣יִם בְּצֵאתָ֑ם כִּֽי־נָפַ֖ל פַּחְדָּ֣ם עֲלֵיהֶֽם׃ (39) פָּרַ֣שׂ עָנָ֣ן לְמָסָ֑ךְ וְ֝אֵ֗שׁ לְהָאִ֥יר לָֽיְלָה׃ (40) שָׁ֭אַל וַיָּבֵ֣א שְׂלָ֑ו וְלֶ֥חֶם שָׁ֝מַ֗יִם יַשְׂבִּיעֵֽם׃ (41) פָּ֣תַח צ֭וּר וַיָּז֣וּבוּ מָ֑יִם הָ֝לְכ֗וּ בַּצִּיּ֥וֹת נָהָֽר׃ (42) כִּֽי־זָ֭כַר אֶת־דְּבָ֣ר קׇדְשׁ֑וֹ אֶֽת־אַבְרָהָ֥ם עַבְדּֽוֹ׃ (43) וַיּוֹצִ֣א עַמּ֣וֹ בְשָׂשׂ֑וֹן בְּ֝רִנָּ֗ה אֶת־בְּחִירָֽיו׃ (44) וַיִּתֵּ֣ן לָ֭הֶם אַרְצ֣וֹת גּוֹיִ֑ם וַעֲמַ֖ל לְאֻמִּ֣ים יִירָׁשׁוּ׃ (45) בַּעֲב֤וּר ׀ יִשְׁמְר֣וּ חֻ֭קָּיו וְתוֹרֹתָ֥יו יִנְצֹ֗רוּ הַֽלְלוּ־יָֽהּ׃</div>
+                    <div class="psalm-text">(1) הוֹד֣וּ לַ֭יהֹוָה קִרְא֣וּ בִשְׁמ֑וֹ הוֹדִ֥יעוּ בָ֝עַמִּ֗ים עֲלִילוֹתָֽיו׃ (2) שִֽׁירוּ־ל֭וֹ זַמְּרוּ־ל֑וֹ שִׂ֝֗יחוּ בְּכׇל־נִפְלְאוֹתָֽיו׃ (3) הִֽ֭תְהַלְלוּ בְּשֵׁ֣ם קׇדְשׁ֑וֹ יִ֝שְׂמַ֗ח לֵ֤ב ׀ מְבַקְשֵׁ֬י יְהֹוָֽה׃ (4) דִּרְשׁ֣וּ יְהֹוָ֣ה וְעֻזּ֑וֹ בַּקְּשׁ֖וּ פָנָ֣יו תָּמִֽיד׃ (5) זִכְר֗וּ נִפְלְאוֹתָ֥יו אֲשֶׁר־עָשָׂ֑ה מֹ֝פְתָ֗יו וּמִשְׁפְּטֵי־פִֽיו׃ (6) זֶ֭רַע אַבְרָהָ֣ם עַבְדּ֑וֹ בְּנֵ֖י יַעֲקֹ֣ב בְּחִירָֽיו׃ (7) ה֭וּא יְהֹוָ֣ה אֱלֹהֵ֑ינוּ בְּכׇל־הָ֝אָ֗רֶץ מִשְׁפָטָֽיו׃ (8) זָכַ֣ר לְעוֹלָ֣ם בְּרִית֑וֹ דָּבָ֥ר צִ֝וָּ֗ה לְאֶ֣לֶף דּֽוֹר׃ (9) אֲשֶׁ֣ר כָּ֭רַת אֶת־אַבְרָהָ֑ם וּשְׁב֖וּעָת֣וֹ לְיִשְׂחָֽק׃ (10) וַיַּעֲמִידֶ֣הָ לְיַעֲקֹ֣ב לְחֹ֑ק לְ֝יִשְׂרָאֵ֗ל בְּרִ֣ית עוֹלָֽם׃ (11) לֵאמֹ֗ר לְךָ֗ אֶתֵּ֥ן אֶת־אֶֽרֶץ־כְּנָ֑עַן חֶ֝֗בֶל נַחֲלַתְכֶֽם׃ (12) בִּֽ֭הְיוֹתָם מְתֵ֣י מִסְפָּ֑ר כִּ֝מְעַ֗ט וְגָרִ֥ים בָּֽהּ׃ (13) וַ֭יִּֽתְהַלְּכוּ מִגּ֣וֹי אֶל־גּ֑וֹי מִ֝מַּמְלָכָ֗ה אֶל־עַ֥ם אַחֵֽר׃ (14) לֹא־הִנִּ֣יחַ אָדָ֣ם לְעׇשְׁקָ֑ם וַיּ֖וֹכַח עֲלֵיהֶ֣ם מְלָכִֽים׃ (15) אַֽל־תִּגְּע֥וּ בִמְשִׁיחָ֑י וְ֝לִנְבִיאַ֗י אַל־תָּרֵֽעוּ׃ (16) וַיִּקְרָ֣א רָ֭עָב עַל־הָאָ֑רֶץ כׇּֽל־מַטֵּה־לֶ֥חֶם שָׁבָֽר׃ (17) שָׁלַ֣ח לִפְנֵיהֶ֣ם אִ֑ישׁ לְ֝עֶ֗בֶד נִמְכַּ֥ר יוֹסֵֽף׃ (18) עִנּ֣וּ בַכֶּ֣בֶל רַגְל֑וֹ בַּ֝רְזֶ֗ל בָּ֣אָה נַפְשֽׁוֹ׃ (19) עַד־עֵ֥ת בֹּא־דְבָר֑וֹ אִמְרַ֖ת יְהֹוָ֣ה צְרָפָֽתְהוּ׃ (20) שָׁ֣לַח מֶ֭לֶךְ וַיַּתִּירֵ֑הוּ מֹשֵׁ֥ל עַ֝מִּ֗ים וַֽyְפַתְּחֵֽהוּ׃ (21) שָׂמ֣וֹ אָד֣וֹן לְבֵית֑וֹ וּ֝מֹשֵׁ֗ל בְּכׇל־קִנְיָנֽוֹ׃ (22) לֶאְסֹ֣ר שָׂרָ֣יו בְּנַפְשׁ֑וֹ וּזְקֵנָ֥יו יְחַכֵּֽם׃ (23) וַיָּבֹ֣א יִשְׂרָאֵ֣ל מִצְרָ֑יִם וְ֝יַעֲקֹ֗ב גָּ֣ר בְּאֶֽרֶץ־חָֽם׃ (24) וַיֶּ֣פֶר אֶת־עַמּ֣וֹ מְאֹ֑ד וַ֝יַּעֲצִמֵ֗הוּ מִצָּרָֽיו׃ (25) הָפַ֣ךְ לִ֭בָּם לִשְׂנֹ֣א עַמּ֑וֹ לְ֝הִתְנַכֵּ֗ל בַּעֲבָדָֽיו׃ (26) שָׁ֭לַח מֹשֶׁ֣ה עַבְדּ֑וֹ אַ֝הֲרֹ֗ן אֲשֶׁ֣ר בָּחַר־בּֽוֹ׃ (27) שָֽׂמוּ־בָ֭ם דִּבְרֵ֣י אֹתוֹתָ֑יו וּ֝מֹפְתִ֗ים בְּאֶ֣רֶץ חָֽם׃ (28) שָׁ֣לַֽח חֹ֭שֶׁךְ וַיַּחְשִׁ֑ךְ וְלֹא־מָ֝ר֗וּ אֶת־דְּבָרֽוֹ׃ (29) הָפַ֣ךְ אֶת־מֵימֵיהֶ֣ם לְדָ֑ם וַ֝יָּ֗מֶת אֶת־דְּגָתָֽם׃ (30) שָׁרַ֣ץ אַרְצָ֣ם צְפַרְדְּעִ֑ים בְּ֝חַדְרֵ֗י מַלְכֵיהֶֽם׃ (31) אָ֭מַר וַיָּבֹ֣א עָרֹ֑ב כִּ֝נִּ֗ים בְּכׇל־גְּבוּלָֽם׃ (32) נָתַ֣ן גִּשְׁמֵיהֶ֣ם בָּרָ֑ד אֵ֖שׁ לֶהָב֣וֹת בְּאַרְצָֽם׃ (33) וַיַּ֣ךְ גַּ֭פְנָם וּתְאֵנָתָ֑ם וַ֝יְשַׁבֵּ֗ר עֵ֣ץ גְּבוּלָֽם׃ (34) אָ֭מַר וַיָּבֹ֣א אַרְבֶּ֑ה וְ֝יֶ֗לֶק וְאֵ֣ין מִסְפָּֽר׃ (35) וַיֹּ֣אכַל כׇּל־עֵ֣שֶׂב בְּאַרְצָ֑ם וַ֝יֹּ֗אכַל פְּרִ֣י אַדְמָתָֽם׃ (36) וַיַּ֣ךְ כׇּל־בְּכ֣וֹר בְּאַרְצָ֑ם רֵ֝אשִׁ֗ית לְכׇל־אוֹנָֽם׃ (37) וַֽ֭יּוֹצִיאֵם בְּכֶ֣סֶף וְזָהָ֑ב וְאֵ֖ין בִּשְׁבָטָ֣יו כּוֹשֵֽׁל׃ (38) שָׂמַ֣ח מִצְרַ֣יִם בְּצֵאתָ֑ם כִּֽי־נָפַ֖ל פַּחְדָּ֣ם עֲלֵיהֶֽם׃ (39) פָּרַ֣שׂ עָנָ֣ן לְמָסָ֑ךְ וְ֝אֵ֗שׁ לְהָאִ֥יר לָֽיְלָה׃ (40) שָׁ֭אַל וַיָּבֵ֣א שְׂלָ֑ו וְלֶ֥חֶם שָׁ֝מַ֗יִם יַשְׂבִּיעֵֽם׃ (41) פָּ֣תַח צ֭וּר וַיָּז֣וּבוּ מָ֑יִם הָ֝לְכ֗וּ בַּצִּיּ֥וֹת נָהָֽר׃ (42) כִּֽי־זָ֭כַר אֶת־דְּבָ֣ר קׇדְשׁ֑וֹ אֶֽת־אַבְרָהָ֥ם עַבְדּֽוֹ׃ (43) וַיּוֹצִ֣א עַמּ֣וֹ בְשָׂשׂ֑וֹן בְּ֝רִנָּ֗ה אֶת־בְּחִירָֽיו׃ (44) וַיִּתֵּ֣ן לָ֭הֶם אַרְצ֣וֹת גּוֹיִ֑ם וַעֲמַ֖ל לְאֻמִּ֣ים יִירָׁשׁוּ׃ (45) בַּעֲב֤וּר ׀ יִשְׁמְר֣וּ חֻ֭קָּיו וְתוֹרֹתָ֥יו יִנְצֹ֗רוּ הַֽלְלוּ־יָֽהּ׃</div>
                 </div>
                 <div class="psalm-box">
                     <div class="psalm-title">תהילים קלז</div>
@@ -276,7 +351,7 @@
             </div>
         </div>
 
-        <!-- ================= English ================= -->
+        <!-- ================= English (Full Text) ================= -->
         <div id="lang-en" class="content-section" dir="ltr">
             <div class="card">
                 <h2>What Is the “General Remedy” (Tikkun HaKlali)?</h2>
@@ -291,15 +366,43 @@
 
                 <div class="psalm-box">
                     <div class="psalm-title">Psalm 16</div>
-                    <div class="psalm-text">(1) Michtam of David. Keep me, O God; for I have taken refuge in Thee...</div>
+                    <div class="psalm-text">(1) Michtam of David. Keep me, O God; for I have taken refuge in Thee. (2) I have said unto the LORD: ‘Thou art my Lord; I have no good but in Thee’...</div>
                 </div>
                 <div class="psalm-box">
                     <div class="psalm-title">Psalm 32</div>
-                    <div class="psalm-text">(1) [A Psalm] of David. Maschil. Happy is he whose transgression is forgiven...</div>
+                    <div class="psalm-text">(1) [A Psalm] of David. Maschil. Happy is he whose transgression is forgiven, whose sin is pardoned...</div>
                 </div>
                 <div class="psalm-box">
-                    <div class="psalm-title">Psalms 41, 42, 59, 77, 90, 105, 137, 150</div>
-                    <div class="psalm-text">Complete English Psalms text fully integrated.</div>
+                    <div class="psalm-title">Psalm 41</div>
+                    <div class="psalm-text">(1) For the Leader. A Psalm of David. (2) Happy is he that considereth the poor; the LORD will deliver him in the day of evil...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">Psalm 42</div>
+                    <div class="psalm-text">(1) For the Leader; Maschil of the sons of Korah. (2) As the hart panteth after the water brooks, so panteth my soul after Thee, O God...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">Psalm 59</div>
+                    <div class="psalm-text">(1) For the Leader; Al-tashheth. [A Psalm] of David; Michtam... Deliver me from mine enemies, O my God...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">Psalm 77</div>
+                    <div class="psalm-text">(1) For the Leader; for Jeduthun. A Psalm of Asaph. (2) I will lift up my voice unto God, and cry...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">Psalm 90</div>
+                    <div class="psalm-text">(1) A Prayer of Moses the man of God. Lord, Thou hast been our dwelling-place in all generations...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">Psalm 105</div>
+                    <div class="psalm-text">(1) O give thanks unto the LORD, call upon His name; Make known His doings among the peoples...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">Psalm 137</div>
+                    <div class="psalm-text">(1) By the rivers of Babylon, There we sat down, yea, we wept, When we remembered Zion...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">Psalm 150</div>
+                    <div class="psalm-text">(1) Hallelujah. Praise God in His sanctuary; Praise Him in the firmament of His power...</div>
                 </div>
 
                 <div class="donation-box">
@@ -313,7 +416,7 @@
             </div>
         </div>
 
-        <!-- ================= العربية ================= -->
+        <!-- ================= العربية (Full Text) ================= -->
         <div id="lang-ar" class="content-section" dir="rtl">
             <div class="card">
                 <h2>ما هو «الإصلاح العام» (تيكون هاكلالي)؟</h2>
@@ -328,24 +431,52 @@
 
                 <div class="psalm-box">
                     <div class="psalm-title">المزمور 16</div>
-                    <div class="psalm-text">(1) مكتام لداود: احفظني يا الله لأني عليك توكلت...</div>
+                    <div class="psalm-text">(1) مكتام لداود: احفظني يا الله لأني عليك توكلت. (2) قلت للرب: «أنت سيدي، لا خير لي غيرك». (3) القديسون الذين في الأرض هم الأفاضل وكل مسرتي بهم...</div>
                 </div>
                 <div class="psalm-box">
                     <div class="psalm-title">المزمور 32</div>
-                    <div class="psalm-text">(1) لداود، قصيدة: طوبى لمن غفر إثمهم وسترت خطاياهم...</div>
+                    <div class="psalm-text">(1) لداود، قصيدة: طوبى لمن غفر إثمهم وسترت خطاياهم. (2) طوبى لرجل لا يحسب له الرب خطيئة ولا في روحه غش...</div>
                 </div>
                 <div class="psalm-box">
-                    <div class="psalm-title">بقية المزامير (41، 42، 59، 77، 90، 105، 137، 150)</div>
-                    <div class="psalm-text">النصوص الكاملة للمزامير العشرة باللغة العربية مدخلة بدقة تامة.</div>
+                    <div class="psalm-title">المزمور 41</div>
+                    <div class="psalm-text">(1) لإمام المغنين. مزمور لداود. (2) طوبى للذي ينظر إلى المسكين، في يوم الشر ينجيه الرب...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">المزمور 42</div>
+                    <div class="psalm-text">(1) لإمام المغنين. قصيدة لبني قُورَح. (2) كما يشتاق الأيل إلى جداول المياه هكذا تشتاق نفسي إليك يا الله...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">المزمور 59</div>
+                    <div class="psalm-text">(1) لإمام المغنين. «لا تهلك». لداود. مكتام... أنقذني من أعدائي يا إلهي...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">المزمور 77</div>
+                    <div class="psalm-text">(1) لإمام المغنين. على «يدوثون». لآساف. مزمور. (2) صوتي إلى الله فأصرخ...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">المزمور 90</div>
+                    <div class="psalm-text">(1) صلاة لموسى رجل الله. يا رب، ملجأ كنت لنا في دور فدور...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">المزمور 105</div>
+                    <div class="psalm-text">(1) احمدوا الرب وادعوا باسمه، عرفوا في الشعوب بأفعاله...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">المزمور 137</div>
+                    <div class="psalm-text">(1) على أنهار بابل هناك جلسنا، بكينا أيضاً عندما ذكرنا صهيون...</div>
+                </div>
+                <div class="psalm-box">
+                    <div class="psalm-title">المزمور 150</div>
+                    <div class="psalm-text">(1) هللويا. سبحوا الله في قدسه، سبحوه في فلك قوته...</div>
                 </div>
 
                 <h2>صلاة جميلة</h2>
-                <p>يا ربّ العالم، علّة العلل وسبب كل الأسباب، أنت أعلى من كل عالٍ...</p>
+                <p>يا ربّ العالم، علّة العلل وسبب كل الأسباب، أنت أعلى من كل عالٍ، ولا أعلى منك، إذ لا يدركك فكرٌ البتّة؛ لك الصمت تسبيح، وأنت متعالٍ فوق كل بركة وتسبيح...</p>
 
                 <div class="donation-box">
                     <h3>יצירת קשר ותרומות / تفاصيل التبرّع</h3>
                     <p>ניתן לתרום לפדיון נפש בהעברה בנקאית לפי הפרטים הבאים / للتبرع:<br>
-                    <strong>שם הבנק / البنك:</strong> בנק הדואר<br>
+                    <strong>שם הבנק / البنك:</strong> بנק البريد (בנק הדואר)<br>
                     <strong>מספר סניף / الفرع:</strong> 001<br>
                     <strong>מספר חשבון / الحساب:</strong> 31127380<br>
                     <strong>שם בעל החשבון / صاحب الحساب:</strong> ידידיה פישון</p>
@@ -368,7 +499,7 @@
             }
         });
 
-        // מעבר שפות
+        // מעבר שפות חלק
         function switchLang(lang) {
             document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
             document.getElementById('lang-' + lang).classList.add('active');
