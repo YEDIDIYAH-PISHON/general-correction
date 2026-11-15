@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,6 @@
     
     <!-- SEO & Meta Tags -->
     <meta name="description" content="התיקון הכללי של רבי נחמן מאומן - עשרת פרקי התהילים, תפילת פדיון הנפש, וסגולה לישועה, רפואה ופרנסה. זמין בעברית, אנגלית וערבית.">
-    <meta name="keywords" content="תיקון הכללי, רבי נחמן, ברסלב, תהילים, פדיון נפש, אומן, ישועה, רפואה">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +23,8 @@
             --glow-blue: #00bfff;
             --dark-blue: #0b1a30;
             --text-color: #1a1a1a;
-            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-bg: rgba(255, 255, 255, 0.75);
             --glass-border: rgba(212, 175, 55, 0.4);
-            --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
         * {
@@ -36,9 +34,7 @@
             user-select: none;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Heebo', sans-serif;
@@ -50,10 +46,10 @@
             min-height: 100vh;
         }
 
-        /* === רקע פרלקסה (Parallax) של רבינו === */
+        /* === רקע פרלקסה של רבינו === */
         .parallax-bg {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 120%; /* גבוה יותר כדי לאפשר תנועה */
+            top: 0; left: 0; width: 100%; height: 120%;
             background-image: url('Screenshot_2021-11-17-17-41-22-1.png');
             background-size: cover;
             background-position: center top;
@@ -63,7 +59,6 @@
             will-change: transform;
         }
 
-        /* ניצוצות אש ברקע */
         .ambient-glow {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -85,7 +80,7 @@
         /* === אנימציות === */
         @keyframes floatHero {
             0% { transform: translateY(0) scale(1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
-            50% { transform: translateY(-12px) scale(1.02); box-shadow: 0 0 80px rgba(255, 140, 0, 0.6), 0 0 120px rgba(0, 191, 255, 0.2); }
+            50% { transform: translateY(-12px) scale(1.02); box-shadow: 0 0 80px rgba(255, 140, 0, 0.6); }
             100% { transform: translateY(0) scale(1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
         }
 
@@ -111,16 +106,11 @@
             100% { height: 5px; }
         }
 
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
         /* === כותרת (Header) === */
         header {
             position: relative;
-            padding: 20px;
-            background: rgba(11, 26, 48, 0.85);
+            padding: 15px 20px;
+            background: rgba(11, 26, 48, 0.95);
             backdrop-filter: blur(15px);
             border-bottom: 2px solid var(--gold);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -138,28 +128,41 @@
         }
 
         .logo-title h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 900;
             background: linear-gradient(135deg, var(--gold-light), var(--fire-orange), var(--fire-red));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
         }
 
-        .clock-container {
-            color: var(--gold-light);
-            font-weight: 700;
-            font-size: 1.1rem;
+        /* אזור המידע העליון (שעון, תאריכים ומונה) */
+        .top-info-panel {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
             background: rgba(255,255,255,0.05);
             padding: 8px 15px;
-            border-radius: 20px;
+            border-radius: 15px;
             border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold-light);
+            font-size: 0.85rem;
+            text-align: center;
+            gap: 4px;
         }
 
-        /* === לשוניות מודרניות (Pill Tabs) === */
+        .datetime-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .counter-top {
+            font-weight: bold;
+            color: var(--fire-orange);
+        }
+
+        /* === לשוניות מודרניות === */
         .lang-tabs-wrapper {
             display: flex;
             background: rgba(255, 255, 255, 0.1);
@@ -170,31 +173,26 @@
         }
 
         .lang-tab {
-            padding: 8px 25px;
+            padding: 8px 20px;
             border: none;
             background: transparent;
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             border-radius: 25px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             font-family: inherit;
             z-index: 2;
-            position: relative;
         }
 
-        .lang-tab.active {
-            color: var(--dark-blue);
-            font-weight: 700;
-        }
+        .lang-tab.active { color: var(--dark-blue); font-weight: 700; }
 
         .lang-tab-indicator {
             position: absolute;
-            top: 5px;
-            bottom: 5px;
+            top: 5px; bottom: 5px;
             background: linear-gradient(135deg, var(--gold), var(--fire-orange));
             border-radius: 25px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             z-index: 1;
             box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
         }
@@ -202,13 +200,12 @@
         /* === באנרים רוחביים === */
         .banner-container {
             overflow: hidden;
-            background: linear-gradient(90deg, var(--dark-blue), #1a365d, var(--dark-blue));
+            background: #000; /* רקע כהה יותר לקריאות */
             border-top: 1px solid var(--gold);
             border-bottom: 1px solid var(--gold);
-            padding: 15px 0;
+            padding: 12px 0;
             position: relative;
             cursor: pointer;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
             transition: all 0.4s ease;
             z-index: 10;
         }
@@ -216,13 +213,12 @@
         .banner-content {
             white-space: nowrap;
             display: inline-block;
-            animation: scrollBanner 30s linear infinite;
+            animation: scrollBanner 25s linear infinite;
             font-size: 1.3rem;
             color: var(--gold-light);
             font-weight: 700;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+            text-shadow: 0 0 8px rgba(0,0,0,1); /* צל חזק לקריאות */
             padding-right: 100%;
-            letter-spacing: 1px;
         }
 
         .banner-container:hover {
@@ -232,8 +228,7 @@
         .banner-container:hover .banner-content {
             animation-play-state: paused;
             color: #fff;
-            text-shadow: 2px 2px 8px var(--dark-blue);
-            font-size: 1.4rem;
+            text-shadow: 2px 2px 8px #000;
         }
 
         /* === אזור תוכן ראשי === */
@@ -255,22 +250,22 @@
             animation: floatHero 6s infinite ease-in-out;
             cursor: pointer;
             background: rgba(255,255,255,0.1);
+            min-height: 200px; /* מונע קריסה אם התמונה חסרה */
         }
 
-        /* === כרטיסיות זכוכית (Glassmorphism) === */
+        /* === כרטיסיות זכוכית === */
         .lang-section { display: none; animation: fadeIn 0.6s ease-out forwards; }
         .lang-section.active { display: block; }
 
         .content-card {
             background: var(--glass-bg);
-            padding: 45px;
+            padding: 40px;
             border-radius: 24px;
             border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.5);
             margin-bottom: 40px;
             position: relative;
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
         }
 
         .content-card::before {
@@ -282,115 +277,74 @@
         }
 
         .content-card h2 {
-            color: var(--dark-blue);
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            font-weight: 900;
-            text-align: center;
+            color: var(--dark-blue); font-size: 2rem; margin-bottom: 25px; font-weight: 900; text-align: center;
         }
 
         .content-card p { font-size: 1.15rem; margin-bottom: 20px; text-align: justify; }
 
-        /* תמונות צפות ולחיצות */
+        /* תמונות צפות */
         .image-float-right, .image-float-left {
-            max-width: 240px;
-            border-radius: 16px;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
+            max-width: 240px; border-radius: 16px; border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); transition: all 0.4s ease; cursor: pointer;
         }
         .image-float-right { float: right; margin: 0 0 20px 30px; }
         .image-float-left { float: left; margin: 0 30px 20px 0; }
-        
         .image-float-right:hover, .image-float-left:hover {
-            transform: scale(1.08) rotate(2deg); 
-            box-shadow: 0 0 30px var(--fire-orange);
-            border-color: var(--fire-orange);
+            transform: scale(1.08) rotate(2deg); box-shadow: 0 0 30px var(--fire-orange); border-color: var(--fire-orange);
         }
         .clearfix::after { content: ""; clear: both; display: table; }
 
-        /* גלריית ספרים */
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .books-grid img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-        .books-grid img:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 140, 0, 0.4);
-            border-color: var(--gold);
-        }
-
         /* === פרקי תהילים === */
         .psalm {
-            margin-bottom: 25px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 16px;
-            border-right: 5px solid var(--fire-orange);
+            margin-bottom: 25px; padding: 25px; background: rgba(255, 255, 255, 0.4);
+            border-radius: 16px; border-right: 5px solid var(--fire-orange);
             transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
         }
         html[dir="ltr"] .psalm { border-right: none; border-left: 5px solid var(--fire-orange); }
-        
         .psalm:hover {
-            background: rgba(255, 255, 255, 0.85);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-            transform: translateY(-3px);
-            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.85); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            transform: translateY(-3px); border-color: var(--gold);
         }
-        
         .psalm h3 { 
-            color: var(--dark-blue); 
-            font-size: 1.8rem; 
-            margin-bottom: 15px; 
-            display: inline-block;
+            color: var(--dark-blue); font-size: 1.7rem; margin-bottom: 15px; 
             background: linear-gradient(90deg, var(--fire-red), var(--fire-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 900;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900;
         }
         .psalm p { color: #2c2c2c; }
 
-        /* === תיבת תרומות מורחבת === */
+        /* === תיבת תרומות עם קרוסלת רקע === */
+        .donation-section-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            margin: 50px auto;
+            max-width: 800px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .donation-bg-carousel {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1.5s ease-in-out;
+            z-index: 0;
+            filter: brightness(0.3) blur(3px); /* מחשיך ומטשטש את התמונות ברקע */
+        }
+
         .donation-highlight {
-            background: linear-gradient(135deg, rgba(11,26,48,0.95), rgba(26,54,93,0.95));
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, rgba(11,26,48,0.85), rgba(26,54,93,0.85));
             color: #fff;
             border: 2px solid var(--gold);
             border-radius: 24px;
             padding: 50px 40px;
             text-align: center;
-            margin: 50px auto;
-            max-width: 800px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 30px rgba(212, 175, 55, 0.2);
             transition: all 0.5s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .donation-highlight::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,140,0,0.1) 0%, transparent 60%);
-            animation: pulseHero 4s infinite alternate;
-            pointer-events: none;
         }
 
-        .donation-highlight h2 {
-            color: var(--gold); font-size: 2.2rem; margin-bottom: 20px;
-        }
+        .donation-highlight h2 { color: var(--gold); font-size: 2.2rem; margin-bottom: 20px; }
         .donation-highlight p { font-size: 1.3rem; margin: 10px 0; color: #ddd; }
         .donation-highlight strong { color: var(--fire-orange); font-size: 1.5rem; }
         
@@ -399,38 +353,27 @@
             border-color: var(--fire-orange) !important;
         }
 
-        /* כפתור העתקה */
         .copy-btn {
             background: linear-gradient(135deg, var(--gold), var(--fire-orange));
             color: #fff; border: none; padding: 12px 30px; border-radius: 30px;
             cursor: pointer; font-weight: 700; margin-top: 20px;
             font-family: inherit; font-size: 1.1rem; transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         .copy-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--fire-orange); }
 
-        /* === סרגל צד / תחתון === */
+        /* === סרגל צד (תרומות בלבד, המונה עבר למעלה) === */
         .sidebar {
-            position: fixed;
-            bottom: 20px; left: 20px;
-            display: flex; flex-direction: column; gap: 15px;
-            z-index: 1000;
+            position: fixed; bottom: 20px; left: 20px;
+            display: flex; flex-direction: column; gap: 15px; z-index: 1000;
         }
         html[dir="rtl"] .sidebar { left: auto; right: 20px; }
 
         .side-box {
-            background: rgba(11, 26, 48, 0.85);
-            backdrop-filter: blur(15px);
-            color: var(--gold-light);
-            padding: 15px 25px; border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            background: rgba(11, 26, 48, 0.85); backdrop-filter: blur(15px);
+            color: var(--gold-light); padding: 15px 25px; border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             text-align: center; min-width: 220px;
-        }
-        .side-box h4 { color: #fff; margin-bottom: 8px; font-size: 1rem; font-weight: 400; }
-        .counter-number {
-            font-size: 2rem; font-weight: 900; color: var(--fire-orange);
-            font-family: monospace; letter-spacing: 2px;
         }
         .side-box p { font-size: 0.9rem; margin: 5px 0; direction: rtl; color: #ccc; }
         .side-box strong { color: var(--gold); }
@@ -446,26 +389,20 @@
         }
         #scrollTopBtn:hover { background: var(--gold); color: var(--dark-blue); transform: translateX(-50%) scale(1.1); }
 
-        /* === נגן מוזיקה (Widget) === */
+        /* === נגן מוזיקה === */
         .music-widget {
-            position: fixed; bottom: 20px; right: 20px;
-            z-index: 1000; display: flex; align-items: center; gap: 15px;
+            position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+            display: flex; align-items: center; gap: 15px;
             background: rgba(11, 26, 48, 0.85); backdrop-filter: blur(15px);
             padding: 10px 20px; border-radius: 30px;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            cursor: pointer; transition: all 0.3s;
+            border: 1px solid rgba(212, 175, 55, 0.4); cursor: pointer; transition: all 0.3s;
         }
         html[dir="rtl"] .music-widget { right: auto; left: 20px; }
         .music-widget:hover { box-shadow: 0 0 25px rgba(255, 140, 0, 0.4); border-color: var(--fire-orange); }
         
         .music-icon { font-size: 1.5rem; color: var(--gold); }
-        
         .equalizer { display: flex; align-items: flex-end; gap: 3px; height: 25px; }
-        .equalizer span {
-            width: 4px; background: var(--fire-orange); border-radius: 2px;
-            height: 5px; transition: height 0.2s;
-        }
+        .equalizer span { width: 4px; background: var(--fire-orange); border-radius: 2px; height: 5px; transition: height 0.2s; }
         .music-widget.playing .equalizer span:nth-child(1) { animation: equalizer 0.8s infinite ease-in-out; }
         .music-widget.playing .equalizer span:nth-child(2) { animation: equalizer 0.8s infinite ease-in-out 0.2s; }
         .music-widget.playing .equalizer span:nth-child(3) { animation: equalizer 0.8s infinite ease-in-out 0.4s; }
@@ -478,7 +415,7 @@
             position: relative; z-index: 10;
         }
 
-        /* === התראת זכויות יוצרים (Toast) === */
+        /* === התראת זכויות יוצרים === */
         #copy-toast {
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
             background: linear-gradient(135deg, var(--fire-red), #8b0000);
@@ -489,38 +426,34 @@
         }
         #copy-toast.show { display: block; opacity: 1; transform: translateX(-50%) translateY(10px); }
 
-        /* === רספונסיביות (Mobile) === */
+        /* === רספונסיביות === */
         @media (max-width: 768px) {
-            .header-content { flex-direction: column; text-align: center; }
-            .logo-title h1 { font-size: 2.2rem; }
-            
+            .header-content { flex-direction: column; text-align: center; gap: 10px; }
+            .logo-title h1 { font-size: 2rem; }
+            .top-info-panel { font-size: 0.75rem; width: 100%; }
+            .datetime-row { gap: 8px; font-size: 0.75rem; }
             .lang-tabs-wrapper { width: 100%; justify-content: center; }
-            .lang-tab { flex: 1; padding: 8px 10px; font-size: 1rem; }
+            .lang-tab { flex: 1; padding: 8px 5px; font-size: 0.9rem; }
 
-            .content-card { padding: 25px; }
+            .content-card { padding: 20px; }
             .image-float-right, .image-float-left { float: none; margin: 0 auto 20px; display: block; max-width: 80%; }
             
             .sidebar {
                 position: fixed; bottom: 0; left: 0; right: 0; width: 100%;
-                flex-direction: row; justify-content: space-between;
-                gap: 0; padding: 10px; background: rgba(11, 26, 48, 0.98);
-                border-top: 1px solid var(--gold); margin: 0; box-sizing: border-box;
+                flex-direction: row; justify-content: center;
+                padding: 10px; background: rgba(11, 26, 48, 0.98);
+                border-top: 1px solid var(--gold); margin: 0;
             }
-            html[dir="rtl"] .sidebar { right: 0; }
-            .side-box {
-                border: none; box-shadow: none; background: transparent; padding: 5px; min-width: 0; flex: 1;
-            }
-            .side-box h4 { font-size: 0.8rem; margin-bottom: 0; }
-            .counter-number { font-size: 1.4rem; }
-            .side-box p { display: none; } /* מסתיר פירוט בנק במובייל כדי לחסוך מקום */
-            .copy-btn { padding: 5px 10px; font-size: 0.8rem; margin-top: 5px; width: 100%; }
+            .side-box { border: none; box-shadow: none; background: transparent; padding: 5px; width: 100%; }
+            .side-box p { font-size: 0.8rem; }
+            .copy-btn { padding: 5px 10px; font-size: 0.8rem; width: 100%; }
             
             .music-widget { bottom: 80px; left: 15px; padding: 8px 15px; }
             html[dir="rtl"] .music-widget { left: auto; right: 15px; }
-            #scrollTopBtn { display: none !important; } /* מיותר במובייל */
+            #scrollTopBtn { bottom: 80px; display: none !important; }
         }
 
-        /* === עיצוב להדפסה === */
+        /* הדפסה */
         @media print {
             header, .banner-container, .sidebar, #scrollTopBtn, footer, .hero-image, .image-float-right, .image-float-left, .music-widget, .parallax-bg, .ambient-glow {
                 display: none !important;
@@ -537,11 +470,9 @@
 </head>
 <body>
 
-    <!-- רקעים -->
     <div class="parallax-bg" id="parallax-bg"></div>
     <div class="ambient-glow"></div>
 
-    <!-- התראת העתקה (Toast) -->
     <div id="copy-toast">⚠️ תוכן זה מוגן בזכויות יוצרים. אין להעתיק או לשכפל!</div>
     
     <!-- נגן מוזיקה -->
@@ -549,10 +480,8 @@
         <source src="song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- כפתור חזרה למעלה -->
     <button onclick="scrollToTop()" id="scrollTopBtn" title="חזרה למעלה">▲</button>
 
-    <!-- ווידג'ט מוזיקה -->
     <div class="music-widget" id="music-widget" onclick="toggleMusic()">
         <div class="music-icon" id="music-icon">🎵</div>
         <div class="equalizer">
@@ -560,20 +489,28 @@
         </div>
     </div>
 
-    <!-- כותרת -->
     <header>
         <div class="header-content">
-            <div class="clock-container">
-                <span id="jerusalem-clock">טוען שעון...</span>
+            <!-- שעון, תאריכים ומונה כניסות -->
+            <div class="top-info-panel">
+                <div id="clock-time">טוען שעון...</div>
+                <div class="datetime-row" id="datetime-row">
+                    <span id="date-gregorian">...</span>
+                    <span id="date-hebrew">...</span>
+                    <span id="date-hijri">...</span>
+                </div>
+                <div class="counter-top" id="visit-counter">כניסות: 0</div>
             </div>
+
             <div class="logo-title">
                 <h1>התיקון הכללי</h1>
             </div>
+
             <div class="lang-tabs-wrapper" id="lang-tabs-wrapper">
                 <div class="lang-tab-indicator" id="tab-indicator"></div>
-                <button class="lang-tab active" onclick="switchTab('he', this)" id="btn-he">עברית</button>
+                <button class="lang-tab" onclick="switchTab('he', this)" id="btn-he">עברית</button>
                 <button class="lang-tab" onclick="switchTab('en', this)" id="btn-en">English</button>
-                <button class="lang-tab" onclick="switchTab('ar', this)" id="btn-ar">العربية</button>
+                <button class="lang-tab active" onclick="switchTab('ar', this)" id="btn-ar">العربية</button>
             </div>
         </div>
     </header>
@@ -586,20 +523,31 @@
 
     <div class="main-container">
         
-        <!-- תמונת צלחת האש -->
         <div class="hero-image">
-            <img src="39946d97-744c-49dc-88af-c02024f61947_2.jpg" alt="צלחת האש המלכותית" onclick="scrollToDonation()">
+            <!-- תיקון לתמונת צלחת האש: אם היא לא נטענת, יוצג רקע ברירת מחדל -->
+            <img src="39946d97-744c-49dc-88af-c02024f61947_2.jpg" 
+                 alt="צלחת האש המלכותית" 
+                 onclick="scrollToDonation()"
+                 onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\'><circle cx=\'200\' cy=\'200\' r=\'180\' fill=\'%23ff8c00\' stroke=\'%23d4af37\' stroke-width=\'10\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'24\'>התמונה חסרה</text></svg>'; this.onerror=null;">
         </div>
 
         <!-- ================= לשונית עברית ================= -->
-        <div id="lang-he" class="lang-section active">
+        <div id="lang-he" class="lang-section">
+            
+            <!-- תוספת: לכו נרננה לפני התיקון -->
+            <div class="content-card">
+                <h2>לכו נרננה</h2>
+                <p class="psalm-text" style="text-align: center; font-size: 1.5rem;">
+                    לְכוּ נְרַנְּנָה לַיהוָה, נָרִיעָה לְצוּר יִשְׁעֵנוּ. נְקַדְּמָה פָנָיו בְּתוֹדָה, בִּזְמִרוֹת נָרִיעַ לוֹ. כִּי אֵל גָּדוֹל יְהוָה, וּמֶלֶךְ גָּדוֹל עַל כָּל אֱלֹהִים.
+                </p>
+            </div>
+
             <div class="content-card clearfix" id="about-rabbi-he">
                 <h2>על התיקון הכללי ורבי נחמן מאומן</h2>
                 <img src="Screenshot_2021-11-17-17-41-22-1.png" alt="דיוקן רבי נחמן" class="image-float-right" onclick="scrollToRabbi()">
                 <p>התיקון הכללי הוא סדר תפילות ותהילים שקבע רבי נחמן מברסלב, מגדולי הצדיקים והמקובלים בדורות האחרונים. רבי נחמן לימד שכל מי שיאמר את עשרת המזמורים הללו כסגולה לתיקון נפשו, יזכה לראות ישועות גדולות, מחילת עוונות ורפואה שלמה.</p>
-                <p>רבי נחמן נולד בעיירה מז'יבוז' שבאוקראינה, ונפטר באומן. הוא הקים את תנועת החסידות ברסלב, שהדגישה את השמחה, האמונה הפשוטה, וההתבודדות (שיחה אישית עם הבורא). ציונו באומן הפך למוקד עלייה לרגל לרבבות יהודים מדי שנה, במיוחד בראש השנה.</p>
-                <p>התיקון הכללי כולל עשרה פרקים מתהילים (טז, לב, מא, מב, נט, עז, צ, קה, קלז, קנ) אשר נבחרו בקפידה על ידי רבי נחמן בעצמו, כסגולה לתיקון פגם הברית (פגיעה בקדושת החיים והנפש). אמירתם בכוונה ובשמחה מהווה כלי עצום להתקרבות לבורא ולזיכוך הנפש.</p>
-                <p>אנו מזמינים אתכם לקרוא את התפילות והפרקים המובאים כאן, בין אם לזכות את עצמכם ובין אם לעילוי נשמת יקיריכם. כפי שאמר רבי נחמן: "העיקר הוא השמחה והאמונה".</p>
+                <p>רבי נחמן נולד בעיירה מז'יבוז' שבאוקראינה, ונפטר באומן. הוא הקים את תנועת החסידות ברסלב, שהדגישה את השמחה, האמונה הפשוטה, וההתבודדות. ציונו באומן הפך למוקד עלייה לרגל לרבבות יהודים מדי שנה.</p>
+                <p>התיקון הכללי כולל עשרה פרקים מתהילים (טז, לב, מא, מב, נט, עז, צ, קה, קלז, קנ) אשר נבחרו בקפידה על ידי רבי נחמן בעצמו, כסגולה לתיקון פגם הברית. אמירתם בכוונה ובשמחה מהווה כלי עצום להתקרבות לבורא.</p>
                 <br class="clearfix">
             </div>
 
@@ -607,7 +555,7 @@
                 <h2>תפילת פדיון הנפש והתפילה הנאה</h2>
                 <p><strong>תפילת פדיון הנפש:</strong> יהי רצון מלפניך ה' אלוקינו ואלוקי אבותינו, שתהא תפילתי זו פדיון נפשי, פדיון נפש אבי ואמי, פדיון נפש בני ביתי, פדיון נפש כל בני משפחתי, ופדיון נפש כל ישראל. אנא ה' הושיעה נא, אנא ה' הצליחה נא, אנא ה' שלח רפואה שלמה לכל חולי עמך ישראל, ורחם עלינו כרחמך על בנים. אמן.</p>
                 <br>
-                <p><strong>התפילה הנאה (מתוך תורת רבי נחמן):</strong> ריבונו של עולם, עשה למענך, עשה למען שמך, עשה למען תורתך, עשה למען קדושתך. יהי רצון שתזכה אותנו לאור הפנים, לאהבה, ליראה, לשמחה ולשלום. תן בי דעה והשכל להבין ולידע איך לעבוד אותך באמת ובתמימות. טהר לבנו לעבדך באמת. אמן.</p>
+                <p><strong>התפילה הנאה:</strong> ריבונו של עולם, עשה למענך, עשה למען שמך, עשה למען תורתך, עשה למען קדושתך. יהי רצון שתזכה אותנו לאור הפנים, לאהבה, ליראה, לשמחה ולשלום. תן בי דעה והשכל להבין ולידע איך לעבוד אותך באמת ובתמימות. אמן.</p>
             </div>
 
             <div class="content-card">
@@ -663,11 +611,18 @@
                     <p class="psalm-text">הַלְלוּיָהּ, הַלְלוּ אֵל בְּקָדְשׁוֹ, הַלְלוּהוּ בִּרְקִיעַ עֻזּוֹ. הַלְלוּהוּ בִגְבוּרֹתָיו, הַלְלוּהוּ כְּרֹב גֻּדְלוֹ. הַלְלוּהוּ בְּתֵקַע שׁוֹפָר, הַלְלוּהוּ בְּנֵבֶל וְכִנּוֹר. הַלְלוּהוּ בְתֹף וּמָחוֹל, הַלְלוּהוּ בְּמִנִּים וְעוּגָב. הַלְלוּהוּ בְצִלְצְלֵי שָׁמַע, הַלְלוּהוּ בְּצִלְצְלֵי תְרוּעָה. כֹּל הַנְּשָׁמָה תְּהַלֵּל יָהּ, הַלְלוּיָהּ.</p>
                 </div>
             </div>
-            
+
+            <!-- תוספת: מי יתן מציון אחרי התיקון -->
+            <div class="content-card">
+                <h2>מי יתן מציון</h2>
+                <p class="psalm-text" style="text-align: center; font-size: 1.5rem;">
+                    מִי יִתֵּן מִצִּיּוֹן יְשׁוּעַת יִשְׂרָאֵל, בְּשׁוּב יְהוָה שְׁבוּת עַמּוֹ, יָגֵל יַעֲקֹב, יִשְׂמַח יִשְׂרָאֵל.
+                </p>
+            </div>
+
             <!-- גלריית ספרים -->
             <div class="content-card" style="text-align: center;">
                 <h2>ספרי ברסלב ומהדורות התיקון הכללי</h2>
-                <p>אוצרות חכמת רבי נחמן מברסלב - ליקוטי מוהר"ן, ספרי תהילים, סגולות ותפילות.</p>
                 <div class="books-grid">
                     <img src="210_3.jpg" alt="ליקוטי מוהר''ן">
                     <img src="009600027103.jpg" alt="תהילים קורן">
@@ -682,13 +637,20 @@
 
         <!-- ================= לשונית אנגלית ================= -->
         <div id="lang-en" class="lang-section" dir="ltr">
+            
+            <div class="content-card">
+                <h2>Lechu Neranena</h2>
+                <p class="psalm-text" style="text-align: center; font-size: 1.5rem;">
+                    O come, let us sing unto the LORD: let us make a joyful noise to the rock of our salvation. Let us come before his presence with thanksgiving, and make a joyful noise unto him with psalms. For the LORD is a great God, and a great King above all gods.
+                </p>
+            </div>
+
             <div class="content-card clearfix" id="about-rabbi-en">
                 <h2>About The Tikkun HaKlali & Rabbi Nachman</h2>
                 <img src="Screenshot_2021-11-17-17-41-22-1.png" alt="Rabbi Nachman Portrait" class="image-float-left" onclick="scrollToRabbi()">
-                <p>The Tikkun HaKlali (The General Remedy) is a set of prayers and Psalms established by Rabbi Nachman of Breslov, one of the greatest righteous men and Kabbalists of modern times. Rabbi Nachman taught that anyone who recites these ten specific Psalms as a remedy for the soul will merit great salvation, forgiveness of sins, and complete healing.</p>
-                <p>Rabbi Nachman was born in Medzhybizh, Ukraine, and passed away in Uman. He founded the Breslov Hasidic movement, which emphasized joy, simple faith, and Hitbodedut (personal, intimate conversation with the Creator). His grave in Uman has become a major pilgrimage site for tens of thousands of Jews annually, especially on Rosh Hashanah.</p>
-                <p>The Tikkun HaKlali includes ten chapters from the Book of Psalms (16, 32, 41, 42, 59, 77, 90, 105, 137, 150), carefully selected by Rabbi Nachman himself as a remedy for the blemish of the covenant (damage to the sanctity of life and the soul). Reciting them with intention and joy is a powerful tool for drawing closer to the Creator and purifying the soul.</p>
-                <p>We invite you to read the prayers and chapters presented here, whether to merit yourself or to elevate the souls of your loved ones. As Rabbi Nachman said: "The main thing is joy and faith."</p>
+                <p>The Tikkun HaKlali (The General Remedy) is a set of prayers and Psalms established by Rabbi Nachman of Breslov. Rabbi Nachman taught that anyone who recites these ten specific Psalms as a remedy for the soul will merit great salvation, forgiveness of sins, and complete healing.</p>
+                <p>Rabbi Nachman was born in Medzhybizh, Ukraine, and passed away in Uman. He founded the Breslov Hasidic movement, which emphasized joy, simple faith, and Hitbodedut. His grave in Uman has become a major pilgrimage site for tens of thousands of Jews annually.</p>
+                <p>The Tikkun HaKlali includes ten chapters from the Book of Psalms (16, 32, 41, 42, 59, 77, 90, 105, 137, 150), carefully selected by Rabbi Nachman himself as a remedy for the blemish of the covenant. Reciting them with intention and joy is a powerful tool for drawing closer to the Creator.</p>
                 <br class="clearfix">
             </div>
 
@@ -696,7 +658,7 @@
                 <h2>Redemption of the Soul Prayer & The Beautiful Prayer</h2>
                 <p><strong>Redemption of the Soul Prayer:</strong> May it be Your will, Lord our God and God of our fathers, that this prayer be the redemption of my soul, the redemption of the soul of my father and mother, the redemption of the soul of the members of my household, the redemption of the soul of my entire family, and the redemption of the soul of all Israel. Please God, save us now, please God, grant us success now, please God, send complete healing to all the sick of Your people Israel, and have mercy on us as a father has mercy on his children. Amen.</p>
                 <br>
-                <p><strong>The Beautiful Prayer (from Rabbi Nachman's teachings):</strong> Master of the Universe, act for Your sake, act for Your Name's sake, act for Your Torah's sake, act for Your Holiness' sake. May it be Your will to grant us the light of Your countenance, love, awe, joy, and peace. Give me knowledge and understanding to know how to serve You in truth and simplicity. Purify our hearts to serve You in truth. Amen.</p>
+                <p><strong>The Beautiful Prayer:</strong> Master of the Universe, act for Your sake, act for Your Name's sake, act for Your Torah's sake, act for Your Holiness' sake. May it be Your will to grant us the light of Your countenance, love, awe, joy, and peace. Give me knowledge and understanding to know how to serve You in truth and simplicity. Purify our hearts to serve You in truth. Amen.</p>
             </div>
 
             <div class="content-card">
@@ -752,11 +714,17 @@
                     <p class="psalm-text">Praise ye the LORD. Praise God in his sanctuary: praise him in the firmament of his power. Praise him for his mighty acts: praise him according to his excellent greatness. Praise him with the sound of the trumpet: praise him with the psaltery and harp. Praise him with the timbrel and dance: praise him with stringed instruments and organs. Praise him upon the loud cymbals: praise him upon the high sounding cymbals. Let every thing that hath breath praise the LORD. Praise ye the LORD.</p>
                 </div>
             </div>
-            
+
+            <div class="content-card">
+                <h2>Mi Yiten MiTzion</h2>
+                <p class="psalm-text" style="text-align: center; font-size: 1.5rem;">
+                    Oh that the salvation of Israel were come out of Zion! when the LORD bringeth back the captivity of his people, Jacob shall rejoice, and Israel shall be glad.
+                </p>
+            </div>
+
             <!-- גלריית ספרים -->
             <div class="content-card" style="text-align: center;">
                 <h2>Breslov Books & Tikkun HaKlali Editions</h2>
-                <p>Treasures of Rabbi Nachman's wisdom - Likutei Moharan, Psalms, Segulot, and Prayers.</p>
                 <div class="books-grid">
                     <img src="210_3.jpg" alt="Likutei Moharan">
                     <img src="009600027103.jpg" alt="Koren Tehillim">
@@ -770,14 +738,21 @@
         </div>
 
         <!-- ================= לשונית ערבית ================= -->
-        <div id="lang-ar" class="lang-section" dir="rtl">
+        <div id="lang-ar" class="lang-section active" dir="rtl">
+            
+            <div class="content-card">
+                <h2>لِخُو نَرَنِنَّا (لنرنم)</h2>
+                <p class="psalm-text" style="text-align: center; font-size: 1.5rem;">
+                    هَلُمُّوا نُرَنِّمُ لِلرَّبِّ، نَهْتِفُ لِصَخْرَةِ خَلاَصِنَا. لِنَتَقَدَّمْ أَمَامَهُ بِحَمْدٍ، وَنَهْتِفْ لَهُ بِمَزَامِيرَ. لأَنَّ الرَّبَّ إِلهٌ عَظِيمٌ، وَمَلِكٌ كَبِيرٌ عَلَى كُلِّ الآلِهَةِ.
+                </p>
+            </div>
+
             <div class="content-card clearfix" id="about-rabbi-ar">
                 <h2>عن التيكون هكلالي والحاخام نحمان</h2>
                 <img src="Screenshot_2021-11-17-17-41-22-1.png" alt="صورة الحاخام نحمان" class="image-float-right" onclick="scrollToRabbi()">
-                <p>التيكون هكلالي (العلاج الشامل) هو مجموعة من الصلوات والمزامير التي أسسها الحاخام نحمان من بريسلاف، أحد أعظم الصديقين والقباليين في العصر الحديث. علم الحاخام نحمان أن كل من يقرأ هذه المزامير العشرة كعلاج لنفسه، سيستحق الخلاص العظيم، ومغفرة الذنوب، والشفاء التام.</p>
-                <p>ولد الحاخام نحمان في بلدة ميدزيبيج في أوكرانيا، وتوفي في أومان. أسس الحركة الحسيدية بريسلاف، التي ركزت على الفرح، والإيمان البسيط، والخلوة (محادثة شخصية مع الخالق). أصبح قبره في أومان موقعًا للحج لمئات الآلاف من اليهود كل عام، وخاصة في رأس السنة العبرية.</p>
-                <p>يتضمن التيكون هكلالي عشرة فصول من سفر المزامير (16، 32، 41، 42، 59، 77، 90، 105، 137، 150)، والتي اختارها الحاخام نحمان بنفسه بعناية كعلاج لعيب العهد (الإضرار بحرمة الحياة والنفس). قراءتها بنية وفرح هي أداة قوية للتقرب من الخالق وتطهير الروح.</p>
-                <p>ندعوكم لقراءة الصلوات والفصول المقدمة هنا، سواء لمصلحتكم أو لرفع أرواح أحبائكم. وكما قال الحاخام نحمان: "الأهم هو الفرح والإيمان".</p>
+                <p>التيكون هكلالي (العلاج الشامل) هو مجموعة من الصلوات والمزامير التي أسسها الحاخام نحمان من بريسلاف. علم الحاخام نحمان أن كل من يقرأ هذه المزامير العشرة كعلاج لنفسه، سيستحق الخلاص العظيم، ومغفرة الذنوب، والشفاء التام.</p>
+                <p>ولد الحاخام نحمان في بلدة ميدزيبيج في أوكرانيا، وتوفي في أومان. أسس الحركة الحسيدية بريسلاف، التي ركزت على الفرح، والإيمان البسيط، والخلوة. أصبح قبره في أومان موقعًا للحج لمئات الآلاف من اليهود كل عام.</p>
+                <p>يتضمن التيكون هكلالي عشرة فصول من سفر المزامير (16، 32، 41، 42، 59، 77، 90، 105، 137، 150)، والتي اختارها الحاخام نحمان بنفسه بعناية كعلاج لعيب العهد. قراءتها بنية وفرح هي أداة قوية للتقرب من الخالق.</p>
                 <br class="clearfix">
             </div>
 
@@ -785,7 +760,7 @@
                 <h2>صلاة فداء النفس والصلاة الجميلة</h2>
                 <p><strong>صلاة فداء النفس:</strong> ليكن رضاك يا ربنا وإلهنا وإله آبائنا، أن تكون هذه الصلاة فداء لنفسي، وفداء لنفس أبي وأمي، وفداء لنفس أهل بيتي، وفداء لنفس عائلتي بأكملها، وفداء لنفس كل إسرائيل. اللهم خلصنا الآن، اللهم وفقنا الآن، اللهم أرسل الشفاء التام لجميع مرضى شعبك إسرائيل، وارحمنا كما يرحم الأب أبناءه. آمين.</p>
                 <br>
-                <p><strong>الصلاة الجميلة (من تعاليم الحاخام نحمان):</strong> سيد الكون، افعل من أجل اسمك، افعل من أجل توراتك، افعل من أجل قدسيتك. ليكن رضاك أن تمنحنا نور وجهك، والمحبة، والخوف، والفرح، والسلام. أعطني المعرفة والعقل لأعرف كيف أعبدك بالحق والبساطة. طهر قلوبنا لنعبدك بالحق. آمين.</p>
+                <p><strong>الصلاة الجميلة:</strong> سيد الكون، افعل من أجل اسمك، افعل من أجل توراتك، افعل من أجل قدسيتك. ليكن رضاك أن تمنحنا نور وجهك، والمحبة، والخوف، والفرح، والسلام. أعطني المعرفة والعقل لأعرف كيف أعبدك بالحق والبساطة. طهر قلوبنا لنعبدك بالحق. آمين.</p>
             </div>
 
             <div class="content-card">
@@ -841,11 +816,17 @@
                     <p class="psalm-text">هَلِّلُويَا. سَبِّحُوا اللهَ فِي قُدْسِهِ. سَبِّحُوهُ فِي فَلَكِ قُوَّتِهِ. سَبِّحُوهُ عَلَى أَعْمَالِهِ الْجَبَارَةِ. سَبِّحُوهُ حَسَبَ عَظَمَةِ جَلاَلِهِ. سَبِّحُوهُ بِصَوْتِ الْبُوقِ. سَبِّحُوهُ بِالرَّبَابِ وَالْعُودِ. سَبِّحُوهُ بِالدُّفِّ وَالرَّقْصِ. سَبِّحُوهُ بِالأَوْتَارِ وَالْمِزْمَارِ. سَبِّحُوهُ بِصُنُوجِ التَّصْوِيتِ. سَبِّحُوهُ بِصُنُوجِ الْهُتَافِ. كُلُّ نَسَمَةٍ فَلْتُسَبِّحِ الرَّبَّ. هَلِّلُويَا.</p>
                 </div>
             </div>
-            
+
+            <div class="content-card">
+                <h2>مِي يِتِن مِتْسِيُون (ليت من صهيون)</h2>
+                <p class="psalm-text" style="text-align: center; font-size: 1.5rem;">
+                    لَيْتَ مِنْ صِهْيَوْنَ خَلاَصَ إِسْرَائِيلَ. عِنْدَمَا يَرُدُّ الرَّبُّ سَبْيَ شَعْبِهِ، يَبْتَهِجُ يَعْقُوبُ وَيَفْرَحُ إِسْرَائِيلُ.
+                </p>
+            </div>
+
             <!-- גלריית ספרים -->
             <div class="content-card" style="text-align: center;">
                 <h2>كتب بريسلاف وطبعات التيكون هكلالي</h2>
-                <p>كنوز حكمة الحاخام نحمان - ليكوتي موهَران، المزامير، السيجولوت والصلوات.</p>
                 <div class="books-grid">
                     <img src="210_3.jpg" alt="ليكوتي موهَران">
                     <img src="009600027103.jpg" alt="مزامير كورين">
@@ -858,14 +839,17 @@
             </div>
         </div>
 
-        <!-- תיבת תרומות ופדיון נפש -->
-        <div id="donation-section" class="donation-highlight">
-            <h2>💎 תרומה ופדיון נפש 💎</h2>
-            <p>השתתפות בהפצת האור והאמונה של רבי נחמן</p>
-            <p>בנק הדואר | סניף: <strong>001</strong></p>
-            <p>חשבון: <strong>31127380</strong></p>
-            <p>ע"ש: <strong>ידידיה פישון</strong></p>
-            <button class="copy-btn" onclick="copyAccount()">העתק חשבון</button>
+        <!-- תיבת תרומות עם קרוסלת רקע -->
+        <div class="donation-section-wrapper" id="donation-section">
+            <div class="donation-bg-carousel" id="donation-carousel"></div>
+            <div class="donation-highlight">
+                <h2>💎 תרומה ופדיון נפש 💎</h2>
+                <p>השתתפות בהפצת האור והאמונה של רבי נחמן</p>
+                <p>בנק הדואר | סניף: <strong>001</strong></p>
+                <p>חשבון: <strong>31127380</strong></p>
+                <p>ע"ש: <strong>ידידיה פישון</strong></p>
+                <button class="copy-btn" onclick="copyAccount()">העתק חשבון</button>
+            </div>
         </div>
 
     </div>
@@ -876,14 +860,9 @@
         </div>
     </div>
 
-    <!-- סרגל צדדי -->
+    <!-- סרגל צדדי (תרומות בלבד) -->
     <div class="sidebar">
         <div class="side-box">
-            <h4>כניסות לאתר</h4>
-            <div class="counter-number" id="visit-counter">0</div>
-        </div>
-        <div class="side-box">
-            <h4>תרומה / פדיון נפש</h4>
             <p>סניף: <strong>001</strong> | חשבון: <strong>31127380</strong></p>
             <p>ע"ש: <strong>ידידיה פישון</strong></p>
             <button class="copy-btn" onclick="copyAccount()">העתק חשבון</button>
@@ -896,32 +875,45 @@
     </footer>
 
     <script>
-        // --- 1. שעון ירושלים ---
+        // --- 1. שעון ותאריכים מרובי שפות ---
+        let currentLang = 'ar'; // ברירת מחדל
+
         function updateClock() {
             const now = new Date();
-            const options = { 
-                timeZone: 'Asia/Jerusalem', 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit',
-                hour12: false 
-            };
-            const timeString = now.toLocaleTimeString('he-IL', options);
-            document.getElementById('jerusalem-clock').textContent = `🕒 ${timeString} (ירושלים)`;
+            
+            // שעה
+            const timeOptions = { timeZone: 'Asia/Jerusalem', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const timeString = now.toLocaleTimeString(currentLang === 'he' ? 'he-IL' : (currentLang === 'ar' ? 'ar-SA' : 'en-US'), timeOptions);
+            document.getElementById('clock-time').textContent = `🕒 ${timeString}`;
+
+            // תאריכים
+            const dateOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+            
+            // לועזי
+            const gregDate = now.toLocaleDateString(currentLang === 'he' ? 'he-IL' : (currentLang === 'ar' ? 'ar-SA' : 'en-US'), dateOptions);
+            document.getElementById('date-gregorian').textContent = gregDate;
+
+            // עברי
+            const hebrewDate = now.toLocaleDateString('he-IL-u-ca-hebrew', dateOptions);
+            document.getElementById('date-hebrew').textContent = hebrewDate;
+
+            // ערבי (היג'רי)
+            const hijriDate = now.toLocaleDateString('ar-SA-u-ca-islamic', dateOptions);
+            document.getElementById('date-hijri').textContent = hijriDate;
         }
         setInterval(updateClock, 1000);
         updateClock();
 
-        // --- 2. מונה כניסות ---
+        // --- 2. מונה כניסות (למעלה) ---
         function updateCounter() {
-            let visits = localStorage.getItem('tikkun_visits_master');
+            let visits = localStorage.getItem('tikkun_visits_master_v2');
             if (!visits) {
                 visits = 125000; 
             } else {
                 visits = parseInt(visits) + 1;
             }
-            localStorage.setItem('tikkun_visits_master', visits);
-            document.getElementById('visit-counter').textContent = visits.toLocaleString('he-IL');
+            localStorage.setItem('tikkun_visits_master_v2', visits);
+            document.getElementById('visit-counter').textContent = `כניסות: ${visits.toLocaleString('he-IL')}`;
         }
         updateCounter();
 
@@ -929,12 +921,13 @@
         window.addEventListener('scroll', () => {
             const parallaxBg = document.getElementById('parallax-bg');
             let scrollPosition = window.pageYOffset;
-            // תנועה איטית יותר של הרקע
             parallaxBg.style.transform = `translateY(${scrollPosition * 0.4}px)`;
         });
 
         // --- 4. מעבר לשוניות (Pill Indicator) ---
         function switchTab(lang, btnElement) {
+            currentLang = lang;
+            
             // הסתרת סקשנים
             document.querySelectorAll('.lang-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.lang-tab').forEach(btn => btn.classList.remove('active'));
@@ -948,13 +941,8 @@
             const wrapperRect = document.getElementById('lang-tabs-wrapper').getBoundingClientRect();
             const btnRect = btnElement.getBoundingClientRect();
             
-            // חישוב המיקום היחסי
             indicator.style.width = `${btnRect.width}px`;
-            indicator.style.right = `${wrapperRect.right - btnRect.right}px`; // התאמה ל-RTL
-            indicator.style.left = 'auto';
-
-            // עדכון כיוון דף
-            document.documentElement.lang = lang;
+            
             if (lang === 'en') {
                 document.documentElement.dir = 'ltr';
                 indicator.style.left = `${btnRect.left - wrapperRect.left}px`;
@@ -964,20 +952,45 @@
                 indicator.style.right = `${wrapperRect.right - btnRect.right}px`;
                 indicator.style.left = 'auto';
             }
+
+            // עדכון כיוון דף ושפה
+            document.documentElement.lang = lang;
+            
+            // עדכון שעון ותאריכים
+            updateClock();
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // אתחול האינדיקטור בטעינה
+        // אתחול האינדיקטור בטעינה (עבור ערבית)
         window.addEventListener('load', () => {
             const activeBtn = document.querySelector('.lang-tab.active');
             if(activeBtn) {
-                // זמן קצר כדי לאפשר ל-CSS להסתדר
-                setTimeout(() => switchTab('he', activeBtn), 100);
+                setTimeout(() => switchTab('ar', activeBtn), 100);
             }
         });
 
-        // --- 5. גלילה לתרומות ---
+        // --- 5. קרוסלת תמונות ברקע דף התרומה ---
+        const donationImages = [
+            '500737315_10222796757507761_8087516065105431034_n.jpg',
+            '39946d97-744c-49dc-88af-c02024f61947_2.jpg',
+            'il_1080xN.8059540371_7apx.jpg',
+            '210_3.jpg',
+            '009600027103.jpg'
+        ];
+        let currentImageIndex = 0;
+        const carouselElement = document.getElementById('donation-carousel');
+
+        function changeDonationBg() {
+            carouselElement.style.backgroundImage = `url('${donationImages[currentImageIndex]}')`;
+            currentImageIndex = (currentImageIndex + 1) % donationImages.length;
+        }
+        
+        // התחלה
+        changeDonationBg();
+        setInterval(changeDonationBg, 5000); // כל 5 שניות
+
+        // --- 6. גלילה לתרומות ---
         function scrollToDonation() {
             const target = document.getElementById('donation-section');
             if (target) {
@@ -989,7 +1002,7 @@
             }
         }
 
-        // --- 6. גלילה לרבי נחמן ---
+        // --- 7. גלילה לרבי נחמן ---
         function scrollToRabbi() {
             const activeLang = document.querySelector('.lang-section.active').id.replace('lang-', '');
             const target = document.getElementById('about-rabbi-' + activeLang);
@@ -1003,7 +1016,7 @@
             }
         }
 
-        // --- 7. כפתור חזרה למעלה ---
+        // --- 8. כפתור חזרה למעלה ---
         const scrollBtn = document.getElementById("scrollTopBtn");
         window.onscroll = function() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -1017,7 +1030,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- 8. העתקת חשבון בנק ---
+        // --- 9. העתקת חשבון בנק ---
         function copyAccount() {
             const accountNum = "31127380";
             navigator.clipboard.writeText(accountNum).then(() => {
@@ -1036,7 +1049,7 @@
             });
         }
 
-        // --- 9. הגנת זכויות יוצרים (Toast Notification) ---
+        // --- 10. הגנת זכויות יוצרים ---
         const toast = document.getElementById('copy-toast');
         let toastTimeout;
 
@@ -1069,15 +1082,14 @@
             e.preventDefault();
         });
 
-        // --- 10. נגן מוזיקה ---
+        // --- 11. נגן מוזיקה ---
         const audio = document.getElementById('bg-music');
         const widget = document.getElementById('music-widget');
         const icon = document.getElementById('music-icon');
         let isPlaying = false;
 
-        // ניסיון הפעלה ראשוני
         window.addEventListener('load', () => {
-            audio.volume = 0.4; // עוצמה נעימה
+            audio.volume = 0.4;
             audio.play().then(() => {
                 isPlaying = true;
                 widget.classList.add('playing');
@@ -1086,6 +1098,8 @@
                 isPlaying = false;
                 widget.classList.remove('playing');
                 icon.textContent = '🎵';
+                // הודעה קלה למשתמש אם המוזיקה חסומה
+                console.log("הדפדפן חסם הפעלה אוטומטית. יש ללחוץ על כפתור המוזיקה.");
             });
         });
 
@@ -1101,7 +1115,7 @@
                     icon.textContent = '🔊';
                     isPlaying = true;
                 }).catch(err => {
-                    console.log("שגיאה בהפעלת מוזיקה: ", err);
+                    console.log("שגיאה בהפעלת מוזיקה. וודא שקובץ song.mp3 קיים: ", err);
                 });
             }
         }
