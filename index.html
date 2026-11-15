@@ -24,49 +24,65 @@
             --glow-blue: #00bfff;
             --dark-blue: #0b1a30;
             --text-color: #1a1a1a;
-            --box-bg: rgba(255, 255, 255, 0.92);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(212, 175, 55, 0.3);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            user-select: none;
+            user-select: none; /* הגנת זכויות יוצרים */
         }
 
         html {
             scroll-behavior: smooth;
         }
 
-        /* רקע כללי עם תמונת ציון רבנו בשקיפות */
         body {
             font-family: 'Heebo', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.7;
             position: relative;
+            min-height: 100vh;
         }
 
+        /* רקע קרם בננה עם תמונת הפנים של רבינו (Watermark) */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('500737315_10222796757507761_8087516065105431034_n.jpg');
+            background-image: url('Screenshot_2021-11-17-17-41-22-1.png');
             background-size: cover;
             background-position: center;
-            opacity: 0.07;
-            z-index: -1;
+            background-repeat: no-repeat;
+            opacity: 0.12; /* שקיפות עדינה ומכובדת */
+            z-index: -2;
             pointer-events: none;
             mix-blend-mode: multiply;
+        }
+
+        /* מעברים אבסטרקטיים ברקע */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 69, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(0, 191, 255, 0.05) 0%, transparent 60%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* טיפוגרפיה לפי שפה */
         html[lang="en"] body { font-family: 'Cinzel', serif; }
         html[lang="ar"] body { font-family: 'Amiri', serif; }
-        .psalm-text { font-family: 'Frank Ruhl Libre', serif; }
-        html[lang="ar"] .psalm-text { font-family: 'Amiri', serif; }
-        html[lang="en"] .psalm-text { font-family: 'Cinzel', serif; }
+        .psalm-text { font-family: 'Frank Ruhl Libre', serif; font-size: 1.35rem; }
+        html[lang="ar"] .psalm-text { font-family: 'Amiri', serif; font-size: 1.4rem; }
+        html[lang="en"] .psalm-text { font-family: 'Cinzel', serif; font-size: 1.15rem; }
 
         /* אנימציות */
         @keyframes fireGlow {
@@ -75,26 +91,26 @@
             100% { text-shadow: 0 0 10px var(--fire-orange), 0 0 20px var(--fire-red); }
         }
 
-        @keyframes pulseHero {
-            0% { transform: scale(1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
-            50% { transform: scale(1.02); box-shadow: 0 0 60px rgba(212, 175, 55, 0.8), 0 0 100px rgba(0, 191, 255, 0.5); }
-            100% { transform: scale(1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        @keyframes floatHero {
+            0% { transform: translateY(0) scale(1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+            50% { transform: translateY(-10px) scale(1.02); box-shadow: 0 0 70px rgba(255, 140, 0, 0.8), 0 0 100px rgba(0, 191, 255, 0.4); }
+            100% { transform: translateY(0) scale(1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
         }
 
         @keyframes scrollBanner {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-        
-        @keyframes scrollVertical {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
-        }
 
         @keyframes highlightPulse {
             0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.8); }
             70% { box-shadow: 0 0 0 30px rgba(255, 69, 0, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* כותרת עליונה */
@@ -106,6 +122,7 @@
             color: #fff;
             border-bottom: 3px solid var(--gold);
             box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            z-index: 10;
         }
 
         .header-content {
@@ -118,8 +135,6 @@
             gap: 15px;
         }
 
-        .logo-title { display: flex; align-items: center; gap: 15px; }
-        .logo-title img { height: 60px; border-radius: 10px; border: 2px solid var(--gold); }
         .logo-title h1 {
             font-size: 2.8rem;
             font-weight: 900;
@@ -140,24 +155,16 @@
         }
 
         .lang-switch button {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin: 0 10px;
-            font-family: inherit;
-            transition: all 0.3s;
+            background: none; border: none; color: #fff; font-size: 1.1rem;
+            cursor: pointer; margin: 0 10px; font-family: inherit; transition: all 0.3s;
         }
 
         .lang-switch button:hover { color: var(--gold); text-shadow: 0 0 10px var(--gold); }
         .lang-switch button.active {
-            color: var(--fire-orange);
-            font-weight: bold;
-            border-bottom: 2px solid var(--fire-orange);
+            color: var(--fire-orange); font-weight: bold; border-bottom: 2px solid var(--fire-orange);
         }
 
-        /* באנרים רוחביים */
+        /* באנרים רוחביים אינטראקטיביים */
         .banner-container {
             overflow: hidden;
             background: linear-gradient(90deg, var(--dark-blue), #1a365d, var(--dark-blue));
@@ -168,6 +175,7 @@
             cursor: pointer;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
             transition: all 0.3s;
+            z-index: 5;
         }
 
         .banner-content {
@@ -192,58 +200,24 @@
             font-size: 1.5rem;
         }
 
-        /* באנר אורכי */
-        .vertical-banner {
-            position: fixed;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 300px;
-            background: linear-gradient(180deg, var(--dark-blue), #1a365d, var(--dark-blue));
-            border: 2px solid var(--gold);
-            border-radius: 20px;
-            overflow: hidden;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        html[dir="rtl"] .vertical-banner { left: auto; right: 10px; }
-        .vertical-banner:hover {
-            background: linear-gradient(180deg, var(--fire-red), var(--gold), var(--fire-orange));
-            box-shadow: 0 0 20px var(--fire-orange);
-            transform: translateY(-50%) scale(1.05);
-        }
-        .vertical-banner .v-text {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            color: var(--gold-light);
-            font-weight: bold;
-            font-size: 1rem;
-            animation: scrollVertical 15s linear infinite;
-            white-space: nowrap;
-        }
-        .vertical-banner:hover .v-text { animation-play-state: paused; color: #fff; }
-
         /* אזור תוכן ראשי */
         .main-container {
             max-width: 1000px;
             margin: 30px auto;
             padding: 0 20px;
             position: relative;
+            z-index: 2;
         }
 
+        /* תמונת צלחת האש המרכזית */
         .hero-image { text-align: center; margin-bottom: 40px; }
         .hero-image img {
-            max-width: 90%;
+            max-width: 85%;
             height: auto;
             border-radius: 50%;
             border: 5px solid var(--gold);
-            animation: pulseHero 4s infinite ease-in-out;
+            animation: floatHero 5s infinite ease-in-out;
+            cursor: pointer;
         }
 
         /* לשוניות */
@@ -269,7 +243,7 @@
             transition: all 0.3s;
             font-family: inherit;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
         }
 
         .tab-btn:hover, .tab-btn.active {
@@ -280,23 +254,19 @@
             transform: translateY(-3px);
         }
 
-        .lang-section { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .lang-section { display: none; animation: fadeIn 0.6s ease-in-out; }
         .lang-section.active { display: block; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* כרטיסיות תוכן */
+        /* כרטיסיות תוכן (Glassmorphism) */
         .content-card {
-            background: var(--box-bg);
+            background: var(--glass-bg);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08), inset 0 0 20px rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid var(--glass-border);
             margin-bottom: 40px;
             position: relative;
+            backdrop-filter: blur(12px);
         }
 
         .content-card::before {
@@ -318,28 +288,50 @@
 
         .content-card p { font-size: 1.15rem; margin-bottom: 15px; text-align: justify; }
 
-        /* עיצוב תמונות צפות */
+        /* עיצוב תמונות צפות ולחיצות */
         .image-float-right {
-            float: right; margin: 0 0 20px 30px; max-width: 280px;
+            float: right; margin: 0 0 20px 30px; max-width: 250px;
             border-radius: 15px; border: 3px solid var(--gold);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: all 0.4s ease;
             cursor: pointer;
         }
         .image-float-left {
-            float: left; margin: 0 30px 20px 0; max-width: 280px;
+            float: left; margin: 0 30px 20px 0; max-width: 250px;
             border-radius: 15px; border: 3px solid var(--glow-blue);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: all 0.4s ease;
+            cursor: pointer;
         }
         .image-float-right:hover, .image-float-left:hover {
-            transform: scale(1.05); box-shadow: 0 0 30px var(--fire-orange);
+            transform: scale(1.08) rotate(2deg); box-shadow: 0 0 35px var(--fire-orange);
+            border-color: var(--fire-orange);
         }
         .clearfix::after { content: ""; clear: both; display: table; }
+
+        /* גלריית ספרים */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .books-grid img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 2px solid var(--gold);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .books-grid img:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.6);
+        }
 
         /* תהילים */
         .psalm {
             margin-bottom: 25px;
             padding: 25px;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.6);
             border-radius: 12px;
             border-right: 6px solid var(--fire-orange);
             transition: all 0.3s;
@@ -347,35 +339,15 @@
         }
         html[dir="ltr"] .psalm { border-right: none; border-left: 6px solid var(--fire-orange); }
         .psalm:hover {
-            background: #fff;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
             transform: translateX(-5px);
         }
         html[dir="ltr"] .psalm:hover { transform: translateX(5px); }
-        .psalm h3 { color: var(--fire-red); font-size: 1.7rem; margin-bottom: 15px; }
-        .psalm p { font-size: 1.3rem; line-height: 1.8; color: #222; }
+        .psalm h3 { color: var(--fire-red); font-size: 1.8rem; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .psalm p { font-size: 1.3rem; line-height: 1.9; color: #222; }
 
-        /* גלריית ספרים */
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .books-grid img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 2px solid var(--gold);
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-        .books-grid img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
-        }
-
-        /* תיבת תרומות */
+        /* תיבת תרומות מורחבת */
         .donation-highlight {
             background: linear-gradient(135deg, rgba(11,26,48,0.98), rgba(26,54,93,0.98));
             color: #fff;
@@ -385,15 +357,12 @@
             text-align: center;
             margin: 40px auto;
             max-width: 800px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: all 0.3s;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            transition: all 0.5s;
         }
         .donation-highlight h2 {
-            color: var(--gold);
-            border-bottom: 2px solid var(--fire-orange);
-            display: inline-block;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            color: var(--gold); border-bottom: 2px solid var(--fire-orange);
+            display: inline-block; padding-bottom: 10px; margin-bottom: 20px;
         }
         .donation-highlight p { font-size: 1.4rem; margin: 10px 0; color: #eee; }
         .donation-highlight strong { color: var(--fire-orange); font-size: 1.6rem; }
@@ -401,9 +370,20 @@
         .highlight-pulse {
             animation: highlightPulse 2s infinite;
             border-color: var(--fire-orange) !important;
+            box-shadow: 0 0 50px rgba(255, 140, 0, 0.5);
         }
 
-        /* סרגל צדדי - מונה ותרומות */
+        /* כפתור העתקה */
+        .copy-btn {
+            background: linear-gradient(45deg, var(--gold), var(--fire-orange));
+            color: #fff; border: none; padding: 10px 25px; border-radius: 30px;
+            cursor: pointer; font-weight: bold; margin-top: 15px;
+            font-family: inherit; font-size: 1.1rem; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .copy-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--fire-orange); }
+
+        /* סרגל צדדי / תחתון - מונה ותרומות */
         .sidebar {
             position: fixed;
             bottom: 20px;
@@ -419,13 +399,10 @@
         .counter-box, .donation-box {
             background: linear-gradient(135deg, rgba(11,26,48,0.95), rgba(26,54,93,0.95));
             color: var(--gold-light);
-            padding: 15px 20px;
-            border-radius: 15px;
+            padding: 15px 20px; border-radius: 15px;
             border: 2px solid var(--gold);
             box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px var(--glow-blue);
-            text-align: center;
-            backdrop-filter: blur(10px);
-            min-width: 200px;
+            text-align: center; backdrop-filter: blur(10px); min-width: 200px;
         }
         .counter-box h4, .donation-box h4 {
             color: #fff; margin-bottom: 8px; font-size: 1rem; text-shadow: 0 0 5px var(--fire-orange);
@@ -437,18 +414,9 @@
         .donation-box p { font-size: 0.85rem; margin: 4px 0; font-family: 'Heebo', sans-serif; direction: rtl; }
         .donation-box strong { color: var(--glow-blue); }
 
-        .copy-btn {
-            background: var(--gold); color: var(--dark-blue);
-            border: none; padding: 5px 10px; border-radius: 5px;
-            cursor: pointer; font-weight: bold; margin-top: 8px;
-            font-family: 'Heebo', sans-serif; transition: 0.2s;
-            width: 100%;
-        }
-        .copy-btn:hover { background: var(--fire-orange); color: #fff; }
-
         /* כפתור חזרה למעלה */
         #scrollTopBtn {
-            display: none; position: fixed; bottom: 20px; right: 20px;
+            display: none; position: fixed; bottom: 90px; right: 20px;
             z-index: 999; font-size: 1.5rem; border: none; outline: none;
             background: linear-gradient(135deg, var(--gold), var(--fire-orange));
             color: white; cursor: pointer; padding: 12px 18px; border-radius: 50%;
@@ -457,33 +425,26 @@
         html[dir="rtl"] #scrollTopBtn { right: auto; left: 20px; }
         #scrollTopBtn:hover { background: var(--fire-red); transform: scale(1.1); }
 
-        /* כפתור מוזיקה צף */
+        /* נגן מוזיקה צף */
         .floating-music {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             z-index: 1000;
             background: linear-gradient(135deg, var(--gold), var(--fire-orange));
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: white; border: none; border-radius: 50%; width: 60px; height: 60px;
+            font-size: 1.8rem; cursor: pointer; box-shadow: 0 0 20px var(--gold);
+            transition: all 0.3s; display: flex; align-items: center; justify-content: center;
         }
-        .floating-music:hover { transform: translateX(-50%) scale(1.1); background: var(--fire-red); }
+        .floating-music:hover { transform: translateX(-50%) scale(1.1); background: var(--fire-red); box-shadow: 0 0 30px var(--fire-red); }
+        
+        .music-playing {
+            animation: pulseHero 2s infinite;
+        }
 
         /* פוטר */
         footer {
             background: var(--dark-blue); color: #aaa; text-align: center;
-            padding: 25px; border-top: 2px solid var(--gold); margin-top: 50px; font-size: 0.9rem;
+            padding: 30px; border-top: 2px solid var(--gold); margin-top: 50px; font-size: 0.9rem;
+            position: relative; z-index: 10;
         }
 
         /* התראת העתקה */
@@ -491,22 +452,22 @@
             display: none; position: fixed; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             background: linear-gradient(135deg, var(--fire-red), var(--dark-blue));
-            color: #fff; padding: 25px 40px; border-radius: 15px;
-            border: 3px solid var(--gold); box-shadow: 0 0 50px rgba(0,0,0,0.8);
-            z-index: 9999; text-align: center; font-size: 1.3rem; font-weight: bold;
+            color: #fff; padding: 30px 50px; border-radius: 20px;
+            border: 3px solid var(--gold); box-shadow: 0 0 60px rgba(0,0,0,0.9);
+            z-index: 9999; text-align: center; font-size: 1.4rem; font-weight: bold;
         }
 
         /* רספונסיביות */
         @media (max-width: 768px) {
             .header-content { flex-direction: column; text-align: center; }
-            .logo-title h1 { font-size: 2rem; }
+            .logo-title h1 { font-size: 2.2rem; }
             .tabs { flex-direction: row; flex-wrap: wrap; }
             .tab-btn { padding: 10px 15px; font-size: 1rem; flex: 1; }
             
             .sidebar {
                 position: fixed; bottom: 0; left: 0; right: 0; width: 100%;
                 flex-direction: row; justify-content: space-around;
-                gap: 5px; padding: 10px; background: rgba(11,26,48,0.95);
+                gap: 5px; padding: 10px; background: rgba(11,26,48,0.98);
                 border-top: 2px solid var(--gold); margin: 0; box-sizing: border-box;
             }
             html[dir="rtl"] .sidebar { right: 0; }
@@ -516,27 +477,25 @@
             .counter-box h4, .donation-box h4 { font-size: 0.8rem; margin-bottom: 2px; }
             .counter-number { font-size: 1.2rem; }
             .donation-box p { font-size: 0.7rem; margin: 2px 0; }
-            .copy-btn { padding: 3px; font-size: 0.7rem; }
+            .copy-btn { padding: 5px; font-size: 0.8rem; margin-top: 5px; }
             
-            #scrollTopBtn { bottom: 90px; }
+            #scrollTopBtn { bottom: 100px; }
             html[dir="rtl"] #scrollTopBtn { left: 15px; }
-            .floating-music { bottom: 90px; left: 15px; transform: none; }
-            html[dir="ltr"] .floating-music { left: auto; right: 15px; }
-            html[dir="rtl"] .floating-music { right: auto; left: 15px; }
+            .floating-music { bottom: 100px; width: 50px; height: 50px; font-size: 1.5rem; }
             
-            .image-float-right, .image-float-left { float: none; margin: 0 auto 20px; display: block; max-width: 100%; }
+            .image-float-right, .image-float-left { float: none; margin: 0 auto 20px; display: block; max-width: 80%; }
             .content-card { padding: 20px; }
             .psalm p { font-size: 1.1rem; }
-            .vertical-banner { display: none; }
         }
 
         /* עיצוב להדפסה */
         @media print {
-            header, .banner-container, .tabs, .sidebar, #scrollTopBtn, footer, .hero-image, .image-float-right, .image-float-left, .floating-music, .vertical-banner {
+            header, .banner-container, .tabs, .sidebar, #scrollTopBtn, footer, .hero-image, .image-float-right, .image-float-left, .floating-music {
                 display: none !important;
             }
             body { background: #fff; color: #000; }
-            .content-card { box-shadow: none; border: none; padding: 0; background: transparent; }
+            body::before, body::after { display: none; }
+            .content-card { box-shadow: none; border: none; padding: 0; background: transparent; backdrop-filter: none; }
             .psalm { border: 1px solid #ccc; page-break-inside: avoid; background: transparent; }
             .psalm h3 { color: #000; }
             .psalm p { color: #000; font-size: 14pt; }
@@ -549,14 +508,14 @@
 
     <div id="copy-alert">⚠️ תוכן זה מוגן בזכויות יוצרים. אין להעתיק או לשכפל!</div>
     
-    <button onclick="scrollToTop()" id="scrollTopBtn" title="חזרה למעלה">▲</button>
-    <button id="music-btn" class="floating-music" onclick="toggleMusic()" title="הפעל/השתק מוזיקה">🔇</button>
-    <div id="yt-player" style="display:none;"></div>
+    <!-- נגן מוזיקה -->
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+        הדפדפן שלך אינו תומך בנגן אודיו.
+    </audio>
+    <button id="music-toggle" class="floating-music" onclick="toggleMusic()" title="הפעל/השתק מוזיקה">🔇</button>
 
-    <!-- באנר אורכי -->
-    <div class="vertical-banner" onclick="scrollToDonation()">
-        <div class="v-text">✨ תרומה ופדיון נפש ✨ לחצו כאן ✨</div>
-    </div>
+    <button onclick="scrollToTop()" id="scrollTopBtn" title="חזרה למעלה">▲</button>
 
     <header>
         <div class="header-content">
@@ -564,7 +523,6 @@
                 <span id="jerusalem-clock">טוען שעון...</span>
             </div>
             <div class="logo-title">
-                <img src="20200518_165320_3c3a7fce-d200-4ac7-9cc3-a288890870c4.jpg" alt="לוגו אש">
                 <h1>התיקון הכללי</h1>
             </div>
             <div class="lang-switch">
@@ -583,8 +541,9 @@
 
     <div class="main-container">
         
+        <!-- תמונת צלחת האש המרכזית -->
         <div class="hero-image">
-            <img src="39946d97-744c-49dc-88af-c02024f61947_2.jfif" alt="צלחת האש המלכותית">
+            <img src="39946d97-744c-49dc-88af-c02024f61947_2.jpg" alt="צלחת האש המלכותית" onclick="scrollToDonation()">
         </div>
 
         <div class="tabs">
@@ -597,7 +556,7 @@
         <div id="lang-he" class="lang-section active">
             <div class="content-card clearfix" id="about-rabbi-he">
                 <h2>על התיקון הכללי ורבי נחמן מאומן</h2>
-                <img src="500737315_10222796757507761_8087516065105431034_n.jpg" alt="ציון רבנו" class="image-float-right" onclick="scrollToRabbi()">
+                <img src="Screenshot_2021-11-17-17-41-22-1.png" alt="דיוקן רבי נחמן" class="image-float-right" onclick="scrollToRabbi()">
                 <p>התיקון הכללי הוא סדר תפילות ותהילים שקבע רבי נחמן מברסלב, מגדולי הצדיקים והמקובלים בדורות האחרונים. רבי נחמן לימד שכל מי שיאמר את עשרת המזמורים הללו כסגולה לתיקון נפשו, יזכה לראות ישועות גדולות, מחילת עוונות ורפואה שלמה.</p>
                 <p>רבי נחמן נולד בעיירה מז'יבוז' שבאוקראינה, ונפטר באומן. הוא הקים את תנועת החסידות ברסלב, שהדגישה את השמחה, האמונה הפשוטה, וההתבודדות (שיחה אישית עם הבורא). ציונו באומן הפך למוקד עלייה לרגל לרבבות יהודים מדי שנה, במיוחד בראש השנה.</p>
                 <p>התיקון הכללי כולל עשרה פרקים מתהילים (טז, לב, מא, מב, נט, עז, צ, קה, קלז, קנ) אשר נבחרו בקפידה על ידי רבי נחמן בעצמו, כסגולה לתיקון פגם הברית (פגיעה בקדושת החיים והנפש). אמירתם בכוונה ובשמחה מהווה כלי עצום להתקרבות לבורא ולזיכוך הנפש.</p>
@@ -665,13 +624,28 @@
                     <p class="psalm-text">הַלְלוּיָהּ, הַלְלוּ אֵל בְּקָדְשׁוֹ, הַלְלוּהוּ בִּרְקִיעַ עֻזּוֹ. הַלְלוּהוּ בִגְבוּרֹתָיו, הַלְלוּהוּ כְּרֹב גֻּדְלוֹ. הַלְלוּהוּ בְּתֵקַע שׁוֹפָר, הַלְלוּהוּ בְּנֵבֶל וְכִנּוֹר. הַלְלוּהוּ בְתֹף וּמָחוֹל, הַלְלוּהוּ בְּמִנִּים וְעוּגָב. הַלְלוּהוּ בְצִלְצְלֵי שָׁמַע, הַלְלוּהוּ בְּצִלְצְלֵי תְרוּעָה. כֹּל הַנְּשָׁמָה תְּהַלֵּל יָהּ, הַלְלוּיָהּ.</p>
                 </div>
             </div>
+            
+            <!-- גלריית ספרים בעברית -->
+            <div class="content-card" style="text-align: center;">
+                <h2>ספרי ברסלב ומהדורות התיקון הכללי</h2>
+                <p>אוצרות חכמת רבי נחמן מברסלב - ליקוטי מוהר"ן, ספרי תהילים, סגולות ותפילות.</p>
+                <div class="books-grid">
+                    <img src="210_3.jpg" alt="ליקוטי מוהר''ן" title="ליקוטי מוהר''ן">
+                    <img src="009600027103.jpg" alt="תהילים קורן" title="תהילים קורן">
+                    <img src="9789653018709.jpg" alt="מרפא לשון" title="מרפא לשון">
+                    <img src="eyJidWNrZXQiOiJzaW1hbmlhLXB1YmxpYy1hc3NldHMiLCJrZXkiOiJib29raW1hZ2VzL2NvdmVyczk3Lzk3MTc3OS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjM4NCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwidG.avif" alt="ספר 4" title="ספר 4">
+                    <img src="il_1080xN.8059540371_7apx.jpg" alt="להכניע הקליפות" title="להכניע הקליפות">
+                    <img src="il_1140xN.8401718413_koar.jpg" alt="ספר 6" title="ספר 6">
+                    <img src="500737315_10222796757507761_8087516065105431034_n.jpg" alt="ציון רבנו" title="ציון רבנו">
+                </div>
+            </div>
         </div>
 
         <!-- ================= לשונית אנגלית ================= -->
         <div id="lang-en" class="lang-section" dir="ltr">
             <div class="content-card clearfix" id="about-rabbi-en">
                 <h2>About The Tikkun HaKlali & Rabbi Nachman</h2>
-                <img src="500737315_10222796757507761_8087516065105431034_n.jpg" alt="Rabbi Nachman's Grave" class="image-float-left" onclick="scrollToRabbi()">
+                <img src="Screenshot_2021-11-17-17-41-22-1.png" alt="Rabbi Nachman Portrait" class="image-float-left" onclick="scrollToRabbi()">
                 <p>The Tikkun HaKlali (The General Remedy) is a set of prayers and Psalms established by Rabbi Nachman of Breslov, one of the greatest righteous men and Kabbalists of modern times. Rabbi Nachman taught that anyone who recites these ten specific Psalms as a remedy for the soul will merit great salvation, forgiveness of sins, and complete healing.</p>
                 <p>Rabbi Nachman was born in Medzhybizh, Ukraine, and passed away in Uman. He founded the Breslov Hasidic movement, which emphasized joy, simple faith, and Hitbodedut (personal, intimate conversation with the Creator). His grave in Uman has become a major pilgrimage site for tens of thousands of Jews annually, especially on Rosh Hashanah.</p>
                 <p>The Tikkun HaKlali includes ten chapters from the Book of Psalms (16, 32, 41, 42, 59, 77, 90, 105, 137, 150), carefully selected by Rabbi Nachman himself as a remedy for the blemish of the covenant (damage to the sanctity of life and the soul). Reciting them with intention and joy is a powerful tool for drawing closer to the Creator and purifying the soul.</p>
@@ -739,13 +713,28 @@
                     <p class="psalm-text">Praise ye the LORD. Praise God in his sanctuary: praise him in the firmament of his power. Praise him for his mighty acts: praise him according to his excellent greatness. Praise him with the sound of the trumpet: praise him with the psaltery and harp. Praise him with the timbrel and dance: praise him with stringed instruments and organs. Praise him upon the loud cymbals: praise him upon the high sounding cymbals. Let every thing that hath breath praise the LORD. Praise ye the LORD.</p>
                 </div>
             </div>
+            
+            <!-- גלריית ספרים באנגלית -->
+            <div class="content-card" style="text-align: center;">
+                <h2>Breslov Books & Tikkun HaKlali Editions</h2>
+                <p>Treasures of Rabbi Nachman's wisdom - Likutei Moharan, Psalms, Segulot, and Prayers.</p>
+                <div class="books-grid">
+                    <img src="210_3.jpg" alt="Likutei Moharan" title="Likutei Moharan">
+                    <img src="009600027103.jpg" alt="Koren Tehillim" title="Koren Tehillim">
+                    <img src="9789653018709.jpg" alt="Marpeh Lashon" title="Marpeh Lashon">
+                    <img src="eyJidWNrZXQiOiJzaW1hbmlhLXB1YmxpYy1hc3NldHMiLCJrZXkiOiJib29raW1hZ2VzL2NvdmVyczk3Lzk3MTc3OS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjM4NCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwidG.avif" alt="Book 4" title="Book 4">
+                    <img src="il_1080xN.8059540371_7apx.jpg" alt="Lehachnia HaKelipot" title="Lehachnia HaKelipot">
+                    <img src="il_1140xN.8401718413_koar.jpg" alt="Book 6" title="Book 6">
+                    <img src="500737315_10222796757507761_8087516065105431034_n.jpg" alt="Rabbi's Grave" title="Rabbi's Grave">
+                </div>
+            </div>
         </div>
 
         <!-- ================= לשונית ערבית ================= -->
         <div id="lang-ar" class="lang-section" dir="rtl">
             <div class="content-card clearfix" id="about-rabbi-ar">
                 <h2>عن التيكون هكلالي والحاخام نحمان</h2>
-                <img src="500737315_10222796757507761_8087516065105431034_n.jpg" alt="قبر الحاخام نحمان" class="image-float-right" onclick="scrollToRabbi()">
+                <img src="Screenshot_2021-11-17-17-41-22-1.png" alt="صورة الحاخام نحمان" class="image-float-right" onclick="scrollToRabbi()">
                 <p>التيكون هكلالي (العلاج الشامل) هو مجموعة من الصلوات والمزامير التي أسسها الحاخام نحمان من بريسلاف، أحد أعظم الصديقين والقباليين في العصر الحديث. علم الحاخام نحمان أن كل من يقرأ هذه المزامير العشرة كعلاج لنفسه، سيستحق الخلاص العظيم، ومغفرة الذنوب، والشفاء التام.</p>
                 <p>ولد الحاخام نحمان في بلدة ميدزيبيج في أوكرانيا، وتوفي في أومان. أسس الحركة الحسيدية بريسلاف، التي ركزت على الفرح، والإيمان البسيط، والخلوة (محادثة شخصية مع الخالق). أصبح قبره في أومان موقعًا للحج لمئات الآلاف من اليهود كل عام، وخاصة في رأس السنة العبرية.</p>
                 <p>يتضمن التيكون هكلالي عشرة فصول من سفر المزامير (16، 32، 41، 42، 59، 77، 90، 105، 137، 150)، والتي اختارها الحاخام نحمان بنفسه بعناية كعلاج لعيب العهد (الإضرار بحرمة الحياة والنفس). قراءتها بنية وفرح هي أداة قوية للتقرب من الخالق وتطهير الروح.</p>
@@ -813,31 +802,33 @@
                     <p class="psalm-text">هَلِّلُويَا. سَبِّحُوا اللهَ فِي قُدْسِهِ. سَبِّحُوهُ فِي فَلَكِ قُوَّتِهِ. سَبِّحُوهُ عَلَى أَعْمَالِهِ الْجَبَارَةِ. سَبِّحُوهُ حَسَبَ عَظَمَةِ جَلاَلِهِ. سَبِّحُوهُ بِصَوْتِ الْبُوقِ. سَبِّحُوهُ بِالرَّبَابِ وَالْعُودِ. سَبِّحُوهُ بِالدُّفِّ وَالرَّقْصِ. سَبِّحُوهُ بِالأَوْتَارِ وَالْمِزْمَارِ. سَبِّحُوهُ بِصُنُوجِ التَّصْوِيتِ. سَبِّحُوهُ بِصُنُوجِ الْهُتَافِ. كُلُّ نَسَمَةٍ فَلْتُسَبِّحِ الرَّبَّ. هَلِّلُويَا.</p>
                 </div>
             </div>
-        </div>
-
-    </div>
-
-    <!-- גלריית ספרים -->
-    <div class="main-container">
-        <div class="content-card" style="text-align: center;">
-            <h2>ספרי רבי נחמן ומהדורות התיקון הכללי</h2>
-            <div class="books-grid">
-                <img src="210_3.jpg" alt="ליקוטי מוהר''ן">
-                <img src="009600027103.jpg" alt="תהילים קורן">
-                <img src="9789653018709.jpg" alt="מרפא לשון">
-                <img src="eyJidWNrZXQiOiJzaW1hbmlhLXB1YmxpYy1hc3NldHMiLCJrZXkiOiJib29raW1hZ2VzL2NvdmVyczk3Lzk3MTc3OS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjM4NCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwidG.avif" alt="ספר 4">
-                <img src="il_1080xN.8059540371_7apx.jpg" alt="להכניע הקליפות">
-                <img src="il_1140xN.8401718413_koar.jpg" alt="ספר 6">
+            
+            <!-- גלריית ספרים בערבית -->
+            <div class="content-card" style="text-align: center;">
+                <h2>كتب بريسلاف وطبعات التيكون هكلالي</h2>
+                <p>كنوز حكمة الحاخام نحمان - ليكوتي موهَران، المزامير، السيجولوت والصلوات.</p>
+                <div class="books-grid">
+                    <img src="210_3.jpg" alt="ليكوتي موهَران" title="ليكوتي موهَران">
+                    <img src="009600027103.jpg" alt="مزامير كورين" title="مزامير كورين">
+                    <img src="9789653018709.jpg" alt="مرافي لاشون" title="مرافي لاشون">
+                    <img src="eyJidWNrZXQiOiJzaW1hbmlhLXB1YmxpYy1hc3NldHMiLCJrZXkiOiJib29raW1hZ2VzL2NvdmVyczk3Lzk3MTc3OS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjM4NCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwidG.avif" alt="كتاب 4" title="كتاب 4">
+                    <img src="il_1080xN.8059540371_7apx.jpg" alt="لإخضاع الكليفوت" title="لإخضاع الكليفوت">
+                    <img src="il_1140xN.8401718413_koar.jpg" alt="كتاب 6" title="كتاب 6">
+                    <img src="500737315_10222796757507761_8087516065105431034_n.jpg" alt="قبر الحاخام" title="قبر الحاخام">
+                </div>
             </div>
         </div>
 
-        <!-- תיבת תרומות -->
+        <!-- תיבת תרומות ופדיון נפש (מטרת הגלילה) -->
         <div id="donation-section" class="donation-highlight">
             <h2>💎 תרומה ופדיון נפש 💎</h2>
-            <p>בנק הדואר | סניף: <strong>001</strong> | חשבון: <strong>31127380</strong></p>
+            <p>השתתפות בהפצת האור והאמונה של רבי נחמן</p>
+            <p>בנק הדואר | סניף: <strong>001</strong></p>
+            <p>חשבון: <strong>31127380</strong></p>
             <p>ע"ש: <strong>ידידיה פישון</strong></p>
-            <button class="copy-btn" style="font-size: 1.2rem; padding: 10px 30px; margin-top: 15px; max-width: 250px;" onclick="copyAccount()">העתק חשבון</button>
+            <button class="copy-btn" onclick="copyAccount()">העתק חשבון</button>
         </div>
+
     </div>
 
     <div class="banner-container" style="margin-top: 40px;" onclick="scrollToDonation()">
@@ -865,8 +856,6 @@
         <p>נבנה באהבה ובכוונה לעילוי נשמת כל הנשמות.</p>
     </footer>
 
-    <!-- YouTube API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         // --- 1. שעון ירושלים ---
         function updateClock() {
@@ -886,13 +875,13 @@
 
         // --- 2. מונה כניסות ---
         function updateCounter() {
-            let visits = localStorage.getItem('tikkun_visits_v3');
+            let visits = localStorage.getItem('tikkun_visits_final');
             if (!visits) {
                 visits = 124500; 
             } else {
                 visits = parseInt(visits) + 1;
             }
-            localStorage.setItem('tikkun_visits_v3', visits);
+            localStorage.setItem('tikkun_visits_final', visits);
             document.getElementById('visit-counter').textContent = visits.toLocaleString('he-IL');
         }
         updateCounter();
@@ -940,7 +929,9 @@
             const target = document.getElementById('about-rabbi-' + activeLang);
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                target.style.boxShadow = '0 0 30px var(--fire-orange)';
+                // הדגשה קלה של הכרטיס
+                target.style.transition = 'box-shadow 0.5s';
+                target.style.boxShadow = '0 0 40px var(--fire-orange)';
                 setTimeout(() => {
                     target.style.boxShadow = '';
                 }, 2000);
@@ -998,6 +989,7 @@
         });
 
         document.addEventListener('copy', function(e) {
+            // מאפשר העתקה רק מכפתור התרומה
             if(e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
                 e.preventDefault();
                 showAlert();
@@ -1013,45 +1005,39 @@
             e.preventDefault();
         });
 
-        // --- 9. נגן מוזיקה יוטיוב ---
-        var player;
-        var musicPlaying = false;
-        
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('yt-player', {
-                height: '0',
-                width: '0',
-                videoId: 'C1ebzQDCD2k',
-                playerVars: {
-                    'autoplay': 0,
-                    'loop': 1,
-                    'playlist': 'C1ebzQDCD2k'
-                },
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
+        // --- 9. נגן מוזיקה ---
+        const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-toggle');
+        let isPlaying = false;
 
-        function onPlayerReady(event) {
-            // Player ready
-        }
+        // ניסיון הפעלה ראשוני (לרוב יחסם על ידי הדפדפן עד לאינטראקציה)
+        window.addEventListener('load', () => {
+            audio.volume = 0.5; // עוצמת שמע התחלתית
+            audio.play().then(() => {
+                isPlaying = true;
+                musicBtn.textContent = '🔊';
+                musicBtn.classList.add('music-playing');
+            }).catch(() => {
+                // הדפדפן חסם, מחכה לאינטראקציה של המשתמש
+                isPlaying = false;
+                musicBtn.textContent = '🔇';
+            });
+        });
 
         function toggleMusic() {
-            if (player && player.getPlayerState) {
-                var state = player.getPlayerState();
-                if (state === YT.PlayerState.PLAYING) {
-                    player.pauseVideo();
-                    document.getElementById('music-btn').textContent = '🔇';
-                    musicPlaying = false;
-                } else {
-                    player.playVideo();
-                    document.getElementById('music-btn').textContent = '🔊';
-                    musicPlaying = true;
-                }
+            if (isPlaying) {
+                audio.pause();
+                musicBtn.textContent = '🔇';
+                musicBtn.classList.remove('music-playing');
+                isPlaying = false;
             } else {
-                // אם הנגן עדיין לא נטען, ננסה שוב בעוד רגע
-                setTimeout(toggleMusic, 500);
+                audio.play().then(() => {
+                    musicBtn.textContent = '🔊';
+                    musicBtn.classList.add('music-playing');
+                    isPlaying = true;
+                }).catch(err => {
+                    console.log("שגיאה בהפעלת מוזיקה: ", err);
+                });
             }
         }
     </script>
