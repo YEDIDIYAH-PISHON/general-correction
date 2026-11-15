@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>התיקון הכללי | Tikun HaKlali | التصحيح الكلّي</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 2rem 1rem; }
+        .container { max-width: 800px; width: 100%; text-align: center; }
+        header { margin-bottom: 2rem; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent); }
+        p.subtitle { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
+        .lang-switch { display: flex; justify-content: center; gap: 10px; margin-bottom: 2rem; }
+        .lang-btn { background: var(--card-bg); color: var(--text-color); border: 1px solid #334155; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .lang-btn:hover { background: var(--accent); color: #0f172a; }
+        .content-box { background: var(--card-bg); padding: 2rem; border-radius: 16px; text-align: right; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin-bottom: 2rem; line-height: 1.8; }
+        .content-box[dir="ltr"] { text-align: left; }
+        footer { color: var(--text-muted); font-size: 0.875rem; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 id="main-title">התיקון הכללי</h1>
+            <p class="subtitle" id="main-subtitle">רבי נחמן מברסלב • التصحيح الكلّي</p>
+            
+            <div class="lang-switch">
+                <button class="lang-btn" onclick="setLang('he')">עברית</button>
+                <button class="lang-btn" onclick="setLang('ar')">العربية</button>
+                <button class="lang-btn" onclick="setLang('en')">English</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="content-box" id="content">
+                <h2>ברוכים הבאים</h2>
+                <p>כאן תוכלו לקרוא את פרקי התיקון הכללי המלאים. לחצו על כפתורי השפות למעלה למעבר בין עברית, ערבית ואנגלית.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 General Correction. כל הזכויות שמורות.</p>
+        </footer>
+    </div>
+
+    <script>
+        const texts = {
+            he: { 
+                title: "התיקון הכללי", 
+                subtitle: "רבי נחמן מברסלב", 
+                content: "<h2>ברוכים הבאים</h2><p>כאן תוכלו לקרוא את פרקי התיקון הכללי המלאים בעברית בקלות ובמהירות מכל מכשיר.</p>", 
+                dir: "rtl" 
+            },
+            ar: { 
+                title: "التصحيح الكلّي", 
+                subtitle: "الشيخ نحمان من بريسلاف", 
+                content: "<h2>أهلاً وسهلاً</h2><p>هنا يمكنكم قراءة فصول التصحيح الكلي بالكامل باللغة العربية بوضوح وسهولة تامة عبر جميع الأجهزة.</p>", 
+                dir: "rtl" 
+            },
+            en: { 
+                title: "Tikun HaKlali", 
+                subtitle: "Rabbi Nachman of Breslov", 
+                content: "<h2>Welcome</h2><p>Here you can read the complete chapters of Tikun HaKlali in English, optimized for fast and easy browsing worldwide.</p>", 
+                dir: "ltr" 
+            }
+        };
+
+        function setLang(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = texts[lang].dir;
+            document.getElementById('main-title').innerText = texts[lang].title;
+            document.getElementById('main-subtitle').innerText = texts[lang].subtitle;
+            document.getElementById('content').innerHTML = texts[lang].content;
+            document.getElementById('content').dir = texts[lang].dir;
+        }
+    </script>
+</body>
+</html>
