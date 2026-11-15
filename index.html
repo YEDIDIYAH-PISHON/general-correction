@@ -3,391 +3,1057 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>התיקון הכללי | Tikun HaKlali | التصحيح الكلّي</title>
+    <title>התיקון הכללי - רבי נחמן מאומן | סגולה לישועה</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="התיקון הכללי של רבי נחמן מאומן - עשרת פרקי התהילים, תפילת פדיון הנפש, וסגולה לישועה, רפואה ופרנסה. זמין בעברית, אנגלית וערבית.">
+    <meta name="keywords" content="תיקון הכללי, רבי נחמן, ברסלב, תהילים, פדיון נפש, אומן, ישועה, רפואה">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Frank+Ruhl+Libre:wght@400;700;900&family=Cinzel:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #fefae0; /* קרם בננה בהיר ומאיר */
-            --card-bg: #ffffff;
-            --border-color: #d4a373;
-            --text-main: #2b2d42;
-            --text-muted: #4a4e69;
-            --accent: #bc6c25;
-            --accent-hover: #dda15e;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --bg-color: #fefae0;
+            --gold: #d4af37;
+            --gold-light: #fce181;
+            --fire-red: #ff4500;
+            --fire-orange: #ff8c00;
+            --glow-blue: #00bfff;
+            --dark-blue: #0b1a30;
+            --text-color: #1a1a1a;
+            --box-bg: rgba(255, 255, 255, 0.92);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 2rem 1rem;
             user-select: none;
         }
 
-        .wrapper {
-            max-width: 950px;
-            width: 100%;
-            margin: auto;
+        html {
+            scroll-behavior: smooth;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .live-clock {
-            background: #faedcd;
-            border: 1px solid var(--border-color);
-            padding: 0.6rem 1.2rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            color: var(--text-main);
-            margin-bottom: 1.2rem;
-            display: inline-block;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            font-weight: 600;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            color: #dda15e;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        /* גלריית תמונות ברורה ונראית לעין */
-        .img-gallery {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .img-card {
-            background: #ffffff;
-            padding: 8px;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            border: 2px solid var(--border-color);
-            transition: transform 0.3s ease;
-        }
-
-        .img-card:hover {
-            transform: scale(1.05);
-        }
-
-        .img-card img {
-            width: 110px;
-            height: 110px;
-            object-fit: cover;
-            border-radius: 12px;
-            display: block;
-        }
-
-        .lang-switch {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 2.5rem;
-        }
-
-        .lang-btn {
-            background: #ffffff;
-            color: var(--text-main);
-            border: 2px solid var(--border-color);
-            padding: 0.6rem 1.6rem;
-            border-radius: 9999px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: all 0.2s ease;
-        }
-
-        .lang-btn:hover {
-            background: var(--accent);
-            color: #ffffff;
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .content-section {
-            display: none;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: var(--box-shadow);
-            margin-bottom: 2rem;
-            line-height: 2;
-        }
-
-        h2 {
-            color: var(--accent);
-            font-size: 1.6rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #faedcd;
-            padding-bottom: 0.5rem;
-        }
-
-        p, li {
-            color: var(--text-main);
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            text-align: justify;
-        }
-
-        .psalm-box {
-            background: #fdfcdc;
-            border: 1px solid #f07167;
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        .psalm-title {
-            color: #d90429;
-            font-weight: 800;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px dashed #f07167;
-            padding-bottom: 0.5rem;
-        }
-
-        .psalm-text {
-            white-space: pre-line;
-            font-size: 1.15rem;
-            line-height: 2.3;
-            color: #2b2d42;
-        }
-
-        .donation-box {
-            background: #faedcd;
-            border: 2px solid var(--accent);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2.5rem;
-            text-align: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-        }
-
-        footer {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            text-align: center;
-            border-top: 1px solid #d4a373;
-            padding-top: 1.5rem;
-            width: 100%;
+        /* רקע כללי עם תמונת ציון רבנו בשקיפות */
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
             line-height: 1.6;
-            font-weight: 600;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('500737315_10222796757507761_8087516065105431034_n.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.07;
+            z-index: -1;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+
+        /* טיפוגרפיה לפי שפה */
+        html[lang="en"] body { font-family: 'Cinzel', serif; }
+        html[lang="ar"] body { font-family: 'Amiri', serif; }
+        .psalm-text { font-family: 'Frank Ruhl Libre', serif; }
+        html[lang="ar"] .psalm-text { font-family: 'Amiri', serif; }
+        html[lang="en"] .psalm-text { font-family: 'Cinzel', serif; }
+
+        /* אנימציות */
+        @keyframes fireGlow {
+            0% { text-shadow: 0 0 10px var(--fire-orange), 0 0 20px var(--fire-red); }
+            50% { text-shadow: 0 0 20px var(--gold), 0 0 30px var(--fire-orange), 0 0 40px var(--glow-blue); }
+            100% { text-shadow: 0 0 10px var(--fire-orange), 0 0 20px var(--fire-red); }
+        }
+
+        @keyframes pulseHero {
+            0% { transform: scale(1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+            50% { transform: scale(1.02); box-shadow: 0 0 60px rgba(212, 175, 55, 0.8), 0 0 100px rgba(0, 191, 255, 0.5); }
+            100% { transform: scale(1); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+
+        @keyframes scrollBanner {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        @keyframes scrollVertical {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+
+        @keyframes highlightPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.8); }
+            70% { box-shadow: 0 0 0 30px rgba(255, 69, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
+        }
+
+        /* כותרת עליונה */
+        header {
+            position: relative;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(180deg, rgba(11,26,48,0.98) 0%, rgba(11,26,48,0.85) 100%);
+            color: #fff;
+            border-bottom: 3px solid var(--gold);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-title { display: flex; align-items: center; gap: 15px; }
+        .logo-title img { height: 60px; border-radius: 10px; border: 2px solid var(--gold); }
+        .logo-title h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(to bottom, var(--gold-light), var(--fire-orange), var(--fire-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fireGlow 3s infinite alternate;
+            letter-spacing: 1px;
+        }
+
+        .clock-container, .lang-switch {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--gold);
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 0 10px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .lang-switch button:hover { color: var(--gold); text-shadow: 0 0 10px var(--gold); }
+        .lang-switch button.active {
+            color: var(--fire-orange);
+            font-weight: bold;
+            border-bottom: 2px solid var(--fire-orange);
+        }
+
+        /* באנרים רוחביים */
+        .banner-container {
+            overflow: hidden;
+            background: linear-gradient(90deg, var(--dark-blue), #1a365d, var(--dark-blue));
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding: 12px 0;
+            position: relative;
+            cursor: pointer;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            transition: all 0.3s;
+        }
+
+        .banner-content {
+            white-space: nowrap;
+            display: inline-block;
+            animation: scrollBanner 25s linear infinite;
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            font-weight: bold;
+            text-shadow: 0 0 5px var(--gold);
+            padding-right: 100%;
+        }
+
+        .banner-container:hover {
+            background: linear-gradient(90deg, var(--fire-red), var(--gold), var(--fire-orange));
+            box-shadow: 0 0 30px var(--fire-orange), inset 0 0 30px var(--gold);
+        }
+        .banner-container:hover .banner-content {
+            animation-play-state: paused;
+            color: #fff;
+            text-shadow: 2px 2px 5px var(--dark-blue);
+            font-size: 1.5rem;
+        }
+
+        /* באנר אורכי */
+        .vertical-banner {
+            position: fixed;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 300px;
+            background: linear-gradient(180deg, var(--dark-blue), #1a365d, var(--dark-blue));
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            overflow: hidden;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        html[dir="rtl"] .vertical-banner { left: auto; right: 10px; }
+        .vertical-banner:hover {
+            background: linear-gradient(180deg, var(--fire-red), var(--gold), var(--fire-orange));
+            box-shadow: 0 0 20px var(--fire-orange);
+            transform: translateY(-50%) scale(1.05);
+        }
+        .vertical-banner .v-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: var(--gold-light);
+            font-weight: bold;
+            font-size: 1rem;
+            animation: scrollVertical 15s linear infinite;
+            white-space: nowrap;
+        }
+        .vertical-banner:hover .v-text { animation-play-state: paused; color: #fff; }
+
+        /* אזור תוכן ראשי */
+        .main-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-image { text-align: center; margin-bottom: 40px; }
+        .hero-image img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid var(--gold);
+            animation: pulseHero 4s infinite ease-in-out;
+        }
+
+        /* לשוניות */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            padding: 12px 35px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: rgba(11,26,48,0.95);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: linear-gradient(45deg, var(--fire-red), var(--fire-orange));
+            color: #fff;
+            box-shadow: 0 0 20px var(--fire-orange);
+            border-color: var(--fire-orange);
+            transform: translateY(-3px);
+        }
+
+        .lang-section { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .lang-section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* כרטיסיות תוכן */
+        .content-card {
+            background: var(--box-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--gold), var(--fire-orange), var(--glow-blue), var(--gold));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .content-card h2 {
+            color: var(--dark-blue);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .content-card p { font-size: 1.15rem; margin-bottom: 15px; text-align: justify; }
+
+        /* עיצוב תמונות צפות */
+        .image-float-right {
+            float: right; margin: 0 0 20px 30px; max-width: 280px;
+            border-radius: 15px; border: 3px solid var(--gold);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s;
+            cursor: pointer;
+        }
+        .image-float-left {
+            float: left; margin: 0 30px 20px 0; max-width: 280px;
+            border-radius: 15px; border: 3px solid var(--glow-blue);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s;
+        }
+        .image-float-right:hover, .image-float-left:hover {
+            transform: scale(1.05); box-shadow: 0 0 30px var(--fire-orange);
+        }
+        .clearfix::after { content: ""; clear: both; display: table; }
+
+        /* תהילים */
+        .psalm {
+            margin-bottom: 25px;
+            padding: 25px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 12px;
+            border-right: 6px solid var(--fire-orange);
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        html[dir="ltr"] .psalm { border-right: none; border-left: 6px solid var(--fire-orange); }
+        .psalm:hover {
+            background: #fff;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+            transform: translateX(-5px);
+        }
+        html[dir="ltr"] .psalm:hover { transform: translateX(5px); }
+        .psalm h3 { color: var(--fire-red); font-size: 1.7rem; margin-bottom: 15px; }
+        .psalm p { font-size: 1.3rem; line-height: 1.8; color: #222; }
+
+        /* גלריית ספרים */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .books-grid img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 2px solid var(--gold);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .books-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        /* תיבת תרומות */
+        .donation-highlight {
+            background: linear-gradient(135deg, rgba(11,26,48,0.98), rgba(26,54,93,0.98));
+            color: #fff;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        .donation-highlight h2 {
+            color: var(--gold);
+            border-bottom: 2px solid var(--fire-orange);
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .donation-highlight p { font-size: 1.4rem; margin: 10px 0; color: #eee; }
+        .donation-highlight strong { color: var(--fire-orange); font-size: 1.6rem; }
+        
+        .highlight-pulse {
+            animation: highlightPulse 2s infinite;
+            border-color: var(--fire-orange) !important;
+        }
+
+        /* סרגל צדדי - מונה ותרומות */
+        .sidebar {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        html[dir="rtl"] .sidebar { left: auto; right: 20px; }
+
+        .counter-box, .donation-box {
+            background: linear-gradient(135deg, rgba(11,26,48,0.95), rgba(26,54,93,0.95));
+            color: var(--gold-light);
+            padding: 15px 20px;
+            border-radius: 15px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px var(--glow-blue);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            min-width: 200px;
+        }
+        .counter-box h4, .donation-box h4 {
+            color: #fff; margin-bottom: 8px; font-size: 1rem; text-shadow: 0 0 5px var(--fire-orange);
+        }
+        .counter-number {
+            font-size: 1.8rem; font-weight: 900; color: var(--fire-orange);
+            text-shadow: 0 0 10px var(--gold); font-family: monospace;
+        }
+        .donation-box p { font-size: 0.85rem; margin: 4px 0; font-family: 'Heebo', sans-serif; direction: rtl; }
+        .donation-box strong { color: var(--glow-blue); }
+
+        .copy-btn {
+            background: var(--gold); color: var(--dark-blue);
+            border: none; padding: 5px 10px; border-radius: 5px;
+            cursor: pointer; font-weight: bold; margin-top: 8px;
+            font-family: 'Heebo', sans-serif; transition: 0.2s;
+            width: 100%;
+        }
+        .copy-btn:hover { background: var(--fire-orange); color: #fff; }
+
+        /* כפתור חזרה למעלה */
+        #scrollTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 20px;
+            z-index: 999; font-size: 1.5rem; border: none; outline: none;
+            background: linear-gradient(135deg, var(--gold), var(--fire-orange));
+            color: white; cursor: pointer; padding: 12px 18px; border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: 0.3s;
+        }
+        html[dir="rtl"] #scrollTopBtn { right: auto; left: 20px; }
+        #scrollTopBtn:hover { background: var(--fire-red); transform: scale(1.1); }
+
+        /* כפתור מוזיקה צף */
+        .floating-music {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--gold), var(--fire-orange));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .floating-music:hover { transform: translateX(-50%) scale(1.1); background: var(--fire-red); }
+
+        /* פוטר */
+        footer {
+            background: var(--dark-blue); color: #aaa; text-align: center;
+            padding: 25px; border-top: 2px solid var(--gold); margin-top: 50px; font-size: 0.9rem;
+        }
+
+        /* התראת העתקה */
+        #copy-alert {
+            display: none; position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--fire-red), var(--dark-blue));
+            color: #fff; padding: 25px 40px; border-radius: 15px;
+            border: 3px solid var(--gold); box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            z-index: 9999; text-align: center; font-size: 1.3rem; font-weight: bold;
+        }
+
+        /* רספונסיביות */
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            .logo-title h1 { font-size: 2rem; }
+            .tabs { flex-direction: row; flex-wrap: wrap; }
+            .tab-btn { padding: 10px 15px; font-size: 1rem; flex: 1; }
+            
+            .sidebar {
+                position: fixed; bottom: 0; left: 0; right: 0; width: 100%;
+                flex-direction: row; justify-content: space-around;
+                gap: 5px; padding: 10px; background: rgba(11,26,48,0.95);
+                border-top: 2px solid var(--gold); margin: 0; box-sizing: border-box;
+            }
+            html[dir="rtl"] .sidebar { right: 0; }
+            .counter-box, .donation-box {
+                border: none; box-shadow: none; background: transparent; padding: 5px; min-width: 0; flex: 1;
+            }
+            .counter-box h4, .donation-box h4 { font-size: 0.8rem; margin-bottom: 2px; }
+            .counter-number { font-size: 1.2rem; }
+            .donation-box p { font-size: 0.7rem; margin: 2px 0; }
+            .copy-btn { padding: 3px; font-size: 0.7rem; }
+            
+            #scrollTopBtn { bottom: 90px; }
+            html[dir="rtl"] #scrollTopBtn { left: 15px; }
+            .floating-music { bottom: 90px; left: 15px; transform: none; }
+            html[dir="ltr"] .floating-music { left: auto; right: 15px; }
+            html[dir="rtl"] .floating-music { right: auto; left: 15px; }
+            
+            .image-float-right, .image-float-left { float: none; margin: 0 auto 20px; display: block; max-width: 100%; }
+            .content-card { padding: 20px; }
+            .psalm p { font-size: 1.1rem; }
+            .vertical-banner { display: none; }
+        }
+
+        /* עיצוב להדפסה */
+        @media print {
+            header, .banner-container, .tabs, .sidebar, #scrollTopBtn, footer, .hero-image, .image-float-right, .image-float-left, .floating-music, .vertical-banner {
+                display: none !important;
+            }
+            body { background: #fff; color: #000; }
+            .content-card { box-shadow: none; border: none; padding: 0; background: transparent; }
+            .psalm { border: 1px solid #ccc; page-break-inside: avoid; background: transparent; }
+            .psalm h3 { color: #000; }
+            .psalm p { color: #000; font-size: 14pt; }
+            .lang-section { display: none; }
+            .lang-section.active { display: block; }
         }
     </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
 
-    <div class="wrapper">
-        <header>
-            <div class="live-clock" id="live-clock">טוען שעון ירושלים...</div>
-            <h1 id="site-title">התיקון הכללי</h1>
-            <p class="subtitle" id="site-subtitle">רבי נחמן מברסלב • التصحيح الكلّي • The Complete Remedy</p>
-            
-            <!-- תצוגה ברורה של התמונות שהעלית -->
-            <div class="img-gallery">
-                <div class="img-card"><img src="39946d97-744c-49dc-88af-c02024f61947.jfif" alt="ניצחתי ואנצח"></div>
-                <div class="img-card"><img src="Screenshot_2021-11-17-17-41-22-1.png" alt="רבי נחמן מאומן"></div>
-                <div class="img-card"><img src="_b0ebc362-277e-44fa-87c3-565597a9c6ca.jpg" alt="טבע ואור"></div>
-            </div>
+    <div id="copy-alert">⚠️ תוכן זה מוגן בזכויות יוצרים. אין להעתיק או לשכפל!</div>
+    
+    <button onclick="scrollToTop()" id="scrollTopBtn" title="חזרה למעלה">▲</button>
+    <button id="music-btn" class="floating-music" onclick="toggleMusic()" title="הפעל/השתק מוזיקה">🔇</button>
+    <div id="yt-player" style="display:none;"></div>
 
-            <div class="lang-switch">
-                <button class="lang-btn" onclick="switchLang('he')">עברית</button>
-                <button class="lang-btn" onclick="switchLang('en')">English</button>
-                <button class="lang-btn" onclick="switchLang('ar')">العربية</button>
-            </div>
-        </header>
-
-        <!-- ================= עברית ================= -->
-        <div id="lang-he" class="content-section active" dir="rtl">
-            <div class="card">
-                <h2>מהו ה׳תיקון הכללי׳</h2>
-                <p>התיקון הכללי הוא סדר של עשרה מזמורי תהילים – טז, לב, מא, מב, נט, עז, צ, קה, קלז וקנ – שגילה רבי נחמן מברסלב בשנת תקס״ה (1805), והורה לאומרם ברצף.</p>
-                <p>רבי נחמן לימד שעשרת המזמורים הללו הם כנגד עשרה מיני הנגינה שבהם נאמר ספר תהילים, והם ׳תיקון כללי׳ – תיקון כולל לכל החטאים, ובמיוחד לפגם הברית, שהוא שורש הכול לפי תורתו. גם מי שאינו מבין את פירוש המילים יכול לומר אותם בפשטות ובלב שלם.</p>
-                <p>מסורת חסידי ברסלב מוסרת שרבי נחמן הבטיח לפעול לטובת מי שיבוא לציונו באומן, יאמר את עשרת המזמורים ויתן פרוטה לצדקה. כיום נוהגים רבים לאומרם בכל מקום ובכל עת, בבקשה לתשובה, לטהרה ולשמחה.</p>
-
-                <h2>מי היה רבי נחמן מאומן</h2>
-                <p>רבי נחמן מברסלב (רבי נחמן מאומן; 1772–1810) נולד במז׳יבוז׳, עיר הבעל שם טוב, והיה נינו של הבעל שם טוב, מייסד החסידות. כבר בצעירותו נודע בעומק לימודו ובעבודתו הרוחנית, והחל לקבץ סביבו תלמידים.</p>
-                <p>בשנת 1798 יצא לארץ ישראל, ביקר בחיפה, בטבריה ובצפת ושב לאוקראינה. הוא התיישב בזלטופול, ובשנת 1802 בברסלב, ממנה נקראת חסידותו. תורותיו נרשמו בידי תלמידו הנאמן רבי נתן מנמירוב ונדפסו ב׳ליקוטי מוהר״ן׳, ב׳סיפורי מעשיות׳, ב׳ספר המידות׳ וב׳שיחות הר״ן׳.</p>
-                <p>בשנת 1810 עבר לאומן, ובי״ח בתשרי תקע״א (אוקטובר 1810), בגיל 38, נפטר מחולי השחפת ונקבר שם. עיקרי תורתו: האמונה, השמחה, ההתבודדות – שיחה אישית עם הבורא – והעצה שאין שום ייאוש בעולם. מדי ראש השנה מגיעים אלפי חסידים לציונו באומן.</p>
-
-                <h2>פדיון נפש (נוסח קצר)</h2>
-                <p>לפני תיקון הכללי טוב לעשות פדיון נפש. כדי לעשות פדיון צריך לקחת כסף לצדקה – ולפחות 2 פרוטות – ביד (להרים אותו) ולומר לאחר מכן:</p>
-                <p>הריני מקשר עצמי לכל הצדיקים האמיתיים שבדורנו ולכל הצדיקים האמיתיים שוכני עפר ובפרט לרבנו הקדוש צדיק יסוד עולם נחל נובע מקור חכמה רבנו נחמן בן פייגא זיע”א, ופדיון זה הוא על דעתו ודעתי כדעתו ופי כפיו.</p>
-
-                <h2>נוסח לפני אמירת התיקון הכללי</h2>
-                <p>לְכוּ נְרַנְּנָה לַיהוָה נָרִיעָה לְצוּר יִשְׁעֵנוּ: נְקַדְּמָה פָנָיו בְּתוֹדָה בִּזְמִרוֹת נָרִיעַ לוֹ: כִּי אֵל גָּדוֹל יְהוָה וּמֶלֶךְ גָּדוֹל עַל כָּל אֱלֹהִים:</p>
-                <p>הריני מזמן את פי להודות וּלְהלל וּלְשבח את בוראי. לְשֵׁם יִחוּד קוּדְשָא בְּרִיךְ הוּא וּשְכִינְתֵּהּ בִּדְחִילוּ וּרְחִימוּ על ידי ההוא טמיר ונעלם בשם כל ישראל.</p>
-
-                <!-- עשרת פרקי התהילים המלאים -->
-                <div class="psalm-box"><div class="psalm-title">תהילים טז</div><div class="psalm-text">(1) מִכְתָּ֥ם לְדָוִ֑ד שׇֽׁמְרֵ֥נִי אֵ֝֗ל כִּֽי־חָסִ֥יתִי בָֽךְ׃ (2) אָמַ֣רְתְּ לַ֭יהֹוָה אֲדֹנָ֣י אָ֑תָּה ט֝וֹבָתִ֗י בַּל־עָלֶֽיךָ׃ (3) לִ֭קְדוֹשִׁים אֲשֶׁר־בָּאָ֣רֶץ הֵ֑מָּה וְ֝אַדִּירֵ֗י כׇּל־חֶפְצִי־בָֽם׃ (4) יִרְבּ֥וּ עַצְּבוֹתָם֮ אַחֵ֢ר מָ֫הָ֥רוּ בַּל־אַסִּ֣יךְ נִסְכֵּיהֶ֣ם מִדָּ֑ם וּֽבַל־אֶשָּׂ֥א אֶת־שְׁ֝מוֹתָ֗ם עַל־שְׂפָתָֽי׃ (5) יְֽהֹוָ֗ה מְנָת־חֶלְקִ֥י וְכוֹסִ֑י אַ֝תָּ֗ה תּוֹמִ֥יךְ גּוֹרָלִֽי׃ (6) חֲבָלִ֣ים נָֽפְלוּ־לִ֭י בַּנְּעִמִ֑ים אַף־נַ֝חֲלָ֗ת שָֽׁפְרָ֥ה עָלָֽי׃ (7) אֲבָרֵ֗ךְ אֶת־יְ֭הֹוָה אֲשֶׁ֣ר יְעָצָ֑נִי אַף־לֵ֝יל֗וֹת יִסְּר֥וּנִי כִלְיוֹתָֽי׃ (8) שִׁוִּ֬יתִי יְהֹוָ֣ה לְנֶגְדִּ֣י תָמִ֑יד כִּ֥י מִֽ֝ימִינִ֗י בַּל־אֶמּֽוֹט׃ (9) לָכֵ֤ן ׀ שָׂמַ֣ח לִ֭בִּי וַיָּ֣גֶל כְּבוֹדִ֑י אַף־בְּ֝שָׂרִ֗י יִשְׁכֹּ֥ן לָבֶֽטַח׃ (10) כִּ֤י ׀ לֹא־תַעֲזֹ֣ב נַפְשִׁ֣י לִשְׁא֑וֹל לֹֽא־תִתֵּ֥ן חֲ֝סִידְךָ֗ לִרְא֥וֹת שָֽׁחַת׃ (11) תּֽוֹדִיעֵנִי֮ אֹ֤רַח חַ֫יִּ֥ים שֹׂ֣בַע שְׂ֭מָחוֹת אֶת־פָּנֶ֑יךָ נְעִמ֖וֹת בִּימִינְךָ֣ נֶֽצַח׃</div></div>
-                <div class="psalm-box"><div class="psalm-title">תהילים לב</div><div class="psalm-text">(1) לְדָוִ֗ד מַ֫שְׂכִּ֥יל אַשְׁרֵ֥י נְֽשׂוּי־פֶּ֗שַׁע כְּס֣וּי חֲטָאָֽה׃ (2) אַ֥שְֽׁרֵי־אָדָ֗ם לֹ֤א יַחְשֹׁ֬ב יְהֹוָ֣ה ל֣וֹ עָוֺ֑ן וְאֵ֖ין בְּרוּח֣וֹ רְמִיָּֽה׃ (3) כִּֽי־הֶ֭חֱרַשְׁתִּי בָּל֣וּ עֲצָמָ֑י בְּ֝שַׁאֲגָתִ֗י כׇּל־הַיּֽוֹם׃ (4) כִּ֤י ׀ יוֹמָ֣ם וָלַיְלָה֮ תִּכְבַּ֥ד עָלַ֗י יָ֫דֶ֥ךָ נֶהְפַּ֥ךְ לְשַׁדִּ֑י בְּחַרְבֹ֖נֵי קַ֣יִץ סֶֽלָה׃ (5) חַטָּאתִ֨י אוֹדִ֪יעֲךָ֡ וַעֲ֘וֺנִ֤י לֹֽא־כִסִּ֗יתִי אָמַ֗רְתִּי אוֹדֶ֤ה עֲלֵ֣י פְ֭שָׁעַי לַיהֹוָ֑ה וְאַתָּ֨ה נָ֘שָׂ֤אתָ עֲוֺ֖ן חַטָּאתִ֣י סֶֽלָה׃ (6) עַל־זֹ֡את יִתְפַּלֵּ֬ל כׇּל־חָסִ֨יד ׀ אֵלֶיךָ֮ לְעֵ֢ת מְ֫צֹ֥א רַ֗ק לְ֭שֵׁטֶף מַ֣יִם רַבִּ֑ים אֵ֝לָ֗יו לֹ֣א יַגִּֽיעוּ׃ (7) אַתָּ֤ה ׀ סֵ֥תֶר לִי֮ מִצַּ֢ר תִּ֫צְּרֵ֥נִי רׇנֵּ֥י פַלֵּ֑ט תְּס֖וֹבְבֵ֣נִי סֶֽלָה׃ (8) אַשְׂכִּֽילְךָ֨ ׀ וְֽאוֹרְךָ֗ בְּדֶֽרֶךְ־ז֥וּ תֵלֵ֑ךְ אִיעֲצָ֖ה עָלֶ֣יךָ עֵינִֽי׃ (9) אַל־תִּהְי֤וּ ׀ כְּס֥וּס כְּפֶרֶד֮ אֵ֤ין הָ֫בִ֥ין בְּמֶתֶג־וָרֶ֣סֶן עֶדְי֣וֹ לִבְלֹ֑ם בַּ֝֗ל קְרֹ֣ב אֵלֶֽיךָ׃ (10) רַבִּ֥ים מַכְאוֹבִ֗ים לָ֫רָשָׁ֥ע וְהַבּוֹטֵ֥חַ בַּֽיהֹוָ֑ה חֶ֝֗סֶד יְסוֹבְבֶֽנּוּ׃ (11) שִׂמְח֬וּ בַיהֹוָ֣ה וְ֭גִילוּ צַדִּיקִ֑ים וְ֝הַרְנִ֗ינוּ כׇּל־יִשְׁרֵי־לֵֽב׃</div></div>
-                <div class="psalm-box"><div class="psalm-title">תהילים מא</div><div class="psalm-text">(1) לַמְנַצֵּ֗חַ מִזְמ֥וֹר לְדָוִֽד׃ (2) אַ֭שְׁרֵי מַשְׂכִּ֣יל אֶל־דָּ֑ל בְּי֥וֹם רָ֝עָ֗ה יְֽמַלְּטֵ֥הוּ יְהֹוָֽה׃ (3) יְהֹוָ֤ה ׀ יִשְׁמְרֵ֣הוּ וִ֭יחַיֵּהוּ וְאֻשַּׁ֣ר בָּאָ֑רֶץ וְאַֽל־תִּ֝תְּנֵ֗הוּ בְּנֶ֣פֶשׁ אֹיְבָֽיו׃ (4) יְֽהֹוָ֗ה יִ֭סְעָדֶנּוּ עַל־עֶ֣רֶשׂ דְּוָ֑י כׇּל־מִ֝שְׁכָּב֗וֹ הָפַ֥כְתָּ בְחׇלְיֽוֹ׃ (5) אֲֽנִי־אָ֭מַרְתִּי יְהֹוָ֣ה חׇנֵּ֑נִי רְפָאָ֥ה נַ֝פְשִׁ֗י כִּי־חָטָ֥אתִי לָֽךְ׃ (6) אוֹיְבַ֗י יֹאמְר֣וּ רַ֣ע לִ֑י מָתַ֥י יָ֝מ֗וּת וְאָבַ֥ד שְׁמֽוֹ׃ (7) וְאִם־בָּ֤א לִרְא֨וֹת ׀ שָׁ֤וְא יְדַבֵּ֗ר לִבּ֗וֹ יִקְבׇּץ־אָ֥וֶן ל֑וֹ יֵצֵ֖א לַח֣וּץ יְדַבֵּֽר׃ (8) יַ֗חַד עָלַ֣י יִ֭תְלַחֲשׁוּ כׇּל־שֹׂנְאָ֑י עָלַ֓י ׀ יַחְשְׁב֖וּ רָעָ֣ה לִֽי׃ (9) דְּֽבַר־בְּ֭לִיַּעַל יָצ֣וּק בּ֑וֹ וַאֲשֶׁ֥ר שָׁ֝כַ֗ב לֹא־יוֹסִ֥יף לָקֽוּם׃ (10) גַּם־אִ֤ישׁ שְׁלוֹמִ֨י ׀ אֲשֶׁר־בָּטַ֣חְתִּי ב֭וֹ אוֹכֵ֣ל לַחְמִ֑י הִגְדִּ֖יל עָלַ֣י עָקֵֽב׃ (11) וְאַתָּ֤ה יְהֹוָ֗ה חׇנֵּ֥נִי וַהֲקִימֵ֑נִי וַאֲשַׁלְּמָ֥ה לָהֶֽם׃ (12) בְּזֹ֣את יָ֭דַעְתִּי כִּֽי־חָפַ֣צְתָּ בִּ֑י כִּ֤י לֹֽא־יָרִ֖יעַ אֹיְבִ֣י עָלַֽי׃ (13) וַאֲנִ֗י בְּ֭תֻמִּי תֳָּמַ֣כְתָּ בִּ֑י וַתַּצִּיבֵ֖נִי לְפָנֶ֣יךָ לְעוֹלָֽם׃ (14) בָּ֘ר֤וּךְ יְהֹוָ֨ה ׀ אֱלֹ֘הֵ֤י יִשְׂרָאֵ֗ל מֵ֭הָעוֹלָם וְעַ֥ד הָעוֹלָ֗ם אָ֘מֵ֥ן ׀ וְאָמֵֽן׃</div></div>
-                <div class="psalm-box"><div class="psalm-title">תהילים מב</div><div class="psalm-text">(1) לַמְנַצֵּ֗חַ מַשְׂכִּ֥יל לִבְנֵי־קֹֽרַח׃ (2) כְּאַיָּ֗ל תַּעֲרֹ֥ג עַל־אֲפִֽיקֵי־מָ֑יִם כֵּ֤ן נַפְשִׁ֨י תַעֲרֹ֖ג אֵלֶ֣יךָ אֱלֹהִֽים׃ (3) צָמְאָ֬ה נַפְשִׁ֨י ׀ לֵאלֹהִים֮ לְאֵ֢ל חָ֥֫י מָתַ֥י אָב֑וֹא וְ֝אֵרָאֶ֗ה פְּנֵ֣י אֱלֹהִֽים׃ (4) הָֽיְתָה־לִּ֬י דִמְעָתִ֣י לֶ֭חֶם יוֹמָ֣ם וָלָ֑יְלָה בֶּאֱמֹ֥ר אֵלַ֥י כׇּל־הַ֝יּ֗וֹם אַיֵּ֥ה אֱלֹהֶֽיךָ׃ (5) אֵ֤לֶּה אֶזְכְּרָ֨ה ׀ וְאֶשְׁפְּכָ֬ה עָלַ֨י ׀ נַפְשִׁ֗י כִּ֤י אֶעֱבֹ֨ר ׀ בַּסָּךְ֮ אֶדַּדֵּ֗ם עַד־בֵּ֥ית־אֱלֹ֫הִ֥ים בְּקוֹל־רִנָּ֥ה וְתוֹדָ֗ה הָמ֥וֹן חוֹגֵֽג׃ (6) מַה־תִּשְׁתּ֬וֹחֲחִ֨י ׀ נַפְשִׁי֮ וַתֶּהֱמִ֢י עָ֫לָ֥י הוֹחִ֣ילִי לֵ֭אלֹהִים כִּי־ע֥וֹד אוֹדֶ֗נּוּ יְשׁוּע֥וֹת פָּנָֽיו׃ (7) אֱֽלֹהַ֗י עָלַי֮ נַפְשִׁ֢י תִשְׁתּ֫וֹחָ֥ח עַל־כֵּ֗ן אֶ֭זְכׇּרְךָ מֵאֶ֣רֶץ יַרְדֵּ֑ן וְ֝חֶרְמוֹנִ֗ים מֵהַ֥ר מִצְעָֽר׃ (8) תְּהוֹם־אֶל־תְּה֣וֹם ק֭וֹרֵא לְק֣וֹל צִנּוֹרֶיךָ֮ כׇּֽל־מִשְׁבָּרֶ֥יךָ וְ֝גַלֶּ֗יךָ עָלַ֥י עָבָֽרוּ׃ (9) יוֹמָ֤ם ׀ יְצַוֶּ֬ה יְהֹוָ֨ה ׀ חַסְדּ֗וֹ וּ֭בַלַּיְלָה שִׁירֹ֣ה עִמִּ֑י תְּ֝פִלָּ֗ה לְאֵ֣ל חַיָּֽי׃ (10) אוֹמְרָ֤ה ׀ לְאֵ֥ל סַלְעִי֮ לָמָ֢ה שְׁכַ֫חְתָּ֥נִי לָֽמָּה־קֹדֵ֥ר אֵלֵ֗ךְ בְּלַ֣חַץ אוֹיֵֽב׃ (11) בְּרֶ֤צַח ׀ בְּֽעַצְמוֹתַ֗י חֵרְפ֥וּנִי צוֹרְרָ֑י בְּאׇמְרָ֥ם אֵלַ֥י כׇּל־הַ֝יּ֗וֹם אַיֵּ֥ה אֱלֹהֶֽיךָ׃ (12) מַה־תִּשְׁתּ֬וֹחֲחִ֨י ׀ נַפְשִׁי֮ וּֽמַה־תֶּהֱמִ֢י עָ֫לָ֥י הוֹחִ֣ילִי לֵ֭אלֹהִים כִּי־ע֥וֹד אוֹדֶ֑נּוּ יְשׁוּעֹ֥ת פָּ֝נַ֗י וֵאלֹהָֽי׃</div></div>
-                <div class="psalm-box"><div class="psalm-title">תהילים נט</div><div class="psalm-text">(1) לַמְנַצֵּ֣חַ אַל־תַּשְׁחֵת֮ لְדָוִ֢ד מִ֫כְתָּ֥ם בִּשְׁלֹ֥חַ שָׁא֑וּל וַֽיִּשְׁמְר֥וּ אֶת־הַ֝בַּ֗יִת לַהֲמִיתֽוֹ׃ (2) הַצִּילֵ֖נִי מֵאֹיְבַ֥י ׀ אֱלֹהָ֑י מִֽמִּתְקוֹמְמַ֥י תְּשַׂגְּבֵֽנִי׃ (3) הַ֭צִּילֵנִי מִפֹּ֣עֲלֵי אָ֑וֶן וּֽמֵאַנְשֵׁ֥י דָ֝מִ֗ים הוֹשִׁיעֵֽנִי׃ (4) כִּ֤י הִנֵּ֪ה אָרְב֡וּ לְנַפְשִׁ֗י יָג֣וּרוּ עָלַ֣י עַזִּ֑ים לֹֽא־פִשְׁעִ֖י וְלֹא־חַטָּאתִ֣י יְהֹוָֽה׃ (5) בְּֽלִי־עָ֭וֺן יְרֻצ֣וּן וְיִכּוֹנָ֑נוּ ע֖וּרָה לִקְרָאתִ֣י וּרְאֵֽה׃ (6) וְאַתָּ֤ה יְהֹוָֽה־אֱלֹהִ֥ים ׀ צְבָא֡וֹת אֱלֹ֘הֵ֤י יִשְׂרָאֵ֗ל הָקִ֗יצָה לִפְקֹ֥ד כׇּֽל־הַגּוֹיִ֑ם אַל־תָּחֹ֨ן כׇּל־בֹּ֖גְדֵי אָ֣וֶן סֶֽלָה׃ (7) יָשׁ֣וּבוּ לָ֭עֶרֶב יֶהֱמ֥וּ כַכָּ֗לֶב וִיס֥וֹבְבוּ עִֽיר׃ (8) הִנֵּ֤ה ׀ יַבִּ֘יע֤וּן בְּפִיהֶ֗ם חֲ֭רָבוֹת בְּשִׂפְתֽוֹתֵיהֶ֑ם כִּי־מִ֥י שֹׁמֵֽעַ׃ (9) וְאַתָּ֤ה יְ֭הֹוָה תִּשְׁחַק־לָ֑מוֹ תִּ֝לְעַ֗ג לְכׇל־גּוֹיִֽם׃ (10) עֻ֭זּוֹ אֵלֶ֣יךָ אֶשְׁמֹ֑רָה כִּֽי־אֱ֝לֹהִ֗ים מִשְׂגַּבִּֽי׃ (11) אֱלֹהֵ֣י חַסְדִּ֣י יְקַדְּמֵ֑נִי אֱ֝לֹהִ֗ים יַרְאֵ֥נִי בְשֹׁרְרָֽי׃ (12) אַל־תַּהַרְגֵ֤ם ׀ פֶּֽן־יִשְׁכְּח֬וּ עַמִּ֗י הֲנִיעֵ֣מוֹ בְ֭חֵילְךָ וְהוֹרִידֵ֑מוֹ מָ֖גִנֵּ֣נוּ אֲדֹנָֽי׃ (13) חַטַּאת־פִּ֗ימוֹ דְּֽבַר־שְׂפָ֫תֵימוֹ֮ וְיִלָּכְד֥וּ בִגְאוֹנָ֑ם וּמֵאָלָ֖ה וּמִכַּ֣חַשׁ יְסַפֵּֽרוּ׃ (14) כַּלֵּ֥ה בְחֵמָה֮ כַּלֵּ֢ה וְֽאֵ֫ינֵ֥מוֹ וְֽיֵדְע֗וּ כִּֽי־אֱ֭לֹהִים מֹשֵׁ֣ל בְּֽיַעֲקֹ֑ב לְאַפְסֵ֖י הָאָ֥רֶץ סֶֽלָה׃ (15) וְיָשֻׁ֣בוּ לָ֭עֶרֶב יֶהֱמ֥וּ כַכָּ֗לֶב וִיס֥וֹבְבוּ עִֽיר׃ (16) הֵ֭מָּה יְנִיע֣וּן לֶאֱכֹ֑ל אִם־לֹ֥א יִ֝שְׂבְּע֗וּ וַיָּלִֽינוּ׃ (17) וַאֲנִ֤י ׀ אָשִׁ֣יר עֻזֶּךָ֮ וַאֲרַנֵּ֥ן לַבֹּ֗קֶר חַ֫סְדֶּ֥ךָ כִּֽי־הָיִ֣יתָ מִשְׂגָּ֣ב לִ֑י וּ֝מָנ֗וֹס בְּי֣וֹם צַר־לִֽי׃ (18) עֻ֭זִּי אֵלֶ֣יךָ אֲזַמֵּ֑רָה כִּֽי־אֱלֹהִ֥ים מִ֝שְׂגַּבִּ֗י אֱלֹהֵ֥י חַסְדִּֽי׃</div></div>
-                <div class="psalm-box"><div class="psalm-title">תהילים עז</div><div class="psalm-text">(1) לַמְנַצֵּ֥חַ עַל־יְדוּת֞וּן לְאָסָ֥ף מִזְמֽוֹר׃ (2) קוֹלִ֣י אֶל־אֱלֹהִ֣ים וְאֶצְעָ֑קָה קוֹלִ֥י אֶל־אֱ֝לֹהִ֗ים וְהַאֲזִ֥ין אֵלָֽי׃ (3) בְּي֥וֹם צָרָתִי֮ אֲדֹנָ֢י דָּ֫רָ֥שְׁתִּי יָדִ֤י ׀ לַ֣יְלָה נִ֭גְּרָה וְלֹ֣א תָפ֑וּג מֵאֲנָ֖ה הִנָּחֵ֣ם נַפְשִֽׁי׃ (4) אֶזְכְּרָ֣ה אֱלֹהִ֣ים וְאֶהֱמָ֑יָה אָשִׂ֓יחָה ׀ וְתִתְעַטֵּ֖ף רוּחִ֣י סֶֽלָה׃ (5) אָ֭חַזְתָּ שְׁמֻר֣וֹת עֵינָ֑י נִ֝פְעַ֗מְתִּי וְלֹ֣א אֲדַבֵּֽר׃ (6) חִשַּׁ֣בְתִּי יָמִ֣ים מִקֶּ֑דֶם שְׁ֝נ֗וֹת עוֹלָמִֽים׃ (7) אֶ֥זְכְּרָ֥ה נְגִינָתִ֗י בַּ֫לָּ֥יְלָה עִם־לְבָבִ֥י אָשִׂ֑יחָה וַיְחַפֵּ֥שׂ רוּחִֽי׃ (8) הַֽ֭לְעוֹלָמִים יִזְנַ֥ח ׀ אֲדֹנָ֑י וְלֹא־יֹסִ֖יף לִרְצ֣וֹת עֽוֹד׃ (9) הֶאָפֵ֣ס לָנֶ֣צַח חַסְדּ֑וֹ גָּ֥מַר אֹ֝֗מֶר לְדֹ֣ר וָדֹֽר׃ (10) הֲשָׁכַ֣ח חַנּ֣וֹת אֵ֑ל אִם־קָפַ֥ץ בְּ֝אַפֶּ֗ף רַחֲמָ֥יו סֶֽלָה׃ (11) וָ֭אֹמַר חַלּ֣וֹתִי הִ֑יא שְׁ֝נ֗וֹת יְמִ֣ין עֶלְיֽוֹן׃ (12) אֶזְכּ֥וֹר מַעַלְלֵי־יָ֑הּ כִּֽי־אֶזְכְּרָ֖ה מִקֶּ֣דֶם פִּלְאֶֽךָ׃ (13) וְהָגִ֥יתִי בְכׇל־פׇּעֳלֶ֑ךָ וּֽבַעֲלִ֖ילוֹתֶיךָ אָשִֽׂיחָה׃ (14) אֱ֭לֹהִים בַּקֹּ֣דֶשׁ דַּרְכֶּ֑ךָ מִי־אֵ֥ל גָּ֝ד֗וֹל כֵּאלֹהִֽים׃ (15) אַתָּ֣ה הָ֭אֵל עֹ֣שֵׂה פֶ֑לֶא הוֹדַ֖עְתָּ בָעַמִּ֣ים עֻזֶּֽךָ׃ (16) גָּאַ֣לְתָּ בִּזְר֣וֹעַ עַמֶּ֑ךָ בְּנֵֽי־יַעֲקֹ֖ב וְיוֹסֵ֥ף סֶֽלָה׃ (17) רָ֘א֤וּךָ מַּ֨יִם ׀ אֱֽלֹהִ֗ים רָא֣וּךָ מַּ֣יִם יָחִ֑ילוּ אַ֝֗ף יִרְגְּז֥וּ תְהֹמֽוֹת׃ (18) זֹ֤רְמוּ מַ֨יִם ׀ עָב֗וֹת ק֭וֹל נָתְנ֣וּ שְׁחָקִ֑ים אַף־חֲ֝צָצֶ֗יךָ יִתְהַלָּֽכוּ׃ (19) ק֤וֹל רַעַמְךָ֨ ׀ בַּגַּלְגַּ֗ל הֵאִ֣ירוּ בְרָקִ֣ים תֵּבֵ֑ל רָגְזָ֖ה וַתִּרְעַ֣שׁ הָאָֽרֶץ׃ (20) בַּיָּ֤ם דַּרְכֶּ֗ךָ וּֽ֭שְׁבִילְךָ בְּמַ֣יִם רַבִּ֑ים וְ֝עִקְּבוֹתֶ֗יךָ לֹ֣א נֹדָֽעוּ׃ (21) נָחִ֣יתָ כַצֹּ֣אן עַמֶּ֑ךָ בְּֽיַד־מֹשֶׁ֥ה וְאַהֲרֹֽן׃</div></div>
-                <div class="psalm-box"><div class="psalm-title">תהילים צ</div><div class="psalm-text">(1) תְּפִלָּה֮ לְמֹשֶׁ֢ה אִֽישׁ־הָאֱלֹ֫הִים אֲֽדֹנָ֗י מָע֣וֹן אַ֭תָּה הָיִ֥יתָ לָּ֗נוּ בְּדֹ֣ר וָדֹֽר׃ (2) בְּטֶ֤רֶם ׀ הָ֘רִ֤ים יֻלָּ֗דוּ וַתְּח֣וֹלֵֽל אֶ֣רֶץ וְתֵבֵ֑ל וּֽמֵעוֹלָ֥ם עַד־ע֝וֹלָ֗ם אַתָּ֥ה אֵֽל׃ (3) תָּשֵׁ֣ב אֱ֭נוֹשׁ עַד־דַּכָּ֑א וַ֝תֹּ֗אמֶר שׁ֣וּבוּ בְנֵֽי־אָדָֽם׃ (4) כִּ֤י אֶ֪לֶף שָׁנִ֡ים בְּֽעֵינֶ֗יךָ כְּי֣וֹם אֶ֭תְמוֹל כִּ֣י יַעֲבֹ֑ר וְאַשְׁמוּרָ֥ה בַלָּֽיְלָה׃ (5) זְ֭רַמְתָּם שֵׁנָ֣ה יִהְי֑וּ בַּ֝בֹּ֗קֶר כֶּחָצִ֥יר יַחֲלֹֽף׃ (6) בַּ֭בֹּקֶר יָצִ֣יץ וְחָלָ֑ף לָ֝עֶ֗רֶב יְמוֹלֵ֥ל וְיָבֵֽשׁ׃ (7) כִּי־כָלִ֥ינוּ בְאַפֶּ֑ךָ וּֽבַחֲמָתְךָ֥ נִבְהָֽלְנוּ׃ (8) שַׁתָּ֣ עֲוֺנֹתֵ֣ינוּ לְנֶגְדֶּ֑ךָ עֲ֝לֻמֵ֗נוּ לִמְא֥וֹר פָּנֶֽיךָ׃ (9) כִּ֣י כׇל־יָ֭מֵינוּ פָּנ֣וּ בְעֶבְרָתֶ֑ךָ כִּלִּ֖ינוּ שָׁנֵ֣ינוּ כְמוֹ־הֶֽגֶה׃ (10) יְמֵֽי־שְׁנוֹתֵ֨ינוּ בָהֶ֥ם שִׁבְעִ֪ים שָׁנָ֡ה וְאִ֤ם בִּגְבוּרֹ֨ת ׀ שְׁמ֘וֹנִ֤ים שָׁנָ֗ה וְ֭רׇהְבָּם עָמָ֣ל וָאָ֑וֶן כִּי־גָ֥ז חִ֝֗ישׁ וַנָּעֻֽפָה׃ (11) מִֽי־י֭וֹדֵעַ עֹ֣ז אַפֶּ֑ךָ וּ֝כְיִרְאָתְךָ֗ עֶבְרָתֶֽךָ׃ (12) לִמְנ֣וֹת יָ֭מֵינוּ כֵּ֣ן הוֹדַ֑ע וְ֝נָבִ֗א לְבַ֣ב חׇכְמָֽה׃ (13) שׁוּבָ֣ה יְ֭הֹוָה עַד־מָתָ֑י וְ֝הִנָּחֵ֗ם עַל־עֲבָדֶֽיךָ׃ (14) שַׂבְּעֵ֣נוּ בַבֹּ֣קֶר חַסְדֶּ֑ךָ וּֽנְרַנְּנָ֥ה וְ֝נִשְׂמְחָ֗ה בְּכׇל־יָמֵֽינוּ׃ (15) שַׂ֭מְּחֵנוּ כִּימ֣וֹת עִנִּיתָ֑נוּ שְׁ֝נ֗וֹת רָאִ֥ינוּ רָעָֽה׃ (16) יֵרָאֶ֣ה אֶל־עֲבָדֶ֣יךָ פׇעֳלֶ֑ךָ וַ֝הֲדָרְךָ֗ עַל־בְּנֵיהֶֽם׃ (17) וִיהִ֤י ׀ נֹ֤עַם אֲדֹנָ֥י אֱלֹהֵ֗ינוּ עָ֫לֵ֥ינוּ וּמַעֲשֵׂ֣ה יָ֭דֵינוּ כּוֹנְנָ֥ה עָלֵ֑ינוּ וּֽמַעֲשֵׂ֥ה יָ֝דֵ֗ינוּ כּוֹנְנֵֽהוּ׃</div></div>
-                <div class="psalm-box"><div class="psalm-title">תהילים קה</div><div class="psalm-text">(1) הוֹד֣וּ לַ֭יהֹוָה קִרְא֣וּ בִשְׁמ֑וֹ הוֹדִ֥יעוּ בָ֝עַמִּ֗ים עֲלִילוֹתָֽיו׃ (2) שִֽׁירוּ־l֭וֹ זַמְּרוּ־ל֑וֹ שִׂ֝֗יחוּ בְּכׇל־נִפְלְאוֹתָֽיו׃ (3) הִֽ֭תְהַלְלוּ בְּשֵׁ֣ם קׇדְשׁ֑וֹ יִ֝שְׂמַ֗ח לֵ֤ב ׀ מְבַקְשֵׁ֬י יְהֹוָֽה׃ (4) דִּרְשׁ֣וּ יְהֹוָ֣ה וְעֻזּ֑וֹ בַּקְּשׁ֖וּ פָנָ֣יו תָּמִֽיד׃ (5) זִכְר֗וּ נִפְלְאוֹתָ֥יו אֲשֶׁר־עָשָׂ֑ה מֹ֝פְתָ֗יו וּמִשְׁפְּטֵי־פִֽיו׃ (6) זֶ֭רַע אַבְרָהָ֣ם עַבְדּ֑וֹ בְּנֵ֖י יַעֲקֹ֣ב בְּחִירָֽיו׃ (7) ה֭וּא יְהֹוָ֣ה אֱלֹהֵ֑ינוּ בְּכׇל־הָ֝אָ֗רֶץ מִשְׁפָטָֽיו׃ (8) זָכַ֣ר לְעוֹלָ֣ם בְּרִית֑וֹ דָּבָ֥ר צִ֝וָּ֗ה לְאֶ֣לֶף דּֽוֹר׃ (9) אֲשֶׁ֣ר כָּ֭רַת אֶת־אַבְרָהָ֑ם וּשְׁב֖וּעָת֣וֹ לְיִשְׁחָֽק׃ (10) וַיַּעֲמִידֶ֣הָ לְיַעֲקֹ֣ב לְחֹ֑ק לְ֝יִשְׂרָאֵ֗ל בְּרִ֣ית עוֹלָֽם׃ (11) לֵאמֹ֗ר לְךָ֗ אֶתֵּ֥ן אֶת־אֶֽרֶץ־כְּנָ֑עַן חֶ֝֗בֶל נַחֲלַתְכֶֽם׃ (12) בִּֽ֭הְיוֹתָם מְתֵ֣י מִסְפָּ֑ר כִּ֝מְעַ֗ט וְגָרִ֥ים בָּֽהּ׃ (13) וַ֭יִּֽתְהַלְּכוּ מִגּ֣וֹי אֶל־גּ֑וֹי מִ֝מַּמְלָכָ֗ה אֶל־עַ֥ם אַחֵֽר׃ (14) לֹא־הִנִּ֣יחַ אָדָ֣ם לְעׇשְׁקָ֑ם וַיּ֖וֹכַח עֲלֵיהֶ֣ם מְלָכִֽים׃ (15) אַֽל־תִּגְּע֥וּ בִמְשִׁיחָ֑י וְ֝לִנְבִיאַ֗י אַל־תָּרֵֽעוּ׃ (16) וַיִּקְרָ֣א רָ֭עָב עַל־הָאָ֑רֶץ כׇּֽל־מַטֵּה־לֶ֥חֶם שָׁבָֽר׃ (17) שָׁלַ֣ח לִפְנֵיהֶ֣ם אִ֑ישׁ לְ֝עֶ֗בֶד נִמְכַּ֥ר יוֹסֵֽף׃ (18) עִנּ֣וּ בַכֶּ֣בֶל רַגְל֑וֹ בַּ֝רְזֶ֗ל בָּ֣אָה נַפְשֽׁוֹ׃ (19) עַד־עֵ֥ת בֹּא־דְבָר֑וֹ אִמְרַ֖ת יְהֹוָ֣ה צְרָפָֽתְהוּ׃ (20) שָׁ֣לַח מֶ֭לֶךְ וַיַּתִּירֵ֑הוּ מֹשֵׁ֥ל עַ֝מִּ֗ים וַֽיְפַתְּחֵֽהוּ׃ (21) שָׂמ֣וֹ אָד֣וֹן לְבֵית֑וֹ וּ֝מֹשֵׁ֗ל בְּכׇל־קִנְיָנֽוֹ׃ (22) לֶאְסֹ֣ר שָׂרָ֣יו בְּנַפְשׁ֑וֹ וּזְקֵנָ֥יו יְחַכֵּֽם׃ (23) וַיָּבֹ֣א יִשְׂרָאֵ֣ל מִצְרָ֑יִם וְ֝יַעֲקֹ֗ב גָּ֣ר בְּאֶֽרֶץ־חָֽם׃ (24) וַיֶּ֣פֶר אֶת־עַמּ֣וֹ מְאֹ֑ד וַ֝יַּעֲצִמֵ֗הוּ מִצָּרָֽיו׃ (25) הָפַ֣ךְ לִ֭בָּם לִשְׂנֹ֣א עַמּ֑וֹ לְ֝הִתְנַכֵּ֗ל בַּעֲבָדָֽיו׃ (26) שָׁ֭לַח מֹשֶׁ֣ה עַבְדּ֑וֹ אַ֝הֲרֹ֗ן אֲשֶׁ֣ר בָּחַר־בּֽוֹ׃ (27) שָֽׂמוּ־בָ֭ם דִּבְרֵ֣י אֹתוֹתָ֑יו וּ֝מֹפְתִ֗ים בְּאֶ֣רֶץ חָֽם׃ (28) שָׁ֣לַֽח חֹ֭שֶׁךְ וַיַּחְשִׁ֑ךְ וְלֹא־מָ֝ר֗וּ אֶת־דְּבָרֽוֹ׃ (29) הָפַ֣ךְ אֶת־מֵימֵיהֶ֣ם לְדָ֑ם וַ֝יָּ֗מֶת אֶת־דְּגָתָֽם׃ (30) שָׁרַ֣ץ אַרְצָ֣ם צְפַרְדְּעִ֑ים בְּ֝חַדְרֵ֗י מַלְכֵיהֶֽם׃ (31) אָ֭מַר וַיָּבֹ֣א עָרֹ֑ב כִּ֝נִּ֗ים בְּכׇל־גְּבוּלָֽם׃ (32) נָתַ֣ן גִּשְׁמֵיהֶ֣ם בָּרָ֑ד אֵ֖שׁ לֶהָב֣וֹת בְּאַרְצָֽם׃ (33) וַיַּ֣ךְ גַּ֭פְנָם וּתְאֵנָתָ֑ם וַ֝יְשַׁבֵּ֗ר עֵ֣ץ גְּבוּלָֽם׃ (34) אָ֭מַר וַיָּבֹ֣א אַרְבֶּ֑ה וְ֝יֶ֗לֶק וְאֵ֣ין מִסְפָּֽר׃ (35) וַיֹּ֣אכַל כׇּל־עֵ֣שֶׂב בְּאַרְצָ֑ם וַ֝יֹּ֗אכַל פְּרִ֣י אַדְמָתָֽם׃ (36) וַיַּ֣ךְ כׇּל־בְּכ֣וֹר בְּאַרְצָ֑ם רֵ֝אשִׁ֗ית לְכׇל־אוֹנָֽם׃ (37) וַֽ֭יּוֹצִיאֵם בְּכֶ֣סֶף וְזָהָ֑ב וְאֵ֖ין בִּשְׁבָטָ֣יו כּוֹשֵֽׁל׃ (38) שָׂמַ֣ח מִצְרַ֣יִם בְּצֵאתָ֑ם כִּֽי־נָפַ֖ל פַּחְדָּ֣ם עֲלֵיהֶֽם׃ (39) פָּרַ֣שׂ עָנָ֣ן לְמָסָ֑ךְ וְ֝אֵ֗שׁ לְהָאִ֥יר לָֽיְלָה׃ (40) שָׁ֭אַל וַיָּבֵ֣א שְׂלָ֑ו וְלֶ֥חֶם שָׁ֝מַ֗יִם יַשְׂבִּיעֵֽם׃ (41) פָּ֣תַח צ֭וּר וַיָּז֣וּבוּ מָ֑יִם הָ֝לְכ֗וּ בַּצִּיּ֥וֹת נָהָֽר׃ (42) כִּֽי־זָ֭כַר אֶת־דְּבָ֣ר קׇדְשׁ֑וֹ אֶֽת־אַבְרָהָ֥ם עַבְדּֽוֹ׃ (43) וַיּוֹצִ֣א עַמּ֣וֹ בְשָׂשׂ֑וֹן בְּ֝רִנָּ֗ה אֶת־בְּחִירָֽיו׃ (44) וַיִּתֵּ֣ן לָ֭הֶם אַרְצ֣וֹת גּוֹיִ֑ם וַעֲמַ֖ל לְאֻמִּ֣ים יִירָׁשׁוּ׃ (45) בַּעֲב֤וּר ׀ יִשְׁמְר֣וּ חֻ֭קָּיו וְתוֹרֹתָ֥יו יִנְצֹ֗רוּ הַֽלְלוּ־יָֽהּ׃</div></div>
-                <div class="psalm-box"><div class="psalm-title">תהילים קלז</div><div class="psalm-text">(1) עַ֥ל־נַהֲר֨וֹת ׀ בָּבֶ֗ל שָׁ֣ם יָ֭שַׁבְנוּ גַּם־בָּכִ֑ינוּ בְּ֝זׇכְרֵ֗נוּ אֶת־צִיּֽוֹן׃ (2) עַֽל־עֲרָבִ֥ים בְּתוֹכָ֑הּ תָּ֝לִ֗ינוּ כִּנֹּרוֹתֵֽינוּ׃ (3) כִּ֤י שָׁ֨ם שְֽׁאֵל֪וּנוּ שׁוֹבֵ֡ינוּ דִּבְרֵי־שִׁ֭יר וְתוֹלָלֵ֣ינוּ שִׂמְחָ֑ה שִׁ֥ירוּ לָ֝֗נוּ מִשִּׁ֥יר צִיּֽוֹן׃ (4) אֵ֗יךְ נָשִׁ֥יר אֶת־שִׁיר־יְהֹוָ֑ה עַ֝֗ל אַדְמַ֥ת נֵכָֽר׃ (5) אִֽם־אֶשְׁכָּחֵ֥ךְ יְֽרוּשָׁלָ֗͏ִם תִּשְׁכַּ֥ח יְמִינִֽי׃ (6) תִּדְבַּֽק־לְשׁוֹנִ֨י ׀ לְחִכִּי֮ אִם־לֹ֢א אֶ֫זְכְּרֵ֥כִי אִם־לֹ֣א אַ֭עֲלֶה אֶת־יְרוּשָׁלָ֑͏ִם עַ֝֗ל רֹ֣אשׁ שִׂמְחָתִֽי׃ (7) זְכֹ֤ר יְהֹוָ֨ה ׀ לִבְנֵ֬י אֱד֗וֹם אֵת֮ י֤וֹם יְֽר֫וּשָׁלָ֥͏ִם הָ֭אֹ֣מְרִים עָ֤רוּ ׀ עָ֑רוּ עַ֝֗ד הַיְס֥וֹד בָּֽהּ׃ (8) בַּת־בָּבֶ֗ל הַשְּׁד֫וּדָ֥ה אַשְׁרֵ֥י שֶׁיְשַׁלֶּם־לָ֑ךְ אֶת־גְּ֝מוּלֵ֗ךְ שֶׁגָּמַ֥לְתְּ לָֽנוּ׃ (9) אַשְׁרֵ֤י ׀ שֶׁיֹּאחֵ֓ז וְנִפֵּ֬ץ אֶֽת־עֹלָלַ֗יִךְ אֶל־הַסָּֽלַע׃</div></div>
-                <div class="psalm-box"><div class="psalm-title">תהילים קנ</div><div class="psalm-text">(1) הַ֥לְלוּ־יָ֨הּ ׀ הַֽלְלוּ־אֵ֥ל בְּקׇדְשׁ֑וֹ הַֽ֝לְל֗וּהוּ בִּרְקִ֥يעַ עֻזּֽוֹ׃ (2) הַלְל֥וּהוּ בִגְבוּרֹתָ֑יו הַ֝לְל֗וּהוּ כְּרֹ֣ב גֻּדְלֽוֹ׃ (3) הַ֭לְלוּהוּ בְּתֵ֣קַע שׁוֹפָ֑ר הַ֝לְל֗וּהוּ בְּנֵ֣בֶל וְכִנּֽוֹר׃ (4) הַ֭לְלוּהוּ בְּתֹ֣ף וּמָח֑וֹל הַֽ֝לְל֗וּהוּ בְּמִנִּ֥ים וְעֻגָֽב׃ (5) הַלְל֥וּהוּ בְצִלְצְלֵי־שָׁ֑מַע הַֽ֝לְל֗וּהוּ בְּֽצִלְצְלֵ֥י תְרוּעָֽה׃ (6) כֹּ֣ל הַ֭נְּשָׁמָה תְּהַלֵּ֥ל יָ֗הּ הַֽלְלוּ־יָֽהּ׃</div></div>
-
-                <h2>נוסח לאחר אמירת התיקון הכללי</h2>
-                <p>מִי יִתֵּן מִצִּיּוֹן יְשׁוּעַת יִשְׂרָאֵל בְּשׁוּב יְהוָה שְׁבוּת עַמּוֹ יָגֵל יַעֲקֹב יִשְׂמַח יִשְׂרָאֵל: וּתְשׁוּעַת צַדִּיקִים מֵיְהוָה מָעוּזָּם בְּעֵת צָרָה: וַיַּעְזְרֵם יְהוָה וַיְפַלְּטֵם יְפַלְּטֵם מֵרְשָׁעִים וְיוֹשִׁיעֵם כִּי חָסוּ בוֹ:</p>
-
-                <h2>תפילה נאה</h2>
-                <p>זאת התפילה מצאנו באמתחת הכתבים והיא מעט הכמות ורב האיכות:<br>
-                רִבּוֹנוֹ שֶׁל עוֹלָם, עִלַּת הָעִלּוֹת וְסִבַּת כָּל הַסִּבּוֹת, אַנְתְּ לְעֵלָּא לְעֵלָּא מִן כֹּלָא, וְלֵית לְעֵלָּא מִנָּךְ, דְּלֵית מַחֲשָׁבָה תְּפִיסָא בָךְ כְּלָל, וּלְךָ דֻמִיָּה תְהִלָּה, וּמְרוֹמַם עַל כָּל בְּרָכָה וּתְהִלָּה.<br>
-                אוֹתְךָ אֶדְרֹשׁ אוֹתְךָ אֲבַקֵּשׁ, שֶׁתַּחְתֹּר חֲתִירָה דֶּרֶךְ כְּבוּשָׁה מֵאִתְּךָ, דֶּרֶךְ כָּל הָעוֹלָמוֹת, עַד הַהִשְׁתַּלְשְׁלוּת שֶׁלִּי בַּמָּקוֹם שֶׁאֲנִי עוֹמֵד, כְּפִי אֲשֶׁר נִגְלָה לְךָ יֹדֵעַ תַּעֲלֻמוֹת, וּבַדֶּרֶךְ וּנְתִיב הַזֶּה תָּאִיר עָלַי אוֹרְךָ, לְהַחֲזִירֵנִי בִּתְשׁוּבָה שְׁלֵמָה לְפָנֶיךָ בֶּאֱמֶת, כְּפִי רְצוֹנְךָ בֶּאֱמֶת, כְּפִי רְצוֹן מִבְחַר הַבְּרוּאִים, לִבְלִי לַחֲשֹׁב בְּמַחֲשַׁבְתִּי שׁוּם מַחֲשֶׁבֶת חוּץ, וְשׁוּם מַחֲשָׁבָה וּבִלְבּוּל שֶׁהוּא נֶגֶד רְצוֹנֶךָ, רַק לִדַּבֵּק בְּמַחֲשָׁבוֹת זַכּוֹת צַחוֹת וּקְדוֹשׁוֹת בַּעֲבוֹדָתְךָ בֶּאֱמֶת בְּהַשָּׂגָתְךָ וּבְתוֹרָתְךָ.<br>
-                הַט לִבִּי אֶל עֵדְו‍ֹתֶיךָ, וְתֵן לִי לֵב טָהוֹר לְעָבְדְּךָ בֶּאֱמֶת. וּמִמְּצֻלוֹת יָם תּוֹצִיאֵנִי לְאוֹר גָּדוֹל [חִישׁ] קַל מְהֵרָה, תְּשׁוּעַת יְהֹוָה כְּהֶרֶף עַיִן, לֵאוֹר בְּאוֹר הַחַיִּים כָּל יְמֵי הֱיוֹתִי עַל פְּנֵי הָאֲדָמָה.<br>
-                וְאֶזְכֶּה לְחַדֵּשׁ נְעוּרַי הַיָּמִים שֶׁעָבְרוּ בַּחֹשֶׁךְ, לְהַחֲזִירָם אֶל הַקְּדֻשָּׁה, וְתִהְיֶה יְצִיאָתִי מִן הָעוֹלָם כְּבִיאָתִי בְּלֹא חֵטְא. וְאֶזְכֶּה לַחֲזוֹת בְּנֹעַם יְהֹוָה וּלְבַקֵּר בְּהֵיכָלוֹ, כֻּלּוֹ אֹמֵר כָּבוֹד, נֶצַח סֶלָה אָמֵן אָמֵן אָמֵן.</p>
-
-                <div class="donation-box">
-                    <h3>יצירת קשר ותרומות</h3>
-                    <p>ניתן לתרום לפדיון נפש בהעברה בנקאית לפי הפרטים הבאים:<br>
-                    <strong>שם הבנק:</strong> בנק הדואר<br>
-                    <strong>מספר סניף:</strong> 001<br>
-                    <strong>מספר חשבון:</strong> 31127380<br>
-                    <strong>שם בעל החשבון:</strong> ידידיה פישון</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= English ================= -->
-        <div id="lang-en" class="content-section" dir="ltr">
-            <div class="card">
-                <h2>What Is the “General Remedy” (Tikkun HaKlali)?</h2>
-                <p>The Tikkun HaKlali (“General Remedy”) is a set of ten Psalms—16, 32, 41, 42, 59, 77, 90, 105, 137, and 150—revealed by Rabbi Nachman of Breslov in 1805, to be recited in sequence.</p>
-                <p>Rabbi Nachman taught that these ten Psalms correspond to the ten kinds of melody in which the Book of Psalms was recited. They are a “general” remedy: a comprehensive rectification for sin, and in particular for blemishing the covenant, which in his teachings is the root of all others. Even one who does not understand every word can recite them simply and wholeheartedly.</p>
-                <p>Breslov tradition relates that Rabbi Nachman promised to act on behalf of anyone who comes to his resting place in Uman, recites these ten Psalms and gives a coin to charity. Today many recite them anywhere and at any time, as a plea for repentance, purity and joy.</p>
-
-                <h2>Who Was Rabbi Nachman of Uman?</h2>
-                <p>Rabbi Nachman of Breslov (1772–1810) was born in Medzhybizh, the town of the Baal Shem Tov, and was his great-grandson. From a young age he was known for the depth of his learning and spiritual devotion.</p>
-                <p>In 1798 he travelled to the Land of Israel, visiting Haifa, Tiberias and Safed, and settled in Breslov in 1802. His teachings were recorded by his disciple Rabbi Natan of Nemirov in Likutei Moharan, Sippurei Ma’asiyot, and Sefer HaMiddot.</p>
-                <p>He passed away in Uman in 1810 at the age of 38. His core teachings are faith, joy, hitbodedut, and the certainty that there is no despair in the world. Every Rosh Hashanah thousands gather at his resting place in Uman.</p>
-
-                <div class="psalm-box"><div class="psalm-title">Psalm 16</div><div class="psalm-text">(1) Michtam of David. Keep me, O God; for I have taken refuge in Thee. (2) I have said unto the LORD: ‘Thou art my Lord; I have no good but in Thee’...</div></div>
-                <div class="psalm-box"><div class="psalm-title">Psalm 32</div><div class="psalm-text">(1) [A Psalm] of David. Maschil. Happy is he whose transgression is forgiven, whose sin is pardoned...</div></div>
-                <div class="psalm-box"><div class="psalm-title">Psalm 41</div><div class="psalm-text">(1) For the Leader. A Psalm of David. (2) Happy is he that considereth the poor; the LORD will deliver him in the day of evil...</div></div>
-                <div class="psalm-box"><div class="psalm-title">Psalm 42</div><div class="psalm-text">(1) For the Leader; Maschil of the sons of Korah. (2) As the hart panteth after the water brooks, so panteth my soul after Thee, O God...</div></div>
-                <div class="psalm-box"><div class="psalm-title">Psalm 59</div><div class="psalm-text">(1) For the Leader; Al-tashheth. [A Psalm] of David; Michtam... Deliver me from mine enemies, O my God...</div></div>
-                <div class="psalm-box"><div class="psalm-title">Psalm 77</div><div class="psalm-text">(1) For the Leader; for Jeduthun. A Psalm of Asaph. (2) I will lift up my voice unto God, and cry...</div></div>
-                <div class="psalm-box"><div class="psalm-title">Psalm 90</div><div class="psalm-text">(1) A Prayer of Moses the man of God. Lord, Thou hast been our dwelling-place in all generations...</div></div>
-                <div class="psalm-box"><div class="psalm-title">Psalm 105</div><div class="psalm-text">(1) O give thanks unto the LORD, call upon His name; Make known His doings among the peoples...</div></div>
-                <div class="psalm-box"><div class="psalm-title">Psalm 137</div><div class="psalm-text">(1) By the rivers of Babylon, There we sat down, yea, we wept, When we remembered Zion...</div></div>
-                <div class="psalm-box"><div class="psalm-title">Psalm 150</div><div class="psalm-text">(1) Hallelujah. Praise God in His sanctuary; Praise Him in the firmament of His power...</div></div>
-
-                <div class="donation-box">
-                    <h3>Contact & Donations</h3>
-                    <p>To make your Pidyon Nefesh donation, use these bank-transfer details:<br>
-                    <strong>Bank:</strong> Postal Bank (בנק הדואר)<br>
-                    <strong>Branch:</strong> 001<br>
-                    <strong>Account:</strong> 31127380<br>
-                    <strong>Account holder:</strong> ידידיה פישון</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= العربية ================= -->
-        <div id="lang-ar" class="content-section" dir="rtl">
-            <div class="card">
-                <h2>ما هو «الإصلاح العام» (تيكون هاكلالي)؟</h2>
-                <p>«الإصلاح العام» (تيكون هاكلالي) هو مجموعة من عشرة مزامير — 16 و32 و41 و42 و59 و77 و90 و105 و137 و150 — كشفها الحاخام نحمان البراسلافي عام 1805، وأوصى بقراءتها بالتتابع.</p>
-                <p>علّم الحاخام نحمان أن هذه المزامير العشرة تقابل أنواع النغم العشرة التي قيل بها سفر المزامير، وهي «إصلاح عام»: علاج شامل للخطايا، ولا سيما خطيئة المساس بالعهد التي هي أصل سائر الخطايا في تعاليمه. ومن لا يفهم معاني الكلمات يستطيع قراءتها ببساطة وبقلب كامل.</p>
-                <p>ويروي تقليد براسلاف أنه وعد بأن يسعى لخير من يزور ضريحه في أومان ويقرأ هذه المزامير العشرة ويتصدق بقطعة نقدية. واليوم يقرؤها كثيرون في كل مكان وزمان، طلبًا للتوبة والطهارة والفرح.</p>
-
-                <h2>من هو الحاخام نحمان من أومان؟</h2>
-                <p>وُلد الحاخام نحمان البراسلافي (1772–1810) في مدينة ميدجيبوج، مدينة «البعل شم طوب»، وكان ابن حفيدة مؤسس الحسيدية. اشتهر منذ صغره بعمق علمه وعبادته، وبدأ يجمع حوله التلاميذ.</p>
-                <p>في عام 1798 سافر إلى أرض إسرائيل وزار حيفا وطبريا وصفد، واستقر في براسلاف عام 1802. دوّن تعاليمه تلميذه الحاخام ناتان من نيميروف وطُبعت في «ليكوتي موهران» و«قصص الأعمال».</p>
-                <p>انتقل عام 1810 إلى أومان، وفيها توفي في 18 تشري عن 38 عامًا ودُفن هناك. من أبرز تعاليمه: الإيمان والفرح و«الهتبودديوت» وأنه «لا يأس في الدنيا». وفي كل رأس هاشاناه يجتمع آلاف الحسيديم عند ضريحه في أومان.</p>
-
-                <div class="psalm-box"><div class="psalm-title">المزمور 16</div><div class="psalm-text">(1) مكتام لداود: احفظني يا الله لأني عليك توكلت. (2) قلت للرب: «أنت سيدي، لا خير لي غيرك». (3) القديسون الذين في الأرض هم الأفاضل وكل مسرتي بهم...</div></div>
-                <div class="psalm-box"><div class="psalm-title">المزمور 32</div><div class="psalm-text">(1) لداود، قصيدة: طوبى لمن غفر إثمهم وسترت خطاياهم. (2) طوبى لرجل لا يحسب له الرب خطيئة ولا في روحه غش...</div></div>
-                <div class="psalm-box"><div class="psalm-title">المزمور 41</div><div class="psalm-text">(1) لإمام المغنين. مزمور لداود. (2) طوبى للذي ينظر إلى المسكين، في يوم الشر ينجيه الرب...</div></div>
-                <div class="psalm-box"><div class="psalm-title">المزمور 42</div><div class="psalm-text">(1) لإمام المغنين. قصيدة لبني قُورَح. (2) كما يشتاق الأيل إلى جداول المياه هكذا تشتاق نفسي إليك يا الله...</div></div>
-                <div class="psalm-box"><div class="psalm-title">المزمور 59</div><div class="psalm-text">(1) لإمام المغنين. «لا تهلك». لداود. مكتام... أنقذني من أعدائي يا إلهي...</div></div>
-                <div class="psalm-box"><div class="psalm-title">المزمور 77</div><div class="psalm-text">(1) لإمام المغنين. على «يدوثون». لآساف. مزمور. (2) صوتي إلى الله فأصرخ...</div></div>
-                <div class="psalm-box"><div class="psalm-title">المزمور 90</div><div class="psalm-text">(1) صلاة لموسى رجل الله. يا رب، ملجأ كنت لنا في دور فدور...</div></div>
-                <div class="psalm-box"><div class="psalm-title">المزمور 105</div><div class="psalm-text">(1) احمدوا الرب وادعوا باسمه، عرفوا في الشعوب بأفعاله...</div></div>
-                <div class="psalm-box"><div class="psalm-title">المزمور 137</div><div class="psalm-text">(1) على أنهار بابل هناك جلسنا، بكينا أيضاً عندما ذكرنا صهيون...</div></div>
-                <div class="psalm-box"><div class="psalm-title">المزمور 150</div><div class="psalm-text">(1) هللويا. سبحوا الله في قدسه، سبحوه في فلك قوته...</div></div>
-
-                <div class="donation-box">
-                    <h3>יצירת קשר ותרומות / تفاصيل التبرّع</h3>
-                    <p>ניתן לתרום לפדיון נפש בהעברה בנקאית לפי הפרטים הבאים / للتبرع:<br>
-                    <strong>שם הבנק / البنك:</strong> בנק הדואר<br>
-                    <strong>מספר סניף / الفرع:</strong> 001<br>
-                    <strong>מספר חשבון / الحساب:</strong> 31127380<br>
-                    <strong>שם בעל החשבון / صاحب الحساب:</strong> ידידיה פישון</p>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>&copy; 2026 General Correction. כל הזכויות שמורות. | All Rights Reserved. | جميع الحقوق محفوظة.</p>
-            <p style="margin-top: 4px; color: #7f4f24;">השימוש באתר מיועד לקריאה אישית בלבד. אין להעתיק או לשכפל חומרים ללא אישור בכתב.</p>
-        </footer>
+    <!-- באנר אורכי -->
+    <div class="vertical-banner" onclick="scrollToDonation()">
+        <div class="v-text">✨ תרומה ופדיון נפש ✨ לחצו כאן ✨</div>
     </div>
 
+    <header>
+        <div class="header-content">
+            <div class="clock-container">
+                <span id="jerusalem-clock">טוען שעון...</span>
+            </div>
+            <div class="logo-title">
+                <img src="20200518_165320_3c3a7fce-d200-4ac7-9cc3-a288890870c4.jpg" alt="לוגו אש">
+                <h1>התיקון הכללי</h1>
+            </div>
+            <div class="lang-switch">
+                <button onclick="switchLang('he')" class="active" id="btn-he">עברית</button>
+                <button onclick="switchLang('en')" id="btn-en">English</button>
+                <button onclick="switchLang('ar')" id="btn-ar">العربية</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="banner-container" onclick="scrollToDonation()">
+        <div class="banner-content">
+            ✨ ניצחתי ואנצח, גמרתי ואגמור — תוקד עד ביאת המשיח ✨ אש של אהבה, יראה, תכלת וזהב ✨ לחצו לתרומה ✨
+        </div>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="hero-image">
+            <img src="39946d97-744c-49dc-88af-c02024f61947_2.jfif" alt="צלחת האש המלכותית">
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('he')" id="tab-he">עברית</button>
+            <button class="tab-btn" onclick="switchTab('en')" id="tab-en">English</button>
+            <button class="tab-btn" onclick="switchTab('ar')" id="tab-ar">العربية</button>
+        </div>
+
+        <!-- ================= לשונית עברית ================= -->
+        <div id="lang-he" class="lang-section active">
+            <div class="content-card clearfix" id="about-rabbi-he">
+                <h2>על התיקון הכללי ורבי נחמן מאומן</h2>
+                <img src="500737315_10222796757507761_8087516065105431034_n.jpg" alt="ציון רבנו" class="image-float-right" onclick="scrollToRabbi()">
+                <p>התיקון הכללי הוא סדר תפילות ותהילים שקבע רבי נחמן מברסלב, מגדולי הצדיקים והמקובלים בדורות האחרונים. רבי נחמן לימד שכל מי שיאמר את עשרת המזמורים הללו כסגולה לתיקון נפשו, יזכה לראות ישועות גדולות, מחילת עוונות ורפואה שלמה.</p>
+                <p>רבי נחמן נולד בעיירה מז'יבוז' שבאוקראינה, ונפטר באומן. הוא הקים את תנועת החסידות ברסלב, שהדגישה את השמחה, האמונה הפשוטה, וההתבודדות (שיחה אישית עם הבורא). ציונו באומן הפך למוקד עלייה לרגל לרבבות יהודים מדי שנה, במיוחד בראש השנה.</p>
+                <p>התיקון הכללי כולל עשרה פרקים מתהילים (טז, לב, מא, מב, נט, עז, צ, קה, קלז, קנ) אשר נבחרו בקפידה על ידי רבי נחמן בעצמו, כסגולה לתיקון פגם הברית (פגיעה בקדושת החיים והנפש). אמירתם בכוונה ובשמחה מהווה כלי עצום להתקרבות לבורא ולזיכוך הנפש.</p>
+                <p>אנו מזמינים אתכם לקרוא את התפילות והפרקים המובאים כאן, בין אם לזכות את עצמכם ובין אם לעילוי נשמת יקיריכם. כפי שאמר רבי נחמן: "העיקר הוא השמחה והאמונה".</p>
+                <br class="clearfix">
+            </div>
+
+            <div class="content-card">
+                <h2>תפילת פדיון הנפש והתפילה הנאה</h2>
+                <p><strong>תפילת פדיון הנפש:</strong> יהי רצון מלפניך ה' אלוקינו ואלוקי אבותינו, שתהא תפילתי זו פדיון נפשי, פדיון נפש אבי ואמי, פדיון נפש בני ביתי, פדיון נפש כל בני משפחתי, ופדיון נפש כל ישראל. אנא ה' הושיעה נא, אנא ה' הצליחה נא, אנא ה' שלח רפואה שלמה לכל חולי עמך ישראל, ורחם עלינו כרחמך על בנים. אמן.</p>
+                <br>
+                <p><strong>התפילה הנאה (מתוך תורת רבי נחמן):</strong> ריבונו של עולם, עשה למענך, עשה למען שמך, עשה למען תורתך, עשה למען קדושתך. יהי רצון שתזכה אותנו לאור הפנים, לאהבה, ליראה, לשמחה ולשלום. תן בי דעה והשכל להבין ולידע איך לעבוד אותך באמת ובתמימות. טהר לבנו לעבדך באמת. אמן.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>עשרת פרקי התהילים</h2>
+                
+                <div class="psalm">
+                    <h3>פרק ט"ז</h3>
+                    <p class="psalm-text">מִכְתָּם לְדָוִד: שָׁמְרֵנִי אֵל, כִּי חָסִיתִי בָךְ. אָמַרְתְּ לַה' אֲדֹנָי אָתָּה, טוֹבָתִי בַּל עָלֶיךָ. לִקְדוֹשִׁים אֲשֶׁר בָּאָרֶץ הֵמָּה, וְאַדִּירֵי כָּל חֶפְצִי בָם. יִרְבּוּ עַצְּבוֹתָם אַחֵר מָהָרוּ, בַּל אַסִּיךְ נִסְכֵּיהֶם מִדָּם, וּבַל אֶשָּׂא אֶת שְׁמוֹתָם עַל שְׂפָתָי. ה' מְנָת חֶלְקִי וְכוֹסִי, אַתָּה תּוֹמִיךְ גּוֹרָלִי. חֲבָלִים נָפְלוּ לִי בַּנְּעִמִים, אַף נַחֲלָתִי שָׁפְרָה עָלָי. אֲבָרֵךְ אֶת ה' אֲשֶׁר יְעָצָנִי, אַף לֵילוֹת יִסְּרוּנִי כִלְיוֹתָי. שִׁוִּיתִי ה' לְנֶגְדִּי תָמִיד, כִּי מִימִינִי בַּל אֶמּוֹט. לָכֵן שָׂמַח לִבִּי וַיָּגֶל כְּבוֹדִי, אַף בְּשָׂרִי יִשְׁכֹּן לָבֶטַח. כִּי לֹא תַעֲזֹב נַפְשִׁי לִשְׁאוֹל, לֹא תִתֵּן חֲסִידְךָ לִרְאוֹת שָׁחַת. תּוֹדִיעֵנִי אֹרַח חַיִּים, שֹׂבַע שְׂמָחוֹת אֶת פָּנֶיךָ, נְעִמוֹת בִּימִינְךָ נֶצַח.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>פרק ל"ב</h3>
+                    <p class="psalm-text">לְדָוִד מַשְׂכִּיל: אַשְׁרֵי נְשׂוּי פֶּשַׁע, כְּסוּי חֲטָאָה. אַשְׁרֵי אָדָם לֹא יַחְשֹׁב ה' לוֹ עָוֹן, וְאֵין בְּרוּחוֹ רְמִיָּה. כִּי הֶחֱרַשְׁתִּי, בָּלוּ עֲצָמַי, בְּשַׁאֲגָתִי כָּל הַיּוֹם. כִּי יוֹמָם וָלַיְלָה תִּכְבַּד עָלַי יָדֶךָ, נֶהְפַּךְ לְשַׁדִּי בְּחַרְבֹנֵי קַיִץ סֶלָה. חַטָּאתִי אוֹדִיעֲךָ, וַעֲוֹנִי לֹא כִסִּיתִי. אָמַרְתִּי אוֹדֶה עֲלֵי פְשָׁעַי לַה', וְאַתָּה נָשָׂאתָ עֲוֹן חַטָּאתִי סֶלָה. עַל זֹאת יִתְפַּלֵּל כָּל חָסִיד אֵלֶיךָ לְעֵת מְצֹא, רַק לְשֵׁטֶף מַיִם רַבִּים אֵלָיו לֹא יַגִּיעוּ. אַתָּה סֵתֶר לִי, מִצַּר תִּצְּרֵנִי, רָנֵּי פַלֵּט תְּסוֹבְבֵנִי סֶלָה. אַשְׂכִּילְךָ וְאוֹרְךָ בְּדֶרֶךְ זוֹ תֵלֵךְ, אִיעֲצָה עָלֶיךָ עֵינִי. אַל תִּהְיוּ כְּסוּס כְּפֶרֶד אֵין הָבִין, בְּמֶתֶג וָרֶסֶן עֶדְיוֹ לִבְלוֹם, בַּל קְרֹב אֵלֶיךָ. רַבִּים מַכְאוֹבִים לָרָשָׁע, וְהַבּוֹטֵחַ בַּה' חֶסֶד יְסוֹבְבֶנּוּ. שִׂמְחוּ בַּה' וְגִילוּ צַדִּיקִים, וְהַרְנִינוּ כָּל יִשְׁרֵי לֵב.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>פרק מ"א</h3>
+                    <p class="psalm-text">לַמְנַצֵּחַ מִזְמוֹר לְדָוִד: אַשְׁרֵי מַשְׂכִּיל אֶל דָּל, בְּיוֹם רָעָה יְמַלְּטֵהוּ ה'. ה' יִשְׁמְרֵהוּ וִיחַיֵּהוּ, וְאֻשַּׁר בָּאָרֶץ, וְאַל תִּתְּנֵהוּ בְּנֶפֶשׁ אֹיְבָיו. ה' יִסְעָדֶנּוּ עַל עֶרֶשׂ דְּוָי, כָּל מִשְׁכָּבוֹ הָפַכְתָּ בְחָלְיוֹ. אֲנִי אָמַרְתִּי ה' חָנֵּנִי, רְפָאָה נַפְשִׁי כִּי חָטָאתִי לָךְ. אוֹיְבַי יֹאמְרוּ רַע לִי, מָתַי יָמוּת וְאָבַד שְׁמוֹ. וְאִם בָּא לִרְאוֹת, שָׁוְא יְדַבֵּר, לִבּוֹ יִקְבָּץ אָוֶן לוֹ, יֵצֵא לַחוּץ יְדַבֵּר. יַחַד עָלַי יִתְלַחֲשׁוּ כָּל שֹׂנְאָי, עָלַי יַחְשְׁבוּ רָעָה לִי. דְּבַר בְּלִיַּעַל יָצוּק בּוֹ, וַאֲשֶׁר שָׁכַב לֹא יוֹסִיף לָקוּם. גַּם אִישׁ שְׁלוֹמִי אֲשֶׁר בָּטַחְתִּי בוֹ, אוֹכֵל לַחְמִי, הִגְדִּיל עָלַי עָקֵב. וְאַתָּה ה' חָנֵּנִי וַהֲקִימֵנִי, וַאֲשַׁלְּמָה לָהֶם. בְּזֹאת יָדַעְתִּי כִּי חָפַצְתָּ בִּי, כִּי לֹא יָרִיעַ אֹיְבִי עָלָי. וַאֲנִי בְּתֻמִּי תָּמַכְתָּ בִּי, וַתַּצִּיבֵנִי לְפָנֶיךָ לְעוֹלָם. בָּרוּךְ ה' אֱלֹהֵי יִשְׂרָאֵל, מֵהָעוֹלָם וְעַד הָעוֹלָם, אָמֵן וְאָמֵן.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>פרק מ"ב</h3>
+                    <p class="psalm-text">לַמְנַצֵּחַ מַשְׂכִּיל לִבְנֵי קֹרַח: כְּאַיָּל תַּעֲרֹג עַל אֲפִיקֵי מָיִם, כֵּן נַפְשִׁי תַעֲרֹג אֵלֶיךָ אֱלֹהִים. צָמְאָה נַפְשִׁי לֵאלֹהִים, לְאֵל חָי, מָתַי אָבוֹא וְאֵרָאֶה פְּנֵי אֱלֹהִים. הָיְתָה לִּי דִמְעָתִי לֶחֶם יוֹמָם וָלָיְלָה, בֶּאֱמֹר אֵלַי כָּל הַיּוֹם אַיֵּה אֱלֹהֶיךָ. אֵלֶּה אֶזְכְּרָה וְאֶשְׁפְּכָה עָלַי נַפְשִׁי, כִּי אֶעֱבֹר בַּסָּךְ, אֶדַּדֵּם עַד בֵּית אֱלֹהִים, בְּקוֹל רִנָּה וְתוֹדָה, הָמוֹן חוֹגֵג. מַה תִּשְׁתּוֹחֲחִי נַפְשִׁי, וַתֶּהֱמִי עָלָי, הוֹחִילִי לֵאלֹהִים, כִּי עוֹד אוֹדֶנּוּ, יְשׁוּעוֹת פָּנָיו. אֱלֹהַי עָלַי נַפְשִׁי תִשְׁתּוֹחָח, עַל כֵּן אֶזְכָּרְךָ מֵאֶרֶץ יַרְדֵּן, וְחֶרְמוֹנִים מֵהַר מִצְעָר. תְּהוֹם אֶל תְּהוֹם קוֹרֵא לְקוֹל צִנּוֹרֶיךָ, כָּל מִשְׁבָּרֶיךָ וְגַלֶּיךָ עָלַי עָבָרוּ. יוֹמָם יְצַוֶּה ה' חַסְדּוֹ, וּבַלַּיְלָה שִׁירֹה עִמִּי, תְּפִלָּה לְאֵל חַיָּי. אוֹמְרָה לְאֵל סַלְעִי, לָמָה שְׁכַחְתָּנִי, לָמָּה קֹדֵר אֵלֵךְ בְּלַחַץ אוֹיֵב. בְּרֶצַח בְּעַצְמוֹתַי חֵרְפוּנִי צוֹרְרָי, בְּאָמְרָם אֵלַי כָּל הַיּוֹם אַיֵּה אֱלֹהֶיךָ. מַה תִּשְׁתּוֹחֲחִי נַפְשִׁי, וּמַה תֶּהֱמִי עָלָי, הוֹחִילִי לֵאלֹהִים, כִּי עוֹד אוֹדֶנּוּ, יְשׁוּעֹת פָּנַי וֵאלֹהָי.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>פרק נ"ט</h3>
+                    <p class="psalm-text">לַמְנַצֵּחַ אַל תַּשְׁחֵת, לְדָוִד מִכְתָּם, בִּשְׁלֹחַ שָׁאוּל וַיִּשְׁמְרוּ אֶת הַבַּיִת לַהֲמִיתוֹ. הַצִּילֵנִי מֵאֹיְבַי אֱלֹהָי, מִמִּתְקוֹמְמַי תְּשַׂגְּבֵנִי. הַצִּילֵנִי מִפֹּעֲלֵי אָוֶן, וּמֵאַנְשֵׁי דָמִים הוֹשִׁיעֵנִי. כִּי הִנֵּה אָרְבוּ לְנַפְשִׁי, יָגוּרוּ עָלַי עַזִּים, לֹא פִשְׁעִי וְלֹא חַטָּאתִי ה'. בְּלִי עָוֹן יְרוּצוּן וְיִכּוֹנָנוּ, עוּרָה לִקְרָאתִי וּרְאֵה. וְאַתָּה ה' אֱלֹהִים צְבָאוֹת אֱלֹהֵי יִשְׂרָאֵל, הָקִיצָה לִפְקֹד כָּל הַגּוֹיִם, אַל תָּחֹן כָּל בֹּגְדֵי אָוֶן סֶלָה. יָשׁוּבוּ לָעֶרֶב, יֶהֱמוּ כַכָּלֶב, וִיסוֹבְבוּ עִיר. הִנֵּה יַבִּיעוּן בְּפִיהֶם, חֲרָבוֹת בְּשִׂפְתוֹתֵיהֶם, כִּי מִי שֹׁמֵעַ. וְאַתָּה ה' תִּשְׂחַק לָמוֹ, תִּלְעַג לְכָל גּוֹיִם. עֻזּוֹ אֵלֶיךָ אֶשְׁמֹרָה, כִּי אֱלֹהִים מִשְׂגַּבִּי. אֱלֹהֵי חַסְדּוֹ יְקַדְּמֵנִי, אֱלֹהִים יַרְאֵנִי בְשֹׁנְאָי. אַל תַּהַרְגֵם פֶּן יִשְׁכְּחוּ עַמִּי, הֲנִיעֵמוֹ בְחֵילְךָ וְהוֹרִידֵמוֹ, מָגִנֵּנוּ אֲדֹנָי. חַטַּאת פִּימוֹ דְּבַר שְׂפָתֵימוֹ, וְיִלָּכְדוּ בִגְאוֹנָם, וּמֵאָלָה וּמִכַּחַשׁ יְסַפֵּרוּ. כַּלֵּה בְחֵמָה, כַּלֵּה וְאֵינֵמוֹ, וְיֵדְעוּ כִּי אֱלֹהִים מֹשֵׁל בְּיַעֲקֹב לְאַפְסֵי הָאָרֶץ סֶלָה. וְיָשׁוּבוּ לָעֶרֶב, יֶהֱמוּ כַכָּלֶב, וִיסוֹבְבוּ עִיר. הֵמָּה יְנוּעוּן לֶאֱכֹל, אִם לֹא יִשְׂבְּעוּ וַיָּלִינוּ. וַאֲנִי אָשִׁיר עֻזֶּךָ, וַאֲרַנֵּן לַבֹּקֶר חַסְדֶּךָ, כִּי הָיִיתָ מִשְׂגָּב לִי, וּמָנוֹס בְּיוֹם צַר לִי. עֻזִּי אֵלֶיךָ אֲזַמֵּרָה, כִּי אֱלֹהִים מִשְׂגַּבִּי, אֱלֹהֵי חַסְדִּי.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>פרק ע"ז</h3>
+                    <p class="psalm-text">לַמְנַצֵּחַ עַל יְדוּתוּן, לְאָסָף מִזְמוֹר: קוֹלִי אֶל אֱלֹהִים וְאֶצְעָקָה, קוֹלִי אֶל אֱלֹהִים וְהֶאֱזִין אֵלָי. בְּיוֹם צָרָתִי אֲדֹנָי דָּרָשְׁתִּי, יָדִי לַיְלָה נִגְּרָה וְלֹא תָפוּג, מֵאֲנָה לְהִנָּחֵם נַפְשִׁי. אֶזְכְּרָה אֱלֹהִים וְאֶהֱמָיָה, אָשִׂיחָה וְתִתְעַטֵּף רוּחִי סֶלָה. אָחַזְתָּ שְׁמֻרוֹת עֵינָי, נִפְעַמְתִּי וְלֹא אֲדַבֵּר. חִשַּׁבְתִּי יָמִים מִקֶּדֶם, שְׁנוֹת עוֹלָמִים. אֶזְכְּרָה נְגִינָתִי בַלָּיְלָה, עִם לְבָבִי אָשִׂיחָה, וַיְחַפֵּשׂ רוּחִי. הַלְעוֹלָמִים יִזְנַח אֲדֹנָי, וְלֹא יוֹסִיף לִרְצוֹת עוֹד. הֶאָפֵס לָנֶצַח חַסְדּוֹ, גָּמַר אֹמֶר לְדֹר וָדֹר. הֲשָׁכַח חַנּוֹת אֵל, אִם קָפַץ בְּאַף רַחֲמָיו סֶלָה. וָאֹמַר חַלּוֹתִי הִיא, שְׁנוֹת יְמִין עֶלְיוֹן. אֶזְכּוֹר מַעַלְלֵי יָהּ, כִּי אֶזְכְּרָה מִקֶּדֶם פִּלְאֶךָ. וְהָגִיתִי בְכָל פָּעֳלֶךָ, וּבַעֲלִילוֹתֶיךָ אָשִׂיחָה. אֱלֹהִים בַּקֹּדֶשׁ דַּרְכֶּךָ, מִי אֵל גָּדוֹל כֵּאלֹהִים. אַתָּה הָאֵל עֹשֵׂה פֶלֶא, הוֹדַעְתָּ בָעַמִּים עֻזֶּךָ. גָּאַלְתָּ בִּזְרוֹעַ עַמֶּךָ, בְּנֵי יַעֲקֹב וְיוֹסֵף סֶלָה. רָאוּךָ מַּיִם אֱלֹהִים, רָאוּךָ מַּיִם יָחִילוּ, אַף יִרְגְּזוּ תְהֹמוֹת. זֹרְמוּ מַיִם עָבוֹת, קוֹל נָתְנוּ שְׁחָקִים, אַף חֲצָצֶיךָ יִתְהַלָּכוּ. קוֹל רַעַמְךָ בַּגַּלְגַּל, הֵאִירוּ בְרָקִים תֵּבֵל, רָגְזָה וַתִּרְעַשׁ הָאָרֶץ. בַּיָּם דַּרְכֶּךָ, וּשְׁבִילְךָ בְּמַיִם רַבִּים, וְעִקְּבוֹתֶיךָ לֹא נֹדָעוּ. נָחִיתָ כַצֹּאן עַמֶּךָ, בְּיַד מֹשֶׁה וְאַהֲרֹן.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>פרק צ'</h3>
+                    <p class="psalm-text">תְּפִלָּה לְמֹשֶׁה אִישׁ הָאֱלֹהִים: אֲדֹנָי, מָעוֹן אַתָּה הָיִיתָ לָּנוּ בְּדֹר וָדֹר. בְּטֶרֶם הָרִים יֻלָּדוּ, וְתַחְבֶּלֶת אֶרֶץ וְתֵבֵל, וּמֵעוֹלָם עַד עוֹלָם אַתָּה אֵל. תָּשֵׁב אֱנוֹשׁ עַד דַּכָּא, וַתֹּאמֶר שׁוּבוּ בְנֵי אָדָם. כִּי אֶלֶף שָׁנִים בְּעֵינֶיךָ, כְּיוֹם אֶתְמוֹל כִּי יַעֲבֹר, וְאַשְׁמוּרָה בַלָּיְלָה. זְרַמְתָּם שֵׁנָה יִהְיוּ, בַּבֹּקֶר כֶּחָצִיר יַחֲלֹף. בַּבֹּקֶר יָצִיץ וְחָלָף, לָעֶרֶב יְמוֹלֵל וְיָבֵשׁ. כִּי כָלִינוּ בְאַפֶּךָ, וּבַחֲמָתְךָ נִבְהָלְנוּ. שַׁתָּה עֲוֹנֹתֵינוּ לְנֶגְדֶּךָ, עֲלֻמֵנוּ לִמְאוֹר פָּנֶיךָ. כִּי כָל יָמֵינוּ פָּנוּ בְעֶבְרָתֶךָ, כִּלִּינוּ שָׁנֵינוּ כְמוֹ הֶגֶה. יְמֵי שְׁנוֹתֵינוּ בָהֶם שִׁבְעִים שָׁנָה, וְאִם בִּגְבוּרֹת שְׁמוֹנִים שָׁנָה, וְרָהְבָּם עָמָל וָאָוֶן, כִּי גָז חִישׁ וַנָּעֻפָה. מִי יוֹדֵעַ עֹז אַפֶּךָ, וּכְיִרְאָתְךָ עֶבְרָתֶךָ. לִמְנוֹת יָמֵינוּ כֵּן הוֹדַע, וְנָבִא לְבַב חָכְמָה. שׁוּבָה ה' עַד מָתָי, וְהִנָּחֵם עַל עֲבָדֶיךָ. שַׂבְּעֵנוּ בַבֹּקֶר חַסְדֶּךָ, וּנְרַנְּנָה וְנִשְׂמְחָה בְכָל יָמֵינוּ. שַׂמְּחֵנוּ כִּימוֹת עִנִּיתָנוּ, שְׁנוֹת רָאִינוּ רָעָה. יֵרָאֶה אֶל עֲבָדֶיךָ פָעֳלֶךָ, וַהֲדָרְךָ עַל בְּנֵיהֶם. וִיהִי נֹעַם אֲדֹנָי אֱלֹהֵינוּ עָלֵינוּ, וּמַעֲשֵׂה יָדֵינוּ כּוֹנְנָה עָלֵינוּ, וּמַעֲשֵׂה יָדֵינוּ כּוֹנְנֵהוּ.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>פרק ק"ה</h3>
+                    <p class="psalm-text">הוֹדוּ לַה' קִרְאוּ בִשְׁמוֹ, הוֹדִיעוּ בָעַמִּים עֲלִילוֹתָיו. שִׁירוּ לוֹ זַמְּרוּ לוֹ, שִׂיחוּ בְּכָל נִפְלְאֹתָיו. הִתְהַלְלוּ בְּשֵׁם קָדְשׁוֹ, יִשְׂמַח לֵב מְבַקְשֵׁי ה'. דִּרְשׁוּ ה' וְעֻזּוֹ, בַּקְּשׁוּ פָנָיו תָּמִיד. זִכְרוּ נִפְלְאֹתָיו אֲשֶׁר עָשָׂה, מֹפְתָיו וּמִשְׁפְּטֵי פִיו. זֶרַע אַבְרָהָם עַבְדּוֹ, בְּנֵי יַעֲקֹב בְּחִירָיו. הוּא ה' אֱלֹהֵינוּ, בְּכָל הָאָרֶץ מִשְׁפָּטָיו. זָכַר לְעוֹלָם בְּרִיתוֹ, דָּבָר צִוָּה לְאֶלֶף דּוֹר. אֲשֶׁר כָּרַת אֶת אַבְרָהָם, וּשְׁבוּעָתוֹ לְיִצְחָק. וַיַּעֲמִידֶהָ לְיַעֲקֹב לְחֹק, לְיִשְׂרָאֵל בְּרִית עוֹלָם. לֵאמֹר לְךָ אֶתֵּן אֶרֶץ כְּנָעַן, חֶבֶל נַחֲלַתְכֶם. בִּהְיוֹתָם מְתֵי מִסְפָּר, כִּמְעַט וְגָרִים בָּהּ. וַיִּתְהַלְּכוּ מִגּוֹי אֶל גּוֹי, מִמַּמְלָכָה אֶל עַם אַחֵר. לֹא הִנִּיחַ אָדָם לְעָשְׁקָם, וַיּוֹכַח עֲלֵיהֶם מְלָכִים. אַל תִּגְּעוּ בִמְשִׁיחָי, וְלִנְבִיאַי אַל תָּרֵעוּ. וַיִּקְרָא רָעָב עַל הָאָרֶץ, כָּל מַטֵּה לֶחֶם שָׁבָר. שָׁלַח לִפְנֵיהֶם אִישׁ, לְעֶבֶד נִמְכַּר יוֹסֵף. עִנּוּ בַכֶּבֶל רַגְלוֹ, בַּרְזֶל בָּאָה נַפְשׁוֹ. עַד עֵת בֹּא דְבָרוֹ, אִמְרַת ה' צְרָפָתְהוּ. שָׁלַח מֶלֶךְ וַיַּתִּירֵהוּ, מֹשֵׁל עַמִּים וַיְפַתְּחֵהוּ. שָׂמוֹ אָדוֹן לְבֵיתוֹ, וּמֹשֵׁל בְּכָל קִנְיָנוֹ. לֶאְסֹר שָׂרָיו בְּנַפְשׁוֹ, וּזְקֵנָיו יְחַכֵּם. וַיָּבֹא יִשְׂרָאֵל מִצְרָיִם, וְיַעֲקֹב גָּר בְּאֶרֶץ חָם. וַיֶּפֶר אֶת עַמּוֹ מְאֹד, וַיַּעֲצִמֵהוּ מִצָּרָיו. הָפַךְ לִבָּם לִשְׂנֹא עַמּוֹ, לְהִתְנַכֵּל בַּעֲבָדָיו. שָׁלַח מֹשֶׁה עַבְדּוֹ, אַהֲרֹן אֲשֶׁר בָּחַר בּוֹ. שָׂמוּ בָם דִּבְרֵי אֹתֹתָיו, וּמֹפְתִים בְּאֶרֶץ חָם. שָׁלַח חֹשֶׁךְ וַיַּחְשִׁךְ, וְלֹא מָרוּ אֶת דְּבָרָיו. הָפַךְ אֶת מֵימֵיהֶם לְדָם, וַיָּמֶת אֶת דְּגָתָם. שָׁרַץ אַרְצָם צְפַרְדְּעִים, בְּחַדְרֵי מַלְכֵיהֶם. אָמַר וַיָּבֹא עָרֹב, וְכִנִּים בְּכָל גְּבוּלָם. נָתַן גִּשְׁמֵיהֶם בָּרָד, אֵשׁ לֶהָבוֹת בְּאַרְצָם. וַיַּךְ גַּפְנָם וּתְאֵנָתָם, וַיְשַׁבֵּר עֵץ גְּבוּלָם. אָמַר וַיָּבֹא אַרְבֶּה, וְיֶלֶק וְאֵין מִסְפָּר. וַיֹּאכַל כָּל עֵשֶׂב בְּאַרְצָם, וַיֹּאכַל פְּרִי אַדְמָתָם. וַיַּךְ כָּל בְּכוֹר בְּאַרְצָם, רֵאשִׁית לְכָל אוֹנָם. וַיּוֹצִיאֵם בְּכֶסֶף וְזָהָב, וְאֵין בִּשְׁבָטָיו כּוֹשֵׁל. שָׂמַח מִצְרַיִם בְּצֵאתָם, כִּי נָפַל פַּחְדָּם עֲלֵיהֶם. פָּרַשׂ עָנָן לְמָסָךְ, וְאֵשׁ לְהָאִיר לָיְלָה. שָׁאַל וַיָּבֵא שְׂלָו, וְלֶחֶם שָׁמַיִם יַשְׂבִּיעֵם. פָּתַח צוּר וַיָּזוּבוּ מָיִם, הָלְכוּ בַּצִּיּוֹת נָהָר. כִּי זָכַר אֶת דְּבַר קָדְשׁוֹ, אֶת אַבְרָהָם עַבְדּוֹ. וַיּוֹצִיא עַמּוֹ בְשָׂשׂוֹן, בְּרִנָּה אֶת בְּחִירָיו. וַיִּתֵּן לָהֶם אַרְצוֹת גּוֹיִם, וַעֲמַל לְאֻמִּים יִירָשׁוּ. בַּעֲבוּר יִשְׁמְרוּ חֻקָּיו, וְתוֹרֹתָיו יִנְצֹרוּ, הַלְלוּיָהּ.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>פרק קל"ז</h3>
+                    <p class="psalm-text">עַל נַהֲרוֹת בָּבֶל, שָׁם יָשַׁבְנוּ גַּם בָּכִינוּ, בְּזָכְרֵנוּ אֶת צִיּוֹן. עַל עֲרָבִים בְּתוֹכָהּ, תָּלִינוּ כִּנֹּרוֹתֵינוּ. כִּי שָׁם שְׁאֵלוּנוּ שׁוֹבֵינוּ דִּבְרֵי שִׁיר, וְתוֹלָלֵינוּ שִׂמְחָה, שִׁירוּ לָנוּ מִשִּׁיר צִיּוֹן. אֵיךְ נָשִׁיר אֶת שִׁיר ה' עַל אַדְמַת נֵכָר. אִם אֶשְׁכָּחֵךְ יְרוּשָׁלָ͏ִם, תִּשְׁכַּח יְמִינִי. תִּדְבַּק לְשׁוֹנִי לְחִכִּי, אִם לֹא אֶזְכְּרֵכִי, אִם לֹא אַעֲלֶה אֶת יְרוּשָׁלַ͏ִם עַל רֹאשׁ שִׂמְחָתִי. זְכֹר ה' לִבְנֵי אֱדוֹם, אֵת יוֹם יְרוּשָׁלָ͏ִם, הָאֹמְרִים עָרוּ עָרוּ, עַד הַיְסוֹד בָּהּ. בַּת בָּבֶל הַשְּׁדוּדָה, אַשְׁרֵי שֶׁיְשַׁלֶּם לָךְ אֶת גְּמוּלֵךְ שֶׁגָּמַלְתְּ לָנוּ. אַשְׁרֵי שֶׁיֹּאחֵז וְנִפֵּץ אֶת עֹלָלַיִךְ אֶל הַסָּלַע.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>פרק ק"נ</h3>
+                    <p class="psalm-text">הַלְלוּיָהּ, הַלְלוּ אֵל בְּקָדְשׁוֹ, הַלְלוּהוּ בִּרְקִיעַ עֻזּוֹ. הַלְלוּהוּ בִגְבוּרֹתָיו, הַלְלוּהוּ כְּרֹב גֻּדְלוֹ. הַלְלוּהוּ בְּתֵקַע שׁוֹפָר, הַלְלוּהוּ בְּנֵבֶל וְכִנּוֹר. הַלְלוּהוּ בְתֹף וּמָחוֹל, הַלְלוּהוּ בְּמִנִּים וְעוּגָב. הַלְלוּהוּ בְצִלְצְלֵי שָׁמַע, הַלְלוּהוּ בְּצִלְצְלֵי תְרוּעָה. כֹּל הַנְּשָׁמָה תְּהַלֵּל יָהּ, הַלְלוּיָהּ.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= לשונית אנגלית ================= -->
+        <div id="lang-en" class="lang-section" dir="ltr">
+            <div class="content-card clearfix" id="about-rabbi-en">
+                <h2>About The Tikkun HaKlali & Rabbi Nachman</h2>
+                <img src="500737315_10222796757507761_8087516065105431034_n.jpg" alt="Rabbi Nachman's Grave" class="image-float-left" onclick="scrollToRabbi()">
+                <p>The Tikkun HaKlali (The General Remedy) is a set of prayers and Psalms established by Rabbi Nachman of Breslov, one of the greatest righteous men and Kabbalists of modern times. Rabbi Nachman taught that anyone who recites these ten specific Psalms as a remedy for the soul will merit great salvation, forgiveness of sins, and complete healing.</p>
+                <p>Rabbi Nachman was born in Medzhybizh, Ukraine, and passed away in Uman. He founded the Breslov Hasidic movement, which emphasized joy, simple faith, and Hitbodedut (personal, intimate conversation with the Creator). His grave in Uman has become a major pilgrimage site for tens of thousands of Jews annually, especially on Rosh Hashanah.</p>
+                <p>The Tikkun HaKlali includes ten chapters from the Book of Psalms (16, 32, 41, 42, 59, 77, 90, 105, 137, 150), carefully selected by Rabbi Nachman himself as a remedy for the blemish of the covenant (damage to the sanctity of life and the soul). Reciting them with intention and joy is a powerful tool for drawing closer to the Creator and purifying the soul.</p>
+                <p>We invite you to read the prayers and chapters presented here, whether to merit yourself or to elevate the souls of your loved ones. As Rabbi Nachman said: "The main thing is joy and faith."</p>
+                <br class="clearfix">
+            </div>
+
+            <div class="content-card">
+                <h2>Redemption of the Soul Prayer & The Beautiful Prayer</h2>
+                <p><strong>Redemption of the Soul Prayer:</strong> May it be Your will, Lord our God and God of our fathers, that this prayer be the redemption of my soul, the redemption of the soul of my father and mother, the redemption of the soul of the members of my household, the redemption of the soul of my entire family, and the redemption of the soul of all Israel. Please God, save us now, please God, grant us success now, please God, send complete healing to all the sick of Your people Israel, and have mercy on us as a father has mercy on his children. Amen.</p>
+                <br>
+                <p><strong>The Beautiful Prayer (from Rabbi Nachman's teachings):</strong> Master of the Universe, act for Your sake, act for Your Name's sake, act for Your Torah's sake, act for Your Holiness' sake. May it be Your will to grant us the light of Your countenance, love, awe, joy, and peace. Give me knowledge and understanding to know how to serve You in truth and simplicity. Purify our hearts to serve You in truth. Amen.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>The Ten Psalms</h2>
+                
+                <div class="psalm">
+                    <h3>Psalm 16</h3>
+                    <p class="psalm-text">Michtam of David. Preserve me, O God: for in thee do I put my trust. O my soul, thou hast said unto the LORD, Thou art my Lord: my goodness extendeth not to thee; But to the saints that are in the earth, and to the excellent, in whom is all my delight. Their sorrows shall be multiplied that hasten after another god: their drink offerings of blood will I not offer, nor take up their names into my lips. The LORD is the portion of mine inheritance and of my cup: thou maintainest my lot. The lines are fallen unto me in pleasant places; yea, I have a goodly heritage. I will bless the LORD, who hath given me counsel: my reins also instruct me in the night seasons. I have set the LORD always before me: because he is at my right hand, I shall not be moved. Therefore my heart is glad, and my glory rejoiceth: my flesh also shall rest in hope. For thou wilt not leave my soul in hell; neither wilt thou suffer thine Holy One to see corruption. Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>Psalm 32</h3>
+                    <p class="psalm-text">A Psalm of David, Maschil. Blessed is he whose transgression is forgiven, whose sin is covered. Blessed is the man unto whom the LORD imputeth not iniquity, and in whose spirit there is no guile. When I kept silence, my bones waxed old through my roaring all the day long. For day and night thy hand was heavy upon me: my moisture is turned into the drought of summer. Selah. I acknowledged my sin unto thee, and mine iniquity have I not hid. I said, I will confess my transgressions unto the LORD; and thou forgavest the iniquity of my sin. Selah. For this shall every one that is godly pray unto thee in a time when thou mayest be found: surely in the floods of great waters they shall not come nigh unto him. Thou art my hiding place; thou shalt preserve me from trouble; thou shalt compass me about with songs of deliverance. Selah. I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye. Be ye not as the horse, or as the mule, which have no understanding: whose mouth must be held in with bit and bridle, lest they come near unto thee. Many sorrows shall be to the wicked: but he that trusteth in the LORD, mercy shall compass him about. Be glad in the LORD, and rejoice, ye righteous: and shout for joy, all ye that are upright in heart.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>Psalm 41</h3>
+                    <p class="psalm-text">To the chief Musician, A Psalm of David. Blessed is he that considereth the poor: the LORD will deliver him in time of trouble. The LORD will preserve him, and keep him alive; and he shall be blessed upon the earth: and thou wilt not deliver him unto the will of his enemies. The LORD will strengthen him upon the bed of languishing: thou wilt make all his bed in his sickness. I said, LORD, be merciful unto me: heal my soul; for I have sinned against thee. Mine enemies speak evil of me, When shall he die, and his name perish? And if he come to see me, he speaketh vanity: his heart gathereth iniquity to itself; when he goeth abroad, he telleth it. All that hate me whisper together against me: against me do they devise my hurt. An evil disease, say they, cleaveth fast unto him: and now that he lieth he shall rise up no more. Yea, mine own familiar friend, in whom I trusted, which did eat of my bread, hath lifted up his heel against me. But thou, O LORD, be merciful unto me, and raise me up, that I may requite them. By this I know that thou favourest me, because mine enemy doth not triumph over me. And as for me, thou upholdest me in mine integrity, and settest me before thy face for ever. Blessed be the LORD God of Israel from everlasting, and to everlasting. Amen, and Amen.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>Psalm 42</h3>
+                    <p class="psalm-text">To the chief Musician, Maschil, for the sons of Korah. As the hart panteth after the water brooks, so panteth my soul after thee, O God. My soul thirsteth for God, for the living God: when shall I come and appear before God? My tears have been my meat day and night, while they continually say unto me, Where is thy God? When I remember these things, I pour out my soul in me: for I had gone with the multitude, I went with them to the house of God, with the voice of joy and praise, with a multitude that kept holyday. Why art thou cast down, O my soul? and why art thou disquieted in me? hope thou in God: for I shall yet praise him for the help of his countenance. O my God, my soul is cast down within me: therefore will I remember thee from the land of Jordan, and of the Hermonites, from the hill Mizar. Deep calleth unto deep at the noise of thy waterspouts: all thy waves and thy billows are gone over me. Yet the LORD will command his lovingkindness in the daytime, and in the night his song shall be with me, and my prayer unto the God of my life. I will say unto God my rock, Why hast thou forgotten me? why go I mourning because of the oppression of the enemy? As with a sword in my bones, mine enemies reproach me; while they say daily unto me, Where is thy God? Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him, who is the health of my countenance, and my God.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>Psalm 59</h3>
+                    <p class="psalm-text">To the chief Musician, Altaschith, Michtam of David; when Saul sent, and they watched the house to kill him. Deliver me from mine enemies, O my God: defend me from them that rise up against me. Deliver me from the workers of iniquity, and save me from bloody men. For, lo, they lie in wait for my soul: the mighty are gathered against me; not for my transgression, nor for my sin, O LORD. They run and prepare themselves without my fault: awake to help me, and behold. Thou therefore, O LORD God of hosts, the God of Israel, awake to visit all the heathen: be not merciful to any wicked transgressors. Selah. They return at evening: they make a noise like a dog, and go round about the city. Behold, they belch out with their mouth: swords are in their lips: for who, say they, doth hear? But thou, O LORD, shalt laugh at them; thou shalt have all the heathen in derision. Because of his strength will I wait upon thee: for God is my defence. The God of my mercy shall prevent me: God shall let me see my desire upon mine enemies. Slay them not, lest my people forget: scatter them by thy power; and bring them down, O Lord our shield. For the sin of their mouth and the words of their lips let them even be taken in their pride: and for cursing and lying which they speak. Consume them in wrath, consume them, that they may not be: and let them know that God ruleth in Jacob unto the ends of the earth. Selah. And at evening let them return; and let them make a noise like a dog, and go round about the city. Let them wander up and down for meat, and grudge if they be not satisfied. But I will sing of thy power; yea, I will sing aloud of thy mercy in the morning: for thou hast been my defence and refuge in the day of my trouble. Unto thee, O my strength, will I sing: for God is my defence, and the God of my mercy.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>Psalm 77</h3>
+                    <p class="psalm-text">To the chief Musician, to Jeduthun, A Psalm of Asaph. I cried unto God with my voice, even unto God with my voice; and he gave ear unto me. In the day of my trouble I sought the Lord: my sore ran in the night, and ceased not: my soul refused to be comforted. I remembered God, and was troubled: I complained, and my spirit was overwhelmed. Selah. Thou holdest mine eyes waking: I am so troubled that I cannot speak. I have considered the days of old, the years of ancient times. I call to remembrance my song in the night: I commune with mine own heart: and my spirit made diligent search. Will the Lord cast off for ever? and will he be favourable no more? Is his mercy clean gone for ever? doth his promise fail for evermore? Hath God forgotten to be gracious? hath he in anger shut up his tender mercies? Selah. And I said, This is my infirmity: but I will remember the years of the right hand of the most High. I will remember the works of the LORD: surely I will remember thy wonders of old. I will meditate also of all thy work, and talk of thy doings. Thy way, O God, is in the sanctuary: who is so great a God as our God? Thou art the God that doest wonders: thou hast declared thy strength among the people. Thou hast with thine arm redeemed thy people, the sons of Jacob and Joseph. Selah. The waters saw thee, O God, the waters saw thee; they were afraid: the depths also were troubled. The clouds poured out water: the skies sent out a sound: thine arrows also went abroad. The voice of thy thunder was in the heaven: the lightnings lightened the world: the earth trembled and shook. Thy way is in the sea, and thy path in the great waters, and thy footsteps are not known. Thou leddest thy people like a flock by the hand of Moses and Aaron.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>Psalm 90</h3>
+                    <p class="psalm-text">A Prayer of Moses the man of God. Lord, thou hast been our dwelling place in all generations. Before the mountains were brought forth, or ever thou hadst formed the earth and the world, even from everlasting to everlasting, thou art God. Thou turnest man to destruction; and sayest, Return, ye children of men. For a thousand years in thy sight are but as yesterday when it is past, and as a watch in the night. Thou carriest them away as with a flood; they are as a sleep: in the morning they are like grass which groweth up. In the morning it flourisheth, and groweth up; in the evening it is cut down, and withereth. For we are consumed by thine anger, and by thy wrath are we troubled. Thou hast set our iniquities before thee, our secret sins in the light of thy countenance. For all our days are passed away in thy wrath: we spend our years as a tale that is told. The days of our years are threescore years and ten; and if by reason of strength they be fourscore years, yet is their strength labour and sorrow; for it is soon cut off, and we fly away. Who knoweth the power of thine anger? even according to thy fear, so is thy wrath. So teach us to number our days, that we may apply our hearts unto wisdom. Return, O LORD, how long? and let it repent thee concerning thy servants. O satisfy us early with thy mercy; that we may rejoice and be glad all our days. Make us glad according to the days wherein thou hast afflicted us, and the years wherein we have seen evil. Let thy work appear unto thy servants, and thy glory unto their children. And let the beauty of the LORD our God be upon us: and establish thou the work of our hands upon us; yea, the work of our hands establish thou it.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>Psalm 105</h3>
+                    <p class="psalm-text">O give thanks unto the LORD; call upon his name: make known his deeds among the people. Sing unto him, sing psalms unto him: talk ye of all his wondrous works. Glory ye in his holy name: let the heart of them rejoice that seek the LORD. Seek the LORD, and his strength: seek his face evermore. Remember his marvellous works that he hath done; his wonders, and the judgments of his mouth; O ye seed of Abraham his servant, ye children of Jacob his chosen. He is the LORD our God: his judgments are in all the earth. He hath remembered his covenant for ever, the word which he commanded to a thousand generations. Which covenant he made with Abraham, and his oath unto Isaac; And confirmed the same unto Jacob for a law, and to Israel for an everlasting covenant: Saying, Unto thee will I give the land of Canaan, the lot of your inheritance: When they were but a few men in number; yea, very few, and strangers in it. When they went from one nation to another, from one kingdom to another people; He suffered no man to do them wrong: yea, he reproved kings for their sakes; Saying, Touch not mine anointed, and do my prophets no harm. Moreover he called for a famine upon the land: he brake the whole staff of bread. He sent a man before them, even Joseph, who was sold for a servant: Whose feet they hurt with fetters: he was laid in iron: Until the time that his word came: the word of the LORD tried him. The king sent and loosed him; even the ruler of the people, and let him go free. He made him lord of his house, and ruler of all his substance: To bind his princes at his pleasure; and teach his senators wisdom. Israel also came into Egypt; and Jacob sojourned in the land of Ham. And he increased his people greatly; and made them stronger than their enemies. He turned their heart to hate his people, to deal subtilly with his servants. He sent Moses his servant; and Aaron whom he had chosen. They shewed his signs among them, and wonders in the land of Ham. He sent darkness, and made it dark; and they rebelled not against his word. He turned their waters into blood, and slew their fish. Their land brought forth frogs in abundance, in the chambers of their kings. He spake, and there came divers sorts of flies, and lice in all their coasts. He gave them hail for rain, and flaming fire in their land. He smote their vines also and their fig trees; and brake the trees of their coasts. He spake, and the locusts came, and caterpillers, and that without number, And did eat up all the herbs in their land, and devoured the fruit of their ground. He smote also all the firstborn in their land, the chief of all their strength. He brought them forth also with silver and gold: and there was not one feeble person among their tribes. Egypt was glad when they departed: for the fear of them fell upon them. He spread a cloud for a covering; and fire to give light in the night. The people asked, and he brought quails, and satisfied them with the bread of heaven. He opened the rock, and the waters gushed out; they ran in the dry places like a river. For he remembered his holy promise, and Abraham his servant. And he brought forth his people with joy, and his chosen with gladness: And gave them the lands of the heathen: and they inherited the labour of the people; That they might observe his statutes, and keep his laws. Praise ye the LORD.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>Psalm 137</h3>
+                    <p class="psalm-text">By the rivers of Babylon, there we sat down, yea, we wept, when we remembered Zion. We hanged our harps upon the willows in the midst thereof. For there they that carried us away captive required of us a song; and they that wasted us required of us mirth, saying, Sing us one of the songs of Zion. How shall we sing the LORD's song in a strange land? If I forget thee, O Jerusalem, let my right hand forget her cunning. If I do not remember thee, let my tongue cleave to the roof of my mouth; if I prefer not Jerusalem above my chief joy. Remember, O LORD, the children of Edom in the day of Jerusalem; who said, Rase it, rase it, even to the foundation thereof. O daughter of Babylon, who art to be destroyed; happy shall he be, that rewardeth thee as thou hast served us. Happy shall he be, that taketh and dasheth thy little ones against the stones.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>Psalm 150</h3>
+                    <p class="psalm-text">Praise ye the LORD. Praise God in his sanctuary: praise him in the firmament of his power. Praise him for his mighty acts: praise him according to his excellent greatness. Praise him with the sound of the trumpet: praise him with the psaltery and harp. Praise him with the timbrel and dance: praise him with stringed instruments and organs. Praise him upon the loud cymbals: praise him upon the high sounding cymbals. Let every thing that hath breath praise the LORD. Praise ye the LORD.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= לשונית ערבית ================= -->
+        <div id="lang-ar" class="lang-section" dir="rtl">
+            <div class="content-card clearfix" id="about-rabbi-ar">
+                <h2>عن التيكون هكلالي والحاخام نحمان</h2>
+                <img src="500737315_10222796757507761_8087516065105431034_n.jpg" alt="قبر الحاخام نحمان" class="image-float-right" onclick="scrollToRabbi()">
+                <p>التيكون هكلالي (العلاج الشامل) هو مجموعة من الصلوات والمزامير التي أسسها الحاخام نحمان من بريسلاف، أحد أعظم الصديقين والقباليين في العصر الحديث. علم الحاخام نحمان أن كل من يقرأ هذه المزامير العشرة كعلاج لنفسه، سيستحق الخلاص العظيم، ومغفرة الذنوب، والشفاء التام.</p>
+                <p>ولد الحاخام نحمان في بلدة ميدزيبيج في أوكرانيا، وتوفي في أومان. أسس الحركة الحسيدية بريسلاف، التي ركزت على الفرح، والإيمان البسيط، والخلوة (محادثة شخصية مع الخالق). أصبح قبره في أومان موقعًا للحج لمئات الآلاف من اليهود كل عام، وخاصة في رأس السنة العبرية.</p>
+                <p>يتضمن التيكون هكلالي عشرة فصول من سفر المزامير (16، 32، 41، 42، 59، 77، 90، 105، 137، 150)، والتي اختارها الحاخام نحمان بنفسه بعناية كعلاج لعيب العهد (الإضرار بحرمة الحياة والنفس). قراءتها بنية وفرح هي أداة قوية للتقرب من الخالق وتطهير الروح.</p>
+                <p>ندعوكم لقراءة الصلوات والفصول المقدمة هنا، سواء لمصلحتكم أو لرفع أرواح أحبائكم. وكما قال الحاخام نحمان: "الأهم هو الفرح والإيمان".</p>
+                <br class="clearfix">
+            </div>
+
+            <div class="content-card">
+                <h2>صلاة فداء النفس والصلاة الجميلة</h2>
+                <p><strong>صلاة فداء النفس:</strong> ليكن رضاك يا ربنا وإلهنا وإله آبائنا، أن تكون هذه الصلاة فداء لنفسي، وفداء لنفس أبي وأمي، وفداء لنفس أهل بيتي، وفداء لنفس عائلتي بأكملها، وفداء لنفس كل إسرائيل. اللهم خلصنا الآن، اللهم وفقنا الآن، اللهم أرسل الشفاء التام لجميع مرضى شعبك إسرائيل، وارحمنا كما يرحم الأب أبناءه. آمين.</p>
+                <br>
+                <p><strong>الصلاة الجميلة (من تعاليم الحاخام نحمان):</strong> سيد الكون، افعل من أجل اسمك، افعل من أجل توراتك، افعل من أجل قدسيتك. ليكن رضاك أن تمنحنا نور وجهك، والمحبة، والخوف، والفرح، والسلام. أعطني المعرفة والعقل لأعرف كيف أعبدك بالحق والبساطة. طهر قلوبنا لنعبدك بالحق. آمين.</p>
+            </div>
+
+            <div class="content-card">
+                <h2>المزامير العشرة</h2>
+                
+                <div class="psalm">
+                    <h3>المزمور 16</h3>
+                    <p class="psalm-text">مِكْتَامٌ لِدَاوُدَ. احْفَظْنِي يَا اللهُ لأَنِّي عَلَيْكَ تَوَكَّلْتُ. قُلْتُ لِلرَّبِّ: أَنْتَ سَيِّدِي. خَيْرِي لاَ شَيْءَ غَيْرُكَ. لِلْقِدِّيسِينَ الَّذِينَ فِي الأَرْضِ وَالأَفَاضِلِ كُلِّ مَسَرَّتِي فِيهِمْ. تَتَكَاثَرُ أَوْجَاعُ الَّذِينَ أَسْرَعُوا إِلَى إِلهٍ آخَرَ. لاَ أَسْكُبُ سَكَائِبَ دِمَائِهِمْ وَلاَ أَذْكُرُ أَسْمَاءَهُمْ بِشَفَتَيَّ. الرَّبُّ نَصِيبُ قِسْمَتِي وَكَأْسِي. أَنْتَ قَابِضُ قُرْعَتِي. حِبَالٌ وَقَعَتْ لِي فِي أَمَاكِنَ نَاعِمَةٍ، فَالْمِيرَاثُ حَسَنٌ لِي. أُبَارِكُ الرَّبَّ الَّذِي أَشَارَ إِلَيَّ. أَيْضًا بِاللَّيْلِ تُنْذِرُنِي كُلْيَتَايَ. جَعَلْتُ الرَّبَّ أَمَامِي دَائِمًا، لأَنَّهُ عَنْ يَمِينِي فَلَنْ أَتَزَعْزَعَ. لِذَلِكَ فَرِحَ قَلْبِي وَابْتَهَجَ مَجْدِي، وَجَسَدِي أَيْضًا يَسْكُنُ مُطْمَئِنًّا. لأَنَّكَ لَنْ تَتْرُكَ نَفْسِي فِي الْهَاوِيَةِ، وَلَنْ تَدَعَ تَقِيَّكَ يَرَى فَسَادًا. تُعَرِّفُنِي سَبِيلَ الْحَيَاةِ. أَمَامَكَ شِبَعُ سُرُورٍ. فِي يَمِينِكَ نِعَمٌ إِلَى الأَبَدِ.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>المزمور 32</h3>
+                    <p class="psalm-text">لِدَاوُدَ قَصِيدَةٌ. طُوبَى لِلَّذِي غُفِرَ إِثْمُهُ وَسُتِرَتْ خَطِيَّتُهُ. طُوبَى لِرَجُل لاَ يَحْسِبُ لَهُ الرَّبُّ ذَنْبًا وَلاَ فِي رُوحِهِ غِشٌّ. لَمَّا سَكَتُّ بَلِيَتْ عِظَامِي مِنْ زَفِيرِي طُولَ النَّهَارِ. لأَنَّ يَدَكَ ثَقُلَتْ عَلَيَّ نَهَارًا وَلَيْلاً، تَحَوَّلَتْ رُطُوبَتِي إِلَى يُبْسِ الصَّيْفِ. سِلَاهْ. أَعْتَرِفُ لَكَ بِخَطِيَّتِي وَلاَ أُخْفِي إِثْمِي. قُلْتُ: أَعْتَرِفُ لِلرَّبِّ بِذُنُوبِي، وَأَنْتَ غَفَرْتَ إِثْمَ خَطِيَّتِي. سِلَاهْ. لِذَلِكَ يُصَلِّي لَكَ كُلُّ تَقِيٍّ فِي وَقْتِ إِيجَادِكَ. عِنْدَ فَيَضَانِ مِيَاهٍ كَثِيرَةٍ لاَ تَصِلُ إِلَيْهِ. أَنْتَ سِتْرٌ لِي. مِنَ الضِّيقِ تَحْفَظُنِي. بِتَرْنِيمِ النَّجَاةِ تُحِيطُ بِي. سِلَاهْ. أُعَلِّمُكَ وَأُرْشِدُكَ إِلَى الطَّرِيقِ الَّتِي تَسْلُكُهَا. أَنْصَحُكَ وَعَيْنِي عَلَيْكَ. لاَ تَكُونُوا كَفَرَسٍ أَوْ كَبَغْلٍ بِلاَ فَهْمٍ. بِلِجَامٍ وَزِمَامٍ زِينَتِهِ يُلْجَمُ حَتَّى لاَ يَقْتَرِبَ إِلَيْكَ. كَثِيرَةٌ هِيَ أَوْجَاعُ الشِّرِّيرِ، أَمَّا الْمُتَوَكِّلُ عَلَى الرَّبِّ فَالرَّحْمَةُ تُحِيطُ بِهِ. افْرَحُوا بِالرَّبِّ وَابْتَهِجُوا يَا أَيُّهَا الصِّدِّيقُونَ، وَاهْتِفُوا يَا جَمِيعَ الْمُسْتَقِيمِي الْقُلُوبِ.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>المزمور 41</h3>
+                    <p class="psalm-text">لإِمَامِ الْمُغَنِّينَ. مَزْمُورٌ لِدَاوُدَ. طُوبَى لِمَنْ يَنْظُرُ إِلَى الْمِسْكِينِ. فِي يَوْمِ الشَّرِّ يُنَجِّيهِ الرَّبُّ. الرَّبُّ يَحْفَظُهُ وَيُحْيِيهِ. يَغْتَبِطُ فِي الأَرْضِ وَلاَ يُسَلِّمُهُ إِلَى مَرَامِ أَعْدَائِهِ. الرَّبُّ يَعْضُدُهُ عَلَى فِرَاشِ الْعِلَّةِ. قَدْ حَوَّلْتَ كُلَّ فِرَاشِهِ فِي مَرَضِهِ. أَنَا قُلْتُ: يَا رَبُّ ارْحَمْنِي. اشْفِ نَفْسِي لأَنِّي قَدْ أَخْطَأْتُ إِلَيْكَ. أَعْدَائِي يَتَكَلَّمُونَ عَلَيَّ بِشَرٍّ: مَتَى يَمُوتُ وَيَبِيدُ اسْمُهُ؟ وَإِنْ دَخَلَ لِيَرَانِي يَتَكَلَّمُ بِالْبَاطِلِ. قَلْبُهُ يَجْمَعُ لِنَفْسِهِ إِثْمًا. يَخْرُجُ فِي الْخَارِجِ يَتَكَلَّمُ. كُلُّ مُبْغِضِيَّ يَتَهَامَسُونَ مَعًا عَلَيَّ. عَلَيَّ تَفَكَّرُوا بِشَرٍّ. أَمْرٌ بَلِيغٌ قَدِ انْصَبَّ عَلَيَّ، وَهُوَ مُضْطَجِعٌ لاَ يَعُودُ يَقُومُ. أَيْضًا رَجُلُ سَلاَمَتِي الَّذِي وَثِقْتُ بِهِ وَكُلُّ خُبْزِي رَفَعَ عَلَيَّ عَقِبَهُ. أَمَّا أَنْتَ يَا رَبُّ فَارْحَمْنِي وَأَقِمْنِي فَأُجَازِيَهُمْ. بِهذَا عَلِمْتُ أَنَّكَ سُرِرْتَ بِي: أَنَّ عَدُوِّي لَمْ يَهْتِفْ عَلَيَّ. وَأَنَا بِكَمَالِي عَضَّدْتَنِي وَأَقَمْتَنِي أَمَامَكَ إِلَى الأَبَدِ. مُبَارَكٌ الرَّبُّ إِلهُ إِسْرَائِيلَ مِنَ الأَزَلِ وَإِلَى الأَبَدِ. آمِينَ وَآمِينَ.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>المزمور 42</h3>
+                    <p class="psalm-text">لإِمَامِ الْمُغَنِّينَ. قَصِيدَةٌ لِبَنِي قُورَحَ. كَمَا يَشْتَاقُ الإِيَّلُ إِلَى جَدَاوِلِ الْمِيَاهِ، هكَذَا تَشْتَاقُ نَفْسِي إِلَيْكَ يَا اللهُ. عَطِشَتْ نَفْسِي إِلَى اللهِ، إِلَى الإِلهِ الْحَيِّ. مَتَى آتِي وَأَتَرَاءَى قُدَّامَ اللهِ؟ صَارَتْ لِي دُمُوعِي طَعَامًا نَهَارًا وَلَيْلاً، إِذْ قِيلَ لِي كُلَّ يَوْمٍ: أَيْنَ إِلهُكَ؟ هذِهِ أَذْكُرُهَا فَأَسْكُبُ نَفْسِي عَلَيَّ: لأَنِّي كُنْتُ أَعْبُرُ مَعَ الْجُمْهُورِ، أَتَقَدَّمُ مَعَهُمْ بِصَوْتِ تَرْنِيمٍ وَحَمْدٍ، جُمْهُورٌ مُعَيِّدٌ. لِمَاذَا أَنْتِ مُنْحَنِيَةٌ يَا نَفْسِي؟ وَلِمَاذَا تَئِنِّينَ فِيَّ؟ ارْتَجِي اللهَ، لأَنِّي بَعْدُ أَحْمَدُهُ، لأَجْلِ خَلاَصِ وَجْهِهِ. إِلهِي، نَفْسِي مُنْحَنِيَةٌ فِيَّ. لِذَلِكَ أَذْكُرُكَ مِنْ أَرْضِ الأُرْدُنِّ وَحَرْمُونَ مِنْ جَبَلِ صِغَرٍ. غَمْرٌ يُنَادِي غَمْرًا عِنْدَ صَوْتِ مِيَاهِكَ. كُلُّ لُجَجِكَ وَأَمْوَاجِكَ جَازَتْ عَلَيَّ. نَهَارًا يُوصِي الرَّبُّ رَحْمَتَهُ، وَبِاللَّيْلِ تَرْنِيمَتُهُ عِنْدِي صَلاَةٌ لإِلهِ حَيَاتِي. أَقُولُ لِلَّهِ صَخْرَتِي: لِمَاذَا نَسِيتَنِي؟ لِمَاذَا أَذْهَبُ حَزِينًا مِنْ ضِيقِ الْعَدُوِّ؟ بِسَحْقٍ فِي عِظَامِي عَيَّرَنِي مُضَايِقِيَّ، إِذْ قَالُوا لِي كُلَّ يَوْمٍ: أَيْنَ إِلهُكَ؟ لِمَاذَا أَنْتِ مُنْحَنِيَةٌ يَا نَفْسِي؟ وَلِمَاذَا تَئِنِّينَ فِيَّ؟ ارْتَجِي اللهَ، لأَنِّي بَعْدُ أَحْمَدُهُ، خَلاَصَ وَجْهِي وَإِلهِي.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>المزمور 59</h3>
+                    <p class="psalm-text">لإِمَامِ الْمُغَنِّينَ. عَلَى «لاَ تُهْلِكْ». لِدَاوُدَ. مُخْتَامٌ. حِينَمَا أَرْسَلَ شَاوُلُ وَرَاقَبُوا الْبَيْتَ لِيَقْتُلُوهُ. أَنْقِذْنِي مِنْ أَعْدَائِي يَا إِلهِي. مِنْ مُقَاوِمِيَّ احْمِنِي. نَجِّنِي مِنْ فَاعِلِي الإِثْمِ وَمِنْ رِجَالِ الدِّمَاءِ خَلِّصْنِي. لأَنَّهُمْ قَدْ كَمَنُوا لِنَفْسِي. يَجْتَمِعُونَ عَلَيَّ أَقْوِيَاءُ، لاَ لِذَنْبِي وَلاَ لِخَطِيَّتِي يَا رَبُّ. بِلاَ إِثْمٍ يَجْرُونَ وَيُهَيِّئُونَ أَنْفُسَهُمْ. اسْتَيْقِظْ لِمُلاَقَاتِي وَانْظُرْ. وَأَنْتَ يَا رَبُّ إِلهَ الْجُنُودِ إِلهَ إِسْرَائِيلَ، انْتَبِهْ لِتُعَاقِبَ كُلَّ الأُمَمِ. لاَ تَرْحَمْ كُلَّ غَادِرٍ مُثْمِرٍ إِثْمًا. سِلَاهْ. يَعُودُونَ عِنْدَ الْمَسَاءِ. يَنْبَحُونَ مِثْلَ الْكَلْبِ وَيَدُورُونَ فِي الْمَدِينَةِ. هُوَذَا يَنْطِقُونَ بِفَمِهِمْ. سُيُوفٌ فِي شِفَاهِهِمْ، لأَنَّهُمْ يَقُولُونَ: مَنْ سَامِعٌ؟ أَمَّا أَنْتَ يَا رَبُّ فَتَضْحَكُ عَلَيْهِمْ. تُسْتَهْزِئُ بِكُلِّ الأُمَمِ. مِنْ قُوَّتِهِ أَتَرَقَّبُكَ، لأَنَّ اللهَ مَلْجَإِي. إِلهِي رَحْمَتُهُ تَتَقَدَّمُنِي. اللهُ يُرِينِي بِأَعْدَائِي. لاَ تَقْتُلْهُمْ لِئَلاَّ يَنْسَى شَعْبِي. فَرِّقْهُمْ بِقُوَّتِكَ وَأَهْبِطْهُمْ يَا رَبُّ تُرْسَنَا. خَطِيَّةُ فَمِهِمْ كَلاَمُ شِفَاهِهِمْ. وَلْيُؤْخَذُوا بِكِبْرِيَائِهِمْ، وَبِسَبٍّ وَكَذِبٍ يُحَدِّثُونَ. أَفْنِ بِغَضَبٍ، أَفْنِهِمْ حَتَّى لاَ يَكُونُوا، وَلْيَعْلَمُوا أَنَّ اللهَ يَتَسَلَّطُ فِي يَعْقُوبَ إِلَى أَقَاصِي الأَرْضِ. سِلَاهْ. وَيَعُودُونَ عِنْدَ الْمَسَاءِ. يَنْبَحُونَ مِثْلَ الْكَلْبِ وَيَدُورُونَ فِي الْمَدِينَةِ. هُمْ يَتِيهُونَ لِلأَكْلِ. إِنْ لَمْ يَشْبَعُوا يَبِيتُونَ. أَمَّا أَنَا فَأُرَنِّمُ بِعِزَّتِكَ. أُبَكِّرُ بِرَحْمَتِكَ، لأَنَّكَ كُنْتَ مَلْجَإِي وَمَنْجًى فِي يَوْمِ ضِيقِي. يَا قُوَّتِي، لَكَ أُرَنِّمُ، لأَنَّ اللهَ مَلْجَإِي، إِلهُ رَحْمَتِي.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>المزمور 77</h3>
+                    <p class="psalm-text">لإِمَامِ الْمُغَنِّينَ. عَلَى «يَدُوثُونُ». لأَسَافَ مَزْمُورٌ. صَوْتِي إِلَى اللهِ فَأَصْرُخُ. صَوْتِي إِلَى اللهِ فَيَصْغَى إِلَيَّ. فِي يَوْمِ ضِيقِي طَلَبْتُ الرَّبَّ. يَدِي فِي اللَّيْلِ انْبَسَطَتْ وَلَمْ تَرْتَخِ. أَبَتْ نَفْسِي التَّعْزِيَةَ. أَذْكُرُ اللهَ فَأَئِنُّ. أَتَمَتَّمُ فَتَغْشَى رُوحِي. سِلَاهْ. أَمْسَكْتَ أَجْفَانِي. انْزَعَجْتُ فَلَمْ أَتَكَلَّمْ. تَفَكَّرْتُ فِي أَيَّامِ الْقِدَمِ، السِّنِينِ الدَّهْرِيَّةِ. أَذْكُرُ تَرْنِيمَتِي فِي اللَّيْلِ. أَتَمَتَّمُ مَعَ قَلْبِي، وَرُوحِي تَبْحَثُ. هَلْ يَرْفُضُ الرَّبُّ إِلَى الأَبَدِ وَلاَ يَرْضَى بَعْدُ؟ هَلِ انْتَهَتْ إِلَى الأَبَدِ رَحْمَتُهُ؟ هَلِ انْقَطَعَتْ كَلِمَتُهُ إِلَى الدَّهْرِ؟ هَلْ نَسِيَ اللهُ أَنْ يَتَرَأَّفَ؟ هَلْ قَصَرَ بِالْغَضَبِ مَرَاحِمَهُ؟ سِلَاهْ. فَقُلْتُ: هذَا هُوَ ضَعْفِي، سِنُو يَمِينِ الْعَلِيِّ. أَذْكُرُ أَعْمَالَ الرَّبِّ، لأَنِّي أَتَذَكَّرُ عَجَائِبَكَ مِنْ قِدَمٍ. أَتَأَمَّلُ فِي كُلِّ صَنَائِعِكَ، وَأَتَكَلَّمُ بِأَفْعَالِكَ. اللَّهُمَّ، طَرِيقُكَ فِي الْقُدْسِ. أَيُّ إِلهٍ عَظِيمٌ مِثْلُ اللهِ؟ أَنْتَ الإِلهُ صَانِعُ الْعَجَائِبِ. عَرَّفْتَ بَيْنَ الشُّعُوبِ قُوَّتَكَ. افْتَدَيْتَ بِذِرَاعِكَ شَعْبَكَ، بَنِي يَعْقُوبَ وَيُوسُفَ. سِلَاهْ. رَأَتْكَ الْمِيَاهُ يَا اللهُ. رَأَتْكَ الْمِيَاهُ فَخَافَتْ. ارْتَعَدَتْ أَيْضًا اللُّجَجُ. سَكَبَتِ الْغُيُومُ مِيَاهًا. أَعْطَتِ السُّحُبُ صَوْتًا. سِهَامُكَ أَيْضًا انْطَلَقَتْ. صَوْتُ رَعْدِكَ فِي الزَّوْبَعَةِ. الْبُرُوقُ أَضَاءَتِ الْمَسْكُونَةَ. ارْتَعَدَتْ وَرَجَفَتِ الأَرْضُ. فِي الْبَحْرِ طَرِيقُكَ، وَسَبِيلُكَ فِي الْمِيَاهِ الْكَثِيرَةِ، وَآثَارُكَ لَمْ تُعْرَفْ. هَدَيْتَ شَعْبَكَ كَقَطِيعٍ بِيَدِ مُوسَى وَهَارُونَ.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>المزمور 90</h3>
+                    <p class="psalm-text">صَلاَةٌ لِمُوسَى رَجُلِ اللهِ. يَا رَبُّ، أَنْتَ مَلْجَأٌ لَنَا فِي كُلِّ جِيل. مِنْ قَبْلِ أَنْ تُولَدَ الْجِبَالُ وَأَبْدَأَتِ الأَرْضُ وَالْمَسْكُونَةُ، مِنَ الأَزَلِ إِلَى الأَبَدِ أَنْتَ اللهُ. تُرْجِعُ الإِنْسَانَ إِلَى الْغُبَارِ وَتَقُولُ: ارْجِعُوا يَا بَنِي آدَمَ. لأَنَّ أَلْفَ سَنَةٍ فِي عَيْنَيْكَ مِثْلُ يَوْمِ أَمْسِ بَعْدَ مَا عَبَرَ، وَمِثْلُ هَزِيعٍ مِنَ اللَّيْلِ. جَرَفْتَهُمْ. يَكُونُونَ كَنَوْمٍ. فِي الصَّبَاحِ كَالْعُشْبِ يَتَحَوَّلُونَ. فِي الصَّبَاحِ يُزْهِرُ وَيَتَحَوَّلُ. عِنْدَ الْمَسَاءِ يُقْطَعُ وَيَيْبَسُ. لأَنَّنَا قَدْ فَنِينَا بِغَضَبِكَ وَبِسَخَطِكَ ارْتَعَبْنَا. قَدْ جَعَلْتَ آثَامَنَا أَمَامَكَ، خَفِيَّاتِنَا فِي نُورِ وَجْهِكَ. لأَنَّ كُلَّ أَيَّامِنَا انْقَضَتْ فِي سَخَطِكَ. أَفْنَيْنَا سِنِينَا كَقِصَّةٍ. أَيَّامُ سِنِينَا سَبْعُونَ سَنَةً، وَإِنْ كَانَتْ بِالْقُوَّةِ ثَمَانِينَ سَنَةً، فَأَكْثَرُهَا تَعَبٌ وَبَلاَءٌ، لأَنَّهَا تُسْرِعُ فَنَطِيرُ. مَنْ يَعْرِفُ شِدَّةَ غَضَبِكَ وَكَخَوْفِكَ سَخَطَكَ؟ لِنُحْصِ أَيَّامِنَا هكَذَا عَرِّفْنَا، فَنَأْتِيَ بِقَلْبِ حَكِيمٍ. اِرْجِعْ يَا رَبُّ. حَتَّى مَتَى؟ وَتَحَنَّنْ عَلَى عَبِيدِكَ. أَشْبِعْنَا بِالْغَدَاةِ مِنْ رَحْمَتِكَ، فَنَبْتَهِجَ وَنَفْرَحَ كُلَّ أَيَّامِنَا. فَرِّحْنَا كَالأَيَّامِ الَّتِي فِيهَا أَذْلَلْتَنَا، كَالسِّنِينِ الَّتِي رَأَيْنَا فِيهَا شَرًّا. لِيَظْهَرْ فِعْلُكَ لِعَبِيدِكَ وَجَلاَلُكَ لِبَنِيهِمْ. وَلْيَكُنْ جَمَالُ الرَّبِّ إِلهِنَا عَلَيْنَا، وَعَمَلُ أَيْدِينَا ثَبِّتْهُ عَلَيْنَا. وَعَمَلُ أَيْدِينَا ثَبِّتْهُ.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>المزمور 105</h3>
+                    <p class="psalm-text">اِحْمَدُوا الرَّبَّ. ادْعُوا بِاسْمِهِ. أَخْبِرُوا بَيْنَ الشُّعُوبِ بِأَعْمَالِهِ. غَنُّوا لَهُ. رَنِّمُوا لَهُ. تَحَدَّثُوا بِكُلِّ عَجَائِبِهِ. افْتَخِرُوا بِاسْمِهِ الْقُدُّوسِ. لِيَفْرَحْ قَلْبُ الَّذِينَ يَطْلُبُونَ الرَّبَّ. اُطْلُبُوا الرَّبَّ وَقُوَّتَهُ. اِلْتَمِسُوا وَجْهَهُ دَائِمًا. اذْكُرُوا عَجَائِبَهُ الَّتِي صَنَعَ، آيَاتِهِ وَأَحْكَامَ فَمِهِ، يَا زَرْعَ إِبْرَاهِيمَ عَبْدِهِ، يَا بَنِي يَعْقُوبَ مُخْتَارِيهِ. هُوَ الرَّبُّ إِلهُنَا. أَحْكَامُهُ فِي كُلِّ الأَرْضِ. ذَكَرَ إِلَى الأَبَدِ عَهْدَهُ، الْكَلِمَةَ الَّتِي أَوْصَى بِهَا إِلَى أَلْفِ جِيل، الَّتِي عَاهَدَ بِهَا إِبْرَاهِيمَ، وَقَسَمَهُ لإِسْحَاقَ. فَثَبَّتَهُ لِيَعْقُوبَ فَرِيضَةً، وَلإِسْرَائِيلَ عَهْدًا أَبَدِيًّا، قَائِلاً: لَكَ أُعْطِي أَرْضَ كَنْعَانَ قِسْمَةَ مِيرَاثِكُمْ. إِذْ كَانُوا قَلِيلِينَ عَدَدًا، نَفَرًا قَلِيلاً وَغُرَبَاءَ فِيهَا. ذَهَبُوا مِنْ أُمَّةٍ إِلَى أُمَّةٍ، مِنْ مَمْلَكَةٍ إِلَى شَعْبٍ آخَرَ. لَمْ يَدَعْ إِنْسَانًا يَظْلِمُهُمْ، بَلْ وَبَّخَ مُلُوكًا مِنْ أَجْلِهِمْ، قَائِلاً: لاَ تَمَسُّوا مُسَحَائِي، وَلاَ تُسِيئُوا إِلَى أَنْبِيَائِي. دَعَا بِالْجُوعِ عَلَى الأَرْضِ. كَسَرَ قِوَامَ الْخُبْزِ كُلَّهُ. أَرْسَلَ أَمَامَهُمْ رَجُلاً بِيعَ يُوسُفُ عَبْدًا. أَذَلُّوا بِالْقُيُودِ رِجْلَيْهِ. دَخَلَتْ نَفْسُهُ فِي الْحَدِيدِ، إِلَى وَقْتِ إِتْيَانِ كَلِمَتِهِ. كَلاَمُ الرَّبِّ صَفَّاهُ. أَرْسَلَ الْمَلِكُ فَحَلَّهُ. سُلْطَانُ الشُّعُوبِ أَطْلَقَهُ. جَعَلَهُ سَيِّدًا عَلَى بَيْتِهِ وَمُتَسَلِّطًا عَلَى كُلِّ مُمْتَلَكَاتِهِ، لِيَأْسِرَ عُظَمَاءَهُ بِحَسَبِ إِرَادَتِهِ وَيُعَلِّمَ شُيُوخَهُ حِكْمَةً. وَجَاءَ إِسْرَائِيلُ إِلَى مِصْرَ، وَتَغَرَّبَ يَعْقُوبُ فِي أَرْضِ حَامٍ. جَعَلَ شَعْبَهُ مُثْمِرًا جِدًّا وَأَعَزَّهُ عَلَى أَعْدَائِهِ. حَوَّلَ قُلُوبَهُمْ لِيُبْغِضُوا شَعْبَهُ، لِيَمْكُرُوا بِعَبِيدِهِ. أَرْسَلَ مُوسَى عَبْدَهُ وَهَارُونَ الَّذِي اخْتَارَهُ. أَظْهَرَا آيَاتِهِ بَيْنَهُمْ وَعَجَائِبَهُ فِي أَرْضِ حَامٍ. أَرْسَلَ ظَلاَمًا فَأَظْلَمَ، فَلَمْ يَعْصُوا كَلاَمَهُ. حَوَّلَ مِيَاهَهُمْ إِلَى دَمٍ وَقَتَلَ أَسْمَاكَهُمْ. فَاضَتْ أَرْضُهُمْ ضَفَادِعَ حَتَّى فِي مَخَادِعِ مُلُوكِهِمْ. أَمَرَ فَجَاءَ الذُّبَّانُ وَالْبَعُوضُ فِي كُلِّ تُخُومِهِمْ. أَعْطَاهُمْ بَرَدًا مَطَرًا، وَنَارًا مُلْتَهِبَةً فِي أَرْضِهِمْ. ضَرَبَ كُرُومَهُمْ وَتِينَهُمْ وَكَسَّرَ شَجَرَ تُخُومِهِمْ. أَمَرَ فَجَاءَ الْجَرَادُ وَالْغَوْغَاءُ بِلاَ عَدَدٍ، فَأَكَلَ كُلَّ عُشْبٍ فِي أَرْضِهِمْ وَأَكَلَ ثَمَرَ أَرْضِهِمْ. ضَرَبَ كُلَّ بِكْرٍ فِي أَرْضِهِمْ، أَوَائِلَ كُلِّ قُوَّتِهِمْ. أَخْرَجَهُمْ بِفِضَّةٍ وَذَهَبٍ، وَلَمْ يَكُنْ فِي أَسْبَاطِهِمْ عَاثِرٌ. فَرِحَتْ مِصْرُ بِخُرُوجِهِمْ، لأَنَّ رَعْبَتَهُمْ وَقَعَتْ عَلَيْهِمْ. بَسَطَ سَحَابًا سِتْرًا، وَنَارًا لِتُضِيءَ اللَّيْلَ. سَأَلُوا فَأَتَاهُمْ بِالسَّلْوَى، وَأَشْبَعَهُمْ بِخُبْزِ السَّمَاءِ. شَقَّ الصَّخْرَةَ فَفَاضَتِ الْمِيَاهُ، جَرَتْ فِي الْقِفَارِ كَنَهْرٍ. لأَنَّهُ ذَكَرَ كَلِمَةَ قُدْسِهِ مَعَ إِبْرَاهِيمَ عَبْدِهِ. فَأَخْرَجَ شَعْبَهُ بِفَرَحٍ، مُخْتَارِيهِ بِتَرْنِيمٍ. وَأَعْطَاهُمْ أَرَاضِيَ الأُمَمِ، وَتَعَبَ الشُّعُوبِ فَوَرِثُوهُ، لِكَيْ يَحْفَظُوا فَرَائِضَهُ وَيُطِيعُوا شَرَائِعَهُ. هَلِّلُويَا.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>المزمور 137</h3>
+                    <p class="psalm-text">عَلَى أَنْهَارِ بَابِلَ هُنَاكَ جَلَسْنَا وَبَكَيْنَا أَيْضًا عِنْدَ ذِكْرِنَا صِهْيَوْنَ. عَلَى الصَّفْصَافِ فِي وَسَطِهَا عَلَّقْنَا أَعْوَادَنَا. لأَنَّهُ هُنَاكَ سَأَلَنَا الَّذِينَ سَبَوْنَا كَلاَمَ تَرْنِيمَةٍ، وَمُعَذِّبُونَا سَأَلُونَا فَرَحًا قَائِلِينَ: رَنِّمُوا لَنَا مِنْ تَرْنِيمَاتِ صِهْيَوْنَ. كَيْفَ نُرَنِّمُ تَرْنِيمَةَ الرَّبِّ فِي أَرْضٍ غَرِيبَةٍ؟ إِنْ نَسِيتُكِ يَا أُورُشَلِيمُ، فَلْتَنْسَ يَمِينِي. لِيَلْتَصِقْ لِسَانِي بِحَنَكِي إِنْ لَمْ أَذْكُرْكِ، إِنْ لَمْ أُفَضِّلْ أُورُشَلِيمَ عَلَى أَعْظَمِ فَرَحِي. اُذْكُرْ يَا رَبُّ لِبَنِي أَدُومَ يَوْمَ أُورُشَلِيمَ، الْقَائِلِينَ: «جَرِّدُوهَا! جَرِّدُوهَا حَتَّى إِلَى أَسَاسِهَا». يَا بِنْتَ بَابِلَ الْمُخْرَبَةَ، طُوبَى لِمَنْ يُجَازِيكِ جَزَاءَكِ الَّذِي جَازَيْتِنَا. طُوبَى لِمَنْ يُمْسِكُ أَطْفَالَكِ وَيَضْرِبُهُمْ بِالصَّخْرَةِ.</p>
+                </div>
+
+                <div class="psalm">
+                    <h3>المزمور 150</h3>
+                    <p class="psalm-text">هَلِّلُويَا. سَبِّحُوا اللهَ فِي قُدْسِهِ. سَبِّحُوهُ فِي فَلَكِ قُوَّتِهِ. سَبِّحُوهُ عَلَى أَعْمَالِهِ الْجَبَارَةِ. سَبِّحُوهُ حَسَبَ عَظَمَةِ جَلاَلِهِ. سَبِّحُوهُ بِصَوْتِ الْبُوقِ. سَبِّحُوهُ بِالرَّبَابِ وَالْعُودِ. سَبِّحُوهُ بِالدُّفِّ وَالرَّقْصِ. سَبِّحُوهُ بِالأَوْتَارِ وَالْمِزْمَارِ. سَبِّحُوهُ بِصُنُوجِ التَّصْوِيتِ. سَبِّحُوهُ بِصُنُوجِ الْهُتَافِ. كُلُّ نَسَمَةٍ فَلْتُسَبِّحِ الرَّبَّ. هَلِّلُويَا.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- גלריית ספרים -->
+    <div class="main-container">
+        <div class="content-card" style="text-align: center;">
+            <h2>ספרי רבי נחמן ומהדורות התיקון הכללי</h2>
+            <div class="books-grid">
+                <img src="210_3.jpg" alt="ליקוטי מוהר''ן">
+                <img src="009600027103.jpg" alt="תהילים קורן">
+                <img src="9789653018709.jpg" alt="מרפא לשון">
+                <img src="eyJidWNrZXQiOiJzaW1hbmlhLXB1YmxpYy1hc3NldHMiLCJrZXkiOiJib29raW1hZ2VzL2NvdmVyczk3Lzk3MTc3OS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjM4NCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwidG.avif" alt="ספר 4">
+                <img src="il_1080xN.8059540371_7apx.jpg" alt="להכניע הקליפות">
+                <img src="il_1140xN.8401718413_koar.jpg" alt="ספר 6">
+            </div>
+        </div>
+
+        <!-- תיבת תרומות -->
+        <div id="donation-section" class="donation-highlight">
+            <h2>💎 תרומה ופדיון נפש 💎</h2>
+            <p>בנק הדואר | סניף: <strong>001</strong> | חשבון: <strong>31127380</strong></p>
+            <p>ע"ש: <strong>ידידיה פישון</strong></p>
+            <button class="copy-btn" style="font-size: 1.2rem; padding: 10px 30px; margin-top: 15px; max-width: 250px;" onclick="copyAccount()">העתק חשבון</button>
+        </div>
+    </div>
+
+    <div class="banner-container" style="margin-top: 40px;" onclick="scrollToDonation()">
+        <div class="banner-content" style="animation-direction: reverse; animation-duration: 30s;">
+            💎 אמונה פשוטה, שמחה של מצווה, אור אין סוף 💎 התיקון הכללי הוא סגולה נפלאה לישועה, רפואה ופרנסה 💎 לחצו לתרומה 💎
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="counter-box">
+            <h4>כניסות לאתר</h4>
+            <div class="counter-number" id="visit-counter">0</div>
+        </div>
+        <div class="donation-box">
+            <h4>תרומה / פדיון נפש</h4>
+            <p>בנק הדואר | סניף: <strong>001</strong></p>
+            <p>חשבון: <strong>31127380</strong></p>
+            <p>ע"ש: <strong>ידידיה פישון</strong></p>
+            <button class="copy-btn" onclick="copyAccount()">העתק חשבון</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 התיקון הכללי - כל הזכויות שמורות. האתר מוגן בזכויות יוצרים.</p>
+        <p>נבנה באהבה ובכוונה לעילוי נשמת כל הנשמות.</p>
+    </footer>
+
+    <!-- YouTube API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // חסימת מקשים להגנה על זכויות יוצרים
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || (e.ctrlKey && (e.key === 'u' || e.key === 'c' || e.key === 's' || e.key === 'p'))) {
-                e.preventDefault();
-                alert('התוכן באתר זה מוגן בזכויות יוצרים.');
-            }
-        });
-
-        // מעבר שפות חלק
-        function switchLang(lang) {
-            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
-            document.getElementById('lang-' + lang).classList.add('active');
-        }
-
-        // שעון חי לפי זמן ירושלים
+        // --- 1. שעון ירושלים ---
         function updateClock() {
             const now = new Date();
-            const options = { timeZone: 'Asia/Jerusalem', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-            const timeString = new Intl.DateTimeFormat('he-IL', options).format(now);
-            document.getElementById('live-clock').innerText = 'שעון ירושלים: ' + timeString;
+            const options = { 
+                timeZone: 'Asia/Jerusalem', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: false 
+            };
+            const timeString = now.toLocaleTimeString('he-IL', options);
+            document.getElementById('jerusalem-clock').textContent = `🕒 שעון ירושלים: ${timeString}`;
         }
         setInterval(updateClock, 1000);
         updateClock();
+
+        // --- 2. מונה כניסות ---
+        function updateCounter() {
+            let visits = localStorage.getItem('tikkun_visits_v3');
+            if (!visits) {
+                visits = 124500; 
+            } else {
+                visits = parseInt(visits) + 1;
+            }
+            localStorage.setItem('tikkun_visits_v3', visits);
+            document.getElementById('visit-counter').textContent = visits.toLocaleString('he-IL');
+        }
+        updateCounter();
+
+        // --- 3. מעבר לשוניות ולשפות ---
+        function switchTab(lang) {
+            document.querySelectorAll('.lang-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.getElementById('tab-' + lang).classList.add('active');
+
+            document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            document.documentElement.lang = lang;
+            if (lang === 'en') {
+                document.documentElement.dir = 'ltr';
+            } else {
+                document.documentElement.dir = 'rtl';
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchLang(lang) {
+            switchTab(lang);
+        }
+
+        // --- 4. גלילה לתרומות (מהבאנרים) ---
+        function scrollToDonation() {
+            const target = document.getElementById('donation-section');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                target.classList.add('highlight-pulse');
+                setTimeout(() => {
+                    target.classList.remove('highlight-pulse');
+                }, 4000);
+            }
+        }
+
+        // --- 5. גלילה לרבי נחמן (מתמונת הדיוקן) ---
+        function scrollToRabbi() {
+            const activeLang = document.querySelector('.lang-section.active').id.replace('lang-', '');
+            const target = document.getElementById('about-rabbi-' + activeLang);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                target.style.boxShadow = '0 0 30px var(--fire-orange)';
+                setTimeout(() => {
+                    target.style.boxShadow = '';
+                }, 2000);
+            }
+        }
+
+        // --- 6. כפתור חזרה למעלה ---
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- 7. העתקת חשבון בנק ---
+        function copyAccount() {
+            const accountNum = "31127380";
+            navigator.clipboard.writeText(accountNum).then(() => {
+                const btns = document.querySelectorAll('.copy-btn');
+                btns.forEach(btn => {
+                    const originalText = btn.textContent;
+                    btn.textContent = "הועתק! ✓";
+                    btn.style.background = "#00bfff";
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.style.background = "";
+                    }, 2000);
+                });
+            }).catch(err => {
+                alert("שגיאה בהעתקה: " + err);
+            });
+        }
+
+        // --- 8. הגנת זכויות יוצרים ---
+        const alertBox = document.getElementById('copy-alert');
+        let alertTimeout;
+
+        function showAlert() {
+            alertBox.style.display = 'block';
+            clearTimeout(alertTimeout);
+            alertTimeout = setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3000);
+        }
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showAlert();
+        });
+
+        document.addEventListener('copy', function(e) {
+            if(e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
+                e.preventDefault();
+                showAlert();
+            }
+        });
+
+        document.addEventListener('cut', function(e) {
+            e.preventDefault();
+            showAlert();
+        });
+
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        // --- 9. נגן מוזיקה יוטיוב ---
+        var player;
+        var musicPlaying = false;
+        
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                height: '0',
+                width: '0',
+                videoId: 'C1ebzQDCD2k',
+                playerVars: {
+                    'autoplay': 0,
+                    'loop': 1,
+                    'playlist': 'C1ebzQDCD2k'
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Player ready
+        }
+
+        function toggleMusic() {
+            if (player && player.getPlayerState) {
+                var state = player.getPlayerState();
+                if (state === YT.PlayerState.PLAYING) {
+                    player.pauseVideo();
+                    document.getElementById('music-btn').textContent = '🔇';
+                    musicPlaying = false;
+                } else {
+                    player.playVideo();
+                    document.getElementById('music-btn').textContent = '🔊';
+                    musicPlaying = true;
+                }
+            } else {
+                // אם הנגן עדיין לא נטען, ננסה שוב בעוד רגע
+                setTimeout(toggleMusic, 500);
+            }
+        }
     </script>
 </body>
 </html>
