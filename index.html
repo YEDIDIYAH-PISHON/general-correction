@@ -6,30 +6,161 @@
     <title>התיקון הכללי | Tikun HaKlali | التصحيح الكلّي</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent: #38bdf8;
             --accent-hover: #0ea5e9;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 2rem 1rem; }
-        .container { max-width: 800px; width: 100%; text-align: center; }
-        header { margin-bottom: 2rem; }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent); }
-        p.subtitle { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
-        .lang-switch { display: flex; justify-content: center; gap: 10px; margin-bottom: 2rem; }
-        .lang-btn { background: var(--card-bg); color: var(--text-color); border: 1px solid #334155; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .lang-btn:hover { background: var(--accent); color: #0f172a; }
-        .content-box { background: var(--card-bg); padding: 2rem; border-radius: 16px; text-align: right; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin-bottom: 2rem; line-height: 1.8; }
-        .content-box[dir="ltr"] { text-align: left; }
-        footer { color: var(--text-muted); font-size: 0.875rem; margin-top: auto; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 1rem;
+            user-select: none;
+        }
+
+        .wrapper {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            margin: auto;
+        }
+
+        header {
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 2.5rem;
+        }
+
+        .lang-btn {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent);
+            color: #0f172a;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .content-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 24px;
+            text-align: right;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+            line-height: 1.9;
+        }
+
+        .content-box[dir="ltr"] {
+            text-align: left;
+        }
+
+        /* עיצוב רשימת הפרקים */
+        .chapters-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .chapter-item {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .chapter-item:hover {
+            border-color: var(--accent);
+        }
+
+        .chapter-header {
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--accent);
+        }
+
+        .chapter-body {
+            padding: 0 1.25rem 1rem 1.25rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            display: none; /* סגור כברירת מחדל */
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .chapter-item.active .chapter-body {
+            display: block;
+        }
+
+        footer {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            width: 100%;
+            max-width: 800px;
+            line-height: 1.6;
+        }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
-    <div class="container">
+    <div class="wrapper">
         <header>
             <h1 id="main-title">התיקון הכללי</h1>
             <p class="subtitle" id="main-subtitle">רבי נחמן מברסלב • التصحيح الكلّي</p>
@@ -42,47 +173,128 @@
         </header>
 
         <main>
-            <div class="content-box" id="content">
-                <h2>ברוכים הבאים</h2>
-                <p>כאן תוכלו לקרוא את פרקי התיקון הכללי המלאים. לחצו על כפתורי השפות למעלה למעבר בין עברית, ערבית ואנגלית.</p>
+            <div class="content-box" id="content-container">
+                <h2 id="section-title">פרקי התיקון הכללי</h2>
+                <p id="section-desc">לחץ על כל פרק לפתיחה וקריאה:</p>
+                
+                <div class="chapters-list" id="chapters-container">
+                    <!-- הפרקים ייטענו דינמית דרך הג'אווה-סקריפט בהתאם לשפה -->
+                </div>
             </div>
         </main>
 
         <footer>
-            <p>&copy; 2026 General Correction. כל הזכויות שמורות.</p>
+            <p>&copy; 2026 General Correction. כל הזכויות שמורות. | All Rights Reserved. | جميع الحقوق محفوظة.</p>
+            <p style="margin-top: 4px; color: #64748b;">השימוש באתר מיועד לקריאה אישית בלבד. אין להעתיק או לשכפל חומרים ללא אישור.</p>
         </footer>
     </div>
 
     <script>
-        const texts = {
-            he: { 
-                title: "התיקון הכללי", 
-                subtitle: "רבי נחמן מברסלב", 
-                content: "<h2>ברוכים הבאים</h2><p>כאן תוכלו לקרוא את פרקי התיקון הכללי המלאים בעברית בקלות ובמהירות מכל מכשיר.</p>", 
-                dir: "rtl" 
+        // הגנת העתקה
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && (e.key === 'u' || e.key === 'c' || e.key === 's' || e.key === 'p'))) {
+                e.preventDefault();
+                alert('התוכן באתר זה מוגן בזכויות יוצרים.');
+            }
+        });
+
+        // נתוני השפות והפרקים (כאן תוכל להכניס את הטקסטים המלאים של תהילים ט"ז, ל"ב, מ' וכו')
+        const siteData = {
+            he: {
+                title: "התיקון הכללי",
+                subtitle: "רבי נחמן מברסלב",
+                sectionTitle: "פרקי התיקון הכללי",
+                sectionDesc: "עשרה מזמורי תהילים המהווים תיקון שלם. לחץ על פרק לפתיחה:",
+                dir: "rtl",
+                chapters: [
+                    { name: "פרק ט\"ז", text: "שמור אלי כי חסיתי בך... (הכנס כאן את מלוא טקסט פרק ט\"ז בעברית)" },
+                    { name: "פרק ל\"ב", text: "אשרי נשוי פשע כסוי חטאה... (הכנס כאן את מלוא טקסט פרק ל\"ב בעברית)" },
+                    { name: "פרק מ'", text: קהה... },
+                    { name: "פרק מ\"א", text: "טקסט פרק מ\"א..." },
+                    { name: "פרק מ\"ב", text: "טקסט פרק מ\"ב..." },
+                    { name: "פרק נ\"ט", text: "טקסט פרק נ\"ט..." },
+                    { name: "פרק ע\"ז", text: "טקסט פרק ע\"ז..." },
+                    { name: "פרק צ'", text: "טקסט פרק צ'..." },
+                    { name: "פרק ק\"ה", text: "טקסט פרק ק\"ה..." },
+                    { name: "פרק קל\"ז", text: "טקסט פרק קל\"ז..." }
+                ]
             },
-            ar: { 
-                title: "التصحيح الكلّي", 
-                subtitle: "الشيخ نحمان من بريسلاف", 
-                content: "<h2>أهلاً وسهلاً</h2><p>هنا يمكنكم قراءة فصول التصحيح الكلي بالكامل باللغة العربية بوضوح وسهولة تامة عبر جميع الأجهزة.</p>", 
-                dir: "rtl" 
+            ar: {
+                title: "التصحيح الكلّي",
+                subtitle: "الشيخ نحمان من بريسلاف",
+                sectionTitle: "فصول التصحيح الكلي",
+                sectionDesc: "المزامير العشرة التي تبني التصحيح الكامل. اضغط على الفصول للقراءة:",
+                dir: "rtl",
+                chapters: [
+                    { name: "الفصول 16 (פרק ט\"ז)", text: "النص باللغة العربية لפרק ט\"ז..." },
+                    { name: "الفصول 32 (פרק ל\"ב)", text: "النص باللغة العربية لפרק ל\"ב..." },
+                    { name: "الفصول 40 (פרק מ')", text: "..." },
+                    { name: "الفصول 41 (פרק מ\"א)", text: "..." },
+                    { name: "الفصول 42 (פרק מ\"ב)", text: "..." },
+                    { name: "الفصول 59 (פרק נ\"ט)", text: "..." },
+                    { name: "الفصول 77 (פרק ע\"ז)", text: "..." },
+                    { name: "الفصول 90 (פרק צ')", text: "..." },
+                    { name: "الفصول 105 (פרק ק\"ה)", text: "..." },
+                    { name: "الفصول 137 (פרק קל\"ז)", text: "..." }
+                ]
             },
-            en: { 
-                title: "Tikun HaKlali", 
-                subtitle: "Rabbi Nachman of Breslov", 
-                content: "<h2>Welcome</h2><p>Here you can read the complete chapters of Tikun HaKlali in English, optimized for fast and easy browsing worldwide.</p>", 
-                dir: "ltr" 
+            en: {
+                title: "Tikun HaKlali",
+                subtitle: "Rabbi Nachman of Breslov",
+                sectionTitle: "Tikun HaKlali Chapters",
+                sectionDesc: "The ten Psalms of Tikun HaKlali. Click a chapter to read:",
+                dir: "ltr",
+                chapters: [
+                    { name: "Chapter 16", text: "Full text of Chapter 16 in English..." },
+                    { name: "Chapter 32", text: "Full text of Chapter 32 in English..." },
+                    { name: "Chapter 40", text: "..." },
+                    { name: "Chapter 41", text: "..." },
+                    { name: "Chapter 42", text: "..." },
+                    { name: "Chapter 59", text: "..." },
+                    { name: "Chapter 77", text: "..." },
+                    { name: "Chapter 90", text: "..." },
+                    { name: "Chapter 105", text: "..." },
+                    { name: "Chapter 137", text: "..." }
+                ]
             }
         };
 
         function setLang(lang) {
+            const data = siteData[lang];
             document.documentElement.lang = lang;
-            document.documentElement.dir = texts[lang].dir;
-            document.getElementById('main-title').innerText = texts[lang].title;
-            document.getElementById('main-subtitle').innerText = texts[lang].subtitle;
-            document.getElementById('content').innerHTML = texts[lang].content;
-            document.getElementById('content').dir = texts[lang].dir;
+            document.documentElement.dir = data.dir;
+            document.getElementById('main-title').innerText = data.title;
+            document.getElementById('main-subtitle').innerText = data.subtitle;
+            document.getElementById('section-title').innerText = data.sectionTitle;
+            document.getElementById('section-desc').innerText = data.sectionDesc;
+            
+            const container = document.getElementById('chapters-container');
+            container.dir = data.dir;
+            container.innerHTML = '';
+
+            data.chapters.forEach((ch, index) => {
+                const item = document.createElement('div');
+                item.className = 'chapter-item';
+                item.innerHTML = `
+                    <div class="chapter-header" onclick="toggleChapter(this)">
+                        <span>${ch.name}</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="chapter-body">
+                        <p>${ch.text}</p>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
         }
+
+        function toggleChapter(header) {
+            const item = header.parentElement;
+            item.classList.toggle('active');
+        }
+
+        // טעינה ראשונית בעברית
+        setLang('he');
     </script>
 </body>
 </html>
