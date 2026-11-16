@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" translate="no" class="notranslate">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التيكون هكلالي - الحاخام نحمان</title>
+    <meta name="google" content="notranslate">
+    <title>التيكون هكلالي - الحاخام نحمان מאומן</title>
     <meta name="description" content="التيكون هكلالي للحاخام نحمان من بريسلاف - عشرة مزامير، صلاة فداء النفس، وسيجولة للخلاص. متوفر بالعربية والعبرية والإنجليزية.">
     
     <!-- PWA -->
@@ -129,7 +130,7 @@
 
         .site-title {
             font-family: 'Heebo', sans-serif;
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             font-weight: 900;
             background: linear-gradient(135deg, var(--gold-light), var(--fire-orange), var(--fire-red));
             -webkit-background-clip: text;
@@ -296,6 +297,7 @@
             padding: 22px;
             margin-bottom: 20px;
             transition: all 0.3s;
+            scroll-margin-top: 20px;
         }
         .psalm-card:hover {
             background: rgba(255,255,255,0.9);
@@ -406,11 +408,9 @@
         }
         #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-        /* ===== INSTALL BANNER ===== */
         #install-banner {
             display: none;
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
+            position: fixed; bottom: 0; left: 0; right: 0;
             background: linear-gradient(135deg, var(--dark), #1a365d);
             border-top: 2px solid var(--gold);
             padding: 12px 15px;
@@ -448,7 +448,7 @@
 
         @media (max-width: 900px) {
             .header-inner { flex-direction: column; gap: 12px; }
-            .site-title { font-size: 1.5rem; white-space: normal; }
+            .site-title { font-size: 1.4rem; white-space: normal; }
             .info-panel { min-width: unset; width: 100%; font-size: 0.75rem; }
             .lang-tabs { min-width: unset; width: 100%; }
             .float-img { float: none; display: block; margin: 0 auto 15px; }
@@ -519,7 +519,7 @@
             <img src="39946d97-744c-49dc-88af-c02024f61947_2.jpg" alt="طبق النار" onclick="scrollToDonation()" onerror="this.style.background='linear-gradient(135deg,#ff8c00,#ff4500)';">
         </div>
 
-        <!-- ARABIC (DEFAULT) -->
+        <!-- ============ ARABIC (DEFAULT) ============ -->
         <div class="lang-section active" id="lang-ar" dir="rtl">
             <div class="card clearfix" id="about-ar">
                 <h2>عن التيكون هكلالي والحاخام نحمان</h2>
@@ -571,7 +571,7 @@
             </div>
         </div>
 
-        <!-- HEBREW -->
+        <!-- ============ HEBREW ============ -->
         <div class="lang-section" id="lang-he" dir="rtl">
             <div class="card clearfix" id="about-he">
                 <h2>על התיקון הכללי ורבי נחמן מאומן</h2>
@@ -623,7 +623,7 @@
             </div>
         </div>
 
-        <!-- ENGLISH -->
+        <!-- ============ ENGLISH ============ -->
         <div class="lang-section" id="lang-en" dir="ltr">
             <div class="card clearfix" id="about-en">
                 <h2>About The Tikkun HaKlali & Rabbi Nachman</h2>
@@ -666,7 +666,7 @@
     </main>
 
     <footer>
-        <p id="footer-1">&copy; 2024 التيكون هكلالي - جميع الحقوق محفوظة.</p>
+        <p id="footer-1">&copy; 2024 التيكون هكلالي - جميع الحقوق محفوظة. | <strong style="color:#d4af37">v3.0</strong></p>
         <p id="footer-2">بُني بالحب لرفع أرواح جميع النفوس.</p>
     </footer>
 
@@ -677,13 +677,12 @@
             <span class="equalizer"><span></span><span></span><span></span></span>
             <span id="music-txt">موسيقى</span>
         </button>
-        <button class="float-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲ أعلى</button>
+        <button class="float-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" id="float-top">▲ أعلى</button>
     </div>
 
     <audio id="audio" loop><source src="song.mp3" type="audio/mpeg"></audio>
     <div id="toast">⚠️ المحتوى محمي بحقوق النشر</div>
 
-    <!-- INSTALL BANNER -->
     <div id="install-banner">
         <div class="inner">
             <img src="icon-192.png" alt="icon" onerror="this.style.display='none'">
@@ -697,21 +696,38 @@
     </div>
 
     <script>
-        // ====== הוספת תמונות: פשוט הוסף שורות למערך! ======
+        // =====================================================
+        // 🖼️ להוספת תמונות נוספות: פשוט הוסף שורות למערך!
+        // =====================================================
         const galleryImages = [
-            '210_3.jpg', '009600027103.jpg', '9789653018709.jpg',
-            'il_1080xN.8059540371_7apx.jpg', 'il_1140xN.8401718413_koar.jpg',
+            '210_3.jpg',
+            '009600027103.jpg',
+            '9789653018709.jpg',
+            'il_1080xN.8059540371_7apx.jpg',
+            'il_1140xN.8401718413_koar.jpg',
             '500737315_10222796757507761_8087516065105431034_n.jpg',
             'eyJidWNrZXQiOiJzaW1hbmlhLXB1YmxpYy1hc3NldHMiLCJrZXkiOiJib29raW1hZ2VzL2NvdmVyczk3Lzk3MTc3OS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjM4NCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwidG.avif',
             '39946d97-744c-49dc-88af-c02024f61947_2.jpg',
             'Screenshot_2021-11-17-17-41-22-1.png'
-            // ====== הוסף כאן 10 תמונות נוספות! ======
-            // '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg',
-            // '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'
+            
+            // 🔽 הוסף כאן 10 תמונות נוספות! 🔽
+            // '11.jpg',
+            // '12.jpg',
+            // '13.jpg',
+            // '14.jpg',
+            // '15.jpg',
+            // '16.jpg',
+            // '17.jpg',
+            // '18.jpg',
+            // '19.jpg',
+            // '20.jpg'
         ];
         
-        (function() {
+        // בניית באנר תמונות
+        (function buildImageBanner() {
             const track = document.getElementById('banner-track');
+            if (!track) return;
+            // שכפול התמונות פעמיים לאנימציה חלקה
             [...galleryImages, ...galleryImages].forEach(src => {
                 const img = document.createElement('img');
                 img.src = src;
@@ -721,63 +737,118 @@
             });
         })();
 
-        // ===== TRANSLATIONS =====
+        // ===== תרגומים =====
         const T = {
-            he: { chapters: [['16','ט"ז'],['32','ל"ב'],['41','מ"א'],['42','מ"ב'],['59','נ"ט'],['77','ע"ז'],['90','צ\''],['105','ק"ה'],['137','קל"ז'],['150','ק"נ']], floatDon: '💎 תרומה', music: 'מוזיקה', musicOff: 'השתק', donTitle: '💎 תרומה ופדיון נפש 💎', donSub: 'השתתפות בהפצת האור והאמונה של רבי נחמן', bank: 'בנק הדואר', branch: 'סניף', acc: 'חשבון', owner: 'ע"ש', copy: 'העתק חשבון', copied: 'הועתק! ✓', footer1: '&copy; 2024 התיקון הכללי - כל הזכויות שמורות.', footer2: 'נבנה באהבה ובכוונה לעילוי נשמת כל הנשמות.', installTitle: 'התקן את האפליקציה', installDesc: 'גישה מהירה, גם בלי אינטרנט', installBtn: 'התקן', ios: 'ב-iPhone: לחץ על כפתור השיתוף ואז "הוסף למסך הבית"' },
-            en: { chapters: [['16','16'],['32','32'],['41','41'],['42','42'],['59','59'],['77','77'],['90','90'],['105','105'],['137','137'],['150','150']], floatDon: '💎 Donate', music: 'Music', musicOff: 'Mute', donTitle: '💎 Donation & Pidyon Nefesh 💎', donSub: 'Spreading the light and faith of Rabbi Nachman', bank: 'Post Bank', branch: 'Branch', acc: 'Account', owner: 'Name', copy: 'Copy Account', copied: 'Copied! ✓', footer1: '&copy; 2024 Tikkun HaKlali - All rights reserved.', footer2: 'Built with love for all souls.', installTitle: 'Install App', installDesc: 'Quick access, works offline', installBtn: 'Install', ios: 'On iPhone: tap Share then "Add to Home Screen"' },
-            ar: { chapters: [['16','16'],['32','32'],['41','41'],['42','42'],['59','59'],['77','77'],['90','90'],['105','105'],['137','137'],['150','150']], floatDon: '💎 تبرع', music: 'موسيقى', musicOff: 'كتم', donTitle: '💎 تبرع وفداء النفس 💎', donSub: 'المشاركة في نشر النور والإيمان للحاخام نحمان', bank: 'بنك البريد', branch: 'الفرع', acc: 'الحساب', owner: 'باسم', copy: 'نسخ الحساب', copied: 'تم النسخ! ✓', footer1: '&copy; 2024 التيكون هكلالي - جميع الحقوق محفوظة.', footer2: 'بُني بالحب لرفع أرواح جميع النفوس.', installTitle: 'تثبيت التطبيق', installDesc: 'وصول سريع، يعمل بدون إنترنت', installBtn: 'تثبيت', ios: 'على iPhone: اضغط مشاركة ثم "إضافة إلى الشاشة الرئيسية"' }
+            he: {
+                chapters: [['16','ט"ז'],['32','ל"ב'],['41','מ"א'],['42','מ"ב'],['59','נ"ט'],['77','ע"ז'],['90','צ\''],['105','ק"ה'],['137','קל"ז'],['150','ק"נ']],
+                floatDon: '💎 תרומה', floatTop: '▲ למעלה', music: 'מוזיקה', musicOff: 'השתק',
+                donTitle: '💎 תרומה ופדיון נפש 💎', donSub: 'השתתפות בהפצת האור והאמונה של רבי נחמן',
+                bank: 'בנק הדואר', branch: 'סניף', acc: 'חשבון', owner: 'ע"ש',
+                copy: 'העתק חשבון', copied: 'הועתק! ✓', counterPrefix: 'כניסות: ',
+                footer1: '&copy; 2024 התיקון הכללי - כל הזכויות שמורות. | <strong style="color:#d4af37">v3.0</strong>',
+                footer2: 'נבנה באהבה ובכוונה לעילוי נשמת כל הנשמות.',
+                installTitle: 'התקן את האפליקציה', installDesc: 'גישה מהירה, גם בלי אינטרנט', installBtn: 'התקן',
+                ios: 'ב-iPhone: לחץ על כפתור השיתוף ואז "הוסף למסך הבית"'
+            },
+            en: {
+                chapters: [['16','16'],['32','32'],['41','41'],['42','42'],['59','59'],['77','77'],['90','90'],['105','105'],['137','137'],['150','150']],
+                floatDon: '💎 Donate', floatTop: '▲ Top', music: 'Music', musicOff: 'Mute',
+                donTitle: '💎 Donation & Pidyon Nefesh 💎', donSub: 'Spreading the light and faith of Rabbi Nachman',
+                bank: 'Post Bank', branch: 'Branch', acc: 'Account', owner: 'Name',
+                copy: 'Copy Account', copied: 'Copied! ✓', counterPrefix: 'Visits: ',
+                footer1: '&copy; 2024 Tikkun HaKlali - All rights reserved. | <strong style="color:#d4af37">v3.0</strong>',
+                footer2: 'Built with love for all souls.',
+                installTitle: 'Install App', installDesc: 'Quick access, works offline', installBtn: 'Install',
+                ios: 'On iPhone: tap Share then "Add to Home Screen"'
+            },
+            ar: {
+                chapters: [['16','16'],['32','32'],['41','41'],['42','42'],['59','59'],['77','77'],['90','90'],['105','105'],['137','137'],['150','150']],
+                floatDon: '💎 تبرع', floatTop: '▲ أعلى', music: 'موسيقى', musicOff: 'كتم',
+                donTitle: '💎 تبرع وفداء النفس 💎', donSub: 'المشاركة في نشر النور والإيمان للحاخام نحمان',
+                bank: 'بنك البريد', branch: 'الفرع', acc: 'الحساب', owner: 'باسم',
+                copy: 'نسخ الحساب', copied: 'تم النسخ! ✓', counterPrefix: 'الزيارات: ',
+                footer1: '&copy; 2024 التيكون هكلالي - جميع الحقوق محفوظة. | <strong style="color:#d4af37">v3.0</strong>',
+                footer2: 'بُني بالحب لرفع أرواح جميع النفوس.',
+                installTitle: 'تثبيت التطبيق', installDesc: 'وصول سريع، يعمل بدون إنترنت', installBtn: 'تثبيت',
+                ios: 'على iPhone: اضغط مشاركة ثم "إضافة إلى الشاشة الرئيسية"'
+            }
         };
+
+        // ===== מצב התחלתי: ערבית! =====
         let currentLang = 'ar';
         let isPlaying = false;
+        let visits = 0;
 
+        // ===== שעון ותאריכים =====
         function updateClock() {
             const now = new Date();
             const locale = currentLang === 'he' ? 'he-IL' : (currentLang === 'ar' ? 'ar-SA' : 'en-US');
-            document.getElementById('clock').textContent = '🕒 ' + now.toLocaleTimeString(locale, { timeZone: 'Asia/Jerusalem', hour: '2-digit', minute: '2-digit', hour12: false });
+            document.getElementById('clock').textContent = '🕒 ' + now.toLocaleTimeString(locale, {
+                timeZone: 'Asia/Jerusalem', hour: '2-digit', minute: '2-digit', hour12: false
+            });
             const opts = { year: 'numeric', month: 'short', day: 'numeric' };
             document.getElementById('date-greg').textContent = now.toLocaleDateString(locale, opts);
             document.getElementById('date-heb').textContent = now.toLocaleDateString('he-IL-u-ca-hebrew', opts);
             document.getElementById('date-hijri').textContent = now.toLocaleDateString('ar-SA-u-ca-islamic', opts);
         }
-        setInterval(updateClock, 1000);
-        updateClock();
 
-        (function() {
-            let v = parseInt(localStorage.getItem('tikkun_v8') || '125000') + 1;
-            localStorage.setItem('tikkun_v8', v);
-            document.getElementById('counter').textContent = 'الزيارات: ' + v.toLocaleString('ar-EG');
-        })();
+        // ===== מונה כניסות =====
+        function updateCounter() {
+            visits = parseInt(localStorage.getItem('tikkun_v9') || '125000') + 1;
+            localStorage.setItem('tikkun_v9', visits);
+            const prefix = T[currentLang].counterPrefix;
+            const locale = currentLang === 'he' ? 'he-IL' : (currentLang === 'ar' ? 'ar-EG' : 'en-US');
+            document.getElementById('counter').textContent = prefix + visits.toLocaleString(locale);
+        }
 
-        function setLang(lang, btn) {
-            currentLang = lang;
-            document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
-            document.getElementById('lang-' + lang).classList.add('active');
-            document.querySelectorAll('.lang-tab').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
+        // ===== מיקום האינדיקטור של הלשונית =====
+        function positionIndicator(btn) {
             const ind = document.getElementById('lang-indicator');
             const wrap = document.getElementById('lang-tabs').getBoundingClientRect();
             const br = btn.getBoundingClientRect();
             ind.style.width = br.width + 'px';
+            // חישוב לפי RTL/LTR של הדף
+            if (document.documentElement.dir === 'rtl') {
+                ind.style.right = (wrap.right - br.right) + 'px';
+                ind.style.left = 'auto';
+            } else {
+                ind.style.left = (br.left - wrap.left) + 'px';
+                ind.style.right = 'auto';
+            }
+        }
+
+        // ===== החלפת שפה =====
+        function setLang(lang, btn) {
+            currentLang = lang;
+            // הסתר את כל הסקשנים והצג את הנבחר
+            document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+            const targetSection = document.getElementById('lang-' + lang);
+            if (targetSection) targetSection.classList.add('active');
+            // עדכן לשוניות
+            document.querySelectorAll('.lang-tab').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            // עדכן dir ו-lang של הדף
             if (lang === 'en') {
                 document.documentElement.dir = 'ltr';
                 document.documentElement.lang = 'en';
-                ind.style.left = (br.left - wrap.left) + 'px';
-                ind.style.right = 'auto';
             } else {
                 document.documentElement.dir = 'rtl';
                 document.documentElement.lang = lang;
-                ind.style.right = (wrap.right - br.right) + 'px';
-                ind.style.left = 'auto';
             }
+            // עדכן את האינדיקטור
+            if (btn) positionIndicator(btn);
+            // עדכן טקסטים דינמיים
             updateStatic(lang);
             updateClock();
+            updateCounter();
             buildChapterNav(lang);
         }
 
+        // ===== עדכון טקסטים דינמיים =====
         function updateStatic(lang) {
             const t = T[lang];
             document.getElementById('float-don').textContent = t.floatDon;
+            document.getElementById('float-top').textContent = t.floatTop;
             document.getElementById('music-txt').textContent = isPlaying ? t.music : t.musicOff;
             document.getElementById('don-title').textContent = t.donTitle;
             document.getElementById('don-sub').textContent = t.donSub;
@@ -793,6 +864,7 @@
             document.getElementById('btn-install').textContent = t.installBtn;
         }
 
+        // ===== ניווט פרקים =====
         function buildChapterNav(lang) {
             const nav = document.getElementById('chapter-nav');
             nav.innerHTML = '';
@@ -804,6 +876,7 @@
             });
         }
 
+        // ===== גלילות =====
         function scrollToDonation() {
             const d = document.getElementById('donation');
             d.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -815,20 +888,24 @@
             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
+        // ===== הגנת תוכן =====
         const toast = document.getElementById('toast');
-        let tt;
+        let toastT;
         function showToast() {
             toast.classList.add('show');
-            clearTimeout(tt);
-            tt = setTimeout(() => toast.classList.remove('show'), 2500);
+            clearTimeout(toastT);
+            toastT = setTimeout(() => toast.classList.remove('show'), 2500);
         }
         document.addEventListener('contextmenu', e => { e.preventDefault(); showToast(); });
         document.addEventListener('copy', e => {
-            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') { e.preventDefault(); showToast(); }
+            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
+                e.preventDefault(); showToast();
+            }
         });
         document.addEventListener('cut', e => { e.preventDefault(); showToast(); });
         document.addEventListener('dragstart', e => e.preventDefault());
 
+        // ===== העתקת חשבון =====
         function copyAccount() {
             navigator.clipboard.writeText('31127380').then(() => {
                 const b = document.getElementById('don-copy');
@@ -839,6 +916,7 @@
             }).catch(() => alert('Error'));
         }
 
+        // ===== מוזיקה =====
         const audio = document.getElementById('audio');
         const musicBtn = document.getElementById('music-btn');
         const musicIco = document.getElementById('music-ico');
@@ -863,10 +941,12 @@
                 musicBtn.classList.remove('playing');
                 musicIco.textContent = '🔇';
                 document.getElementById('music-txt').textContent = T[currentLang].musicOff;
-            } else tryPlay();
+            } else {
+                tryPlay();
+            }
         }
 
-        // ===== PWA INSTALL =====
+        // ===== באנר התקנה =====
         let deferredPrompt = null;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
@@ -878,7 +958,10 @@
             if (localStorage.getItem('install_dismissed') === '1') return;
             if (window.matchMedia('(display-mode: standalone)').matches) return;
             if (!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) return;
-            setTimeout(() => { document.getElementById('install-banner').style.display = 'block'; }, 3000);
+            setTimeout(() => {
+                const banner = document.getElementById('install-banner');
+                if (banner) banner.style.display = 'block';
+            }, 3000);
         }
 
         function doInstall() {
@@ -900,13 +983,33 @@
             localStorage.setItem('install_dismissed', '1');
         }
 
+        // ===== אתחול =====
         window.addEventListener('load', () => {
-            const activeBtn = document.querySelector('.lang-tab.active');
-            setTimeout(() => setLang('ar', activeBtn), 100);
+            console.log('🌐 Site starting in: Arabic (ar) - default');
+            // וודא שערבית פעילה
+            const arBtn = document.querySelector('.lang-tab[data-lang="ar"]');
+            if (arBtn) {
+                setTimeout(() => {
+                    setLang('ar', arBtn);
+                    console.log('✅ Arabic loaded as default language');
+                }, 50);
+            }
+            // הפעל שעון ומונה
+            setInterval(updateClock, 1000);
+            updateClock();
+            updateCounter();
+            // נגן מוזיקה
             setTimeout(tryPlay, 800);
-            // Show install banner even if beforeinstallprompt doesn't fire (iOS)
-            if (!deferredPrompt) setTimeout(showInstallBanner, 3000);
-            if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+            // באנר התקנה
+            if (!deferredPrompt) setTimeout(showInstallBanner, 3500);
+            // רישום Service Worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js').catch(() => console.log('SW not available'));
+            }
+            // וידוא: הדף בערבית
+            console.log('📄 HTML lang:', document.documentElement.lang);
+            console.log('📄 HTML dir:', document.documentElement.dir);
+            console.log('📄 Arabic section active:', document.getElementById('lang-ar').classList.contains('active'));
         });
     </script>
 </body>
